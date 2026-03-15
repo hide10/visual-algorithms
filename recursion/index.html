@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>再帰の考え方 | algorithm.hide10.com</title>
+  <meta name="description" content="再帰は、問題を小さくして同じ形で解く考え方です。停止条件と再帰呼び出しが揃ってはじめて正しく動きます。">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">A</span>
+        <span class="brand-copy">
+          <strong>algorithm.hide10.com</strong>
+          <span>Visual algorithm primer</span>
+        </span>
+      </a>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+    </header>
+
+    <section class="hero hero-single">
+      <div class="panel hero-copy">
+        <p class="eyebrow">概念 / 再帰の考え方</p>
+        <h1>小さい同じ問題に<br>分けて、自分を呼ぶ。</h1>
+        <p>再帰は、問題を小さくして同じ形で解く考え方です。停止条件と再帰呼び出しが揃ってはじめて正しく動きます。</p>
+        <div class="pill-row"><span class="pill">停止条件が必要</span><span class="pill">木で考えると見やすい</span><span class="pill">DP とも接続する</span></div>
+      </div>
+    </section>
+
+    <section class="panel section toc-section">
+      <p class="eyebrow">目次</p>
+      <h2>このページの目次</h2>
+      <div class="toc-links"><a href="#summary">このページでわかること</a><a href="#article">概要</a><a href="#howto">再帰の最小形</a><a href="#facts">要点まとめ</a><a href="#visualizer">動きで確認</a><a href="#next">次に見るページ</a></div>
+    </section>
+
+    <section id="summary" class="panel section">
+      <p class="eyebrow">このページでわかること</p>
+      <h2>先に知っておくポイント</h2>
+      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>どこで止まるか</p></article><article class="info-card"><strong>2. わかること</strong><p>1回呼ぶごとに何が小さくなるか</p></article><article class="info-card"><strong>3. わかること</strong><p>戻りながら値が組み立つ様子</p></article></div>
+    </section>
+
+    <section id="article" class="panel section">
+      <p class="eyebrow">本文</p>
+      <h2>しくみと考え方</h2>
+
+      <div class="article-block">
+        <p>再帰は、問題を小さくして同じ形で解く考え方です。停止条件と再帰呼び出しが揃ってはじめて正しく動きます。</p>
+      </div>
+
+
+    </section>
+
+    <section id="howto" class="panel section">
+      <p class="eyebrow">考え方</p>
+      <h2>再帰の最小形</h2>
+      <div class="code-panel">
+        <pre><code><span class="code-line" data-line="1">if 問題が十分小さいなら直接答える</span>
+<span class="code-line" data-line="2">そうでなければ、少し小さい同じ問題を解く</span>
+<span class="code-line" data-line="3">小さい答えから元の答えを組み立てる</span></code></pre>
+      </div>
+    </section>
+
+    <section id="facts" class="panel section">
+      <p class="eyebrow">要点</p>
+      <h2>要点まとめ</h2>
+      <div class="card-grid"><article class="info-card"><strong>テーマ</strong><p>横断概念</p></article><article class="info-card"><strong>重要</strong><p>停止条件</p></article><article class="info-card"><strong>図</strong><p>再帰木</p></article><article class="info-card"><strong>関連</strong><p>分割統治 / DP</p></article></div>
+    </section>
+
+    <section class="panel section">
+      <p class="eyebrow">補足</p>
+      <h2>向いている場面と注意点</h2>
+      <div class="card-grid"><article class="info-card"><strong>よくある失敗</strong><p>停止条件がない、または問題が小さくならないと無限に呼び出します。</p></article><article class="info-card"><strong>教え方</strong><p>コードだけでなく呼び出し木を一緒に見ると理解しやすいです。</p></article><article class="info-card"><strong>次の接続</strong><p>同じ部分問題を何度も解くとき、メモ化や DP につながります。</p></article></div>
+    </section>
+
+    <section id="visualizer" class="panel section">
+      <p class="eyebrow">動きで確認</p>
+      <h2>最後に動きで確認する</h2>
+      <p class="section-lead">ここでは「どこで止まるか」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <div class="visualizer-layout">
+        <div class="panel bars-panel">
+          <div class="toolbar">
+            <button id="prevButton" class="button-secondary" type="button">前へ</button>
+            <button id="nextButton" class="button-secondary" type="button">次へ</button>
+            <button id="playButton" class="button-primary" type="button" data-playing="false">自動再生</button>
+            <button id="resetButton" class="button-secondary" type="button">最初へ</button>
+            <label for="speedInput">速度
+              <input id="speedInput" type="range" min="1" max="100" step="1" value="72">
+            </label>
+          </div>
+          <div id="scene" class="visual-stage"></div>
+          <p id="frameCaption" class="visual-caption"></p>
+        </div>
+
+        <div>
+          <div class="panel stats">
+            <div id="dynamicStats" class="stat-grid"></div>
+          </div>
+          <div class="panel legend" style="margin-top: 18px;"><span class="legend-item"><span class="legend-swatch is-active"></span>今いる呼び出し</span><span class="legend-item"><span class="legend-swatch is-sorted"></span>完了済み</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="next" class="panel section">
+      <p class="eyebrow">次に見る</p>
+      <h2>次に見るページ</h2>
+      <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
+      <div class="hero-actions"><a class="button button-secondary" href="../memoization/index.html">メモ化を見る</a></div>
+    </section>
+
+    <footer class="footer">関連: <a href="../complexity/index.html">計算量の概念</a> / <a href="../stable-sort/index.html">安定ソートとは</a></footer>
+  </div>
+  <script>window.PAGE_DATA = {"frames": [{"kind": "cards", "line": 1, "caption": "まずは停止条件が必要です。", "stats": [["例", "factorial(1)"], ["役割", "これ以上分けない"]], "payload": {"items": [{"title": "停止条件", "text": "n = 1 なら 1 を返す", "state": "found"}, {"title": "再帰呼び出し", "text": "n * factorial(n - 1)", "state": "active"}, {"title": "組み立て", "text": "小さい答えから戻る", "state": "default"}]}}, {"kind": "tree", "line": 2, "caption": "呼び出しは木として考えると見やすいです。", "stats": [["現在", "factorial(3)"], ["次", "factorial(2)"]], "payload": {"nodes": [{"id": "8", "label": "8", "x": 270, "y": 40, "state": "default"}, {"id": "3", "label": "3", "x": 150, "y": 120, "state": "active"}, {"id": "10", "label": "10", "x": 390, "y": 120, "state": "default"}, {"id": "1", "label": "1", "x": 90, "y": 210, "state": "sorted"}, {"id": "6", "label": "6", "x": 210, "y": 210, "state": "default"}, {"id": "14", "label": "14", "x": 450, "y": 210, "state": "default"}], "edges": [{"from": "8", "to": "3", "state": "active"}, {"from": "8", "to": "10", "state": "default"}, {"from": "3", "to": "1", "state": "sorted"}, {"from": "3", "to": "6", "state": "default"}, {"from": "10", "to": "14", "state": "default"}]}}, {"kind": "cards", "line": 3, "caption": "戻りながら答えを組み立てます。", "stats": [["戻り", "1 -> 2 -> 6"]], "payload": {"items": [{"title": "factorial(1)", "text": "1 を返す", "state": "sorted"}, {"title": "factorial(2)", "text": "2 * 1 = 2", "state": "sorted"}, {"title": "factorial(3)", "text": "3 * 2 = 6", "state": "active"}]}}]};</script>
+  <script src="../app.js"></script>
+</body>
+</html>

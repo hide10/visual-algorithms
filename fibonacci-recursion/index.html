@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fibonacci | algorithm.hide10.com</title>
+  <meta name="description" content="再帰で Fibonacci 数をそのまま求めると、同じ計算を何度も繰り返します。メモ化や DP の必要性を示す代表例です。">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">A</span>
+        <span class="brand-copy">
+          <strong>algorithm.hide10.com</strong>
+          <span>Visual algorithm primer</span>
+        </span>
+      </a>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+    </header>
+
+    <section class="hero hero-single">
+      <div class="panel hero-copy">
+        <p class="eyebrow">動的計画法・再帰 / Fibonacci</p>
+        <h1>同じ部分問題が<br>何度も現れる。</h1>
+        <p>再帰で Fibonacci 数をそのまま求めると、同じ計算を何度も繰り返します。メモ化や DP の必要性を示す代表例です。</p>
+        <div class="pill-row"><span class="pill">DP / 再帰</span><span class="pill">表や木で理解</span><span class="pill">定番教材</span></div>
+      </div>
+    </section>
+
+    <section class="panel section toc-section">
+      <p class="eyebrow">目次</p>
+      <h2>このページの目次</h2>
+      <div class="toc-links"><a href="#summary">このページでわかること</a><a href="#article">概要</a><a href="#howto">擬似コード</a><a href="#facts">要点まとめ</a><a href="#visualizer">動きで確認</a><a href="#next">次に見るページ</a></div>
+    </section>
+
+    <section id="summary" class="panel section">
+      <p class="eyebrow">このページでわかること</p>
+      <h2>先に知っておくポイント</h2>
+      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>状態が何か</p></article><article class="info-card"><strong>2. わかること</strong><p>前の状態をどう使うか</p></article><article class="info-card"><strong>3. わかること</strong><p>なぜその漸化式になるか</p></article></div>
+    </section>
+
+    <section id="article" class="panel section">
+      <p class="eyebrow">本文</p>
+      <h2>しくみと考え方</h2>
+
+      <div class="article-block">
+        <p>再帰で Fibonacci 数をそのまま求めると、同じ計算を何度も繰り返します。メモ化や DP の必要性を示す代表例です。</p>
+      </div>
+
+
+    </section>
+
+    <section id="howto" class="panel section">
+      <p class="eyebrow">考え方</p>
+      <h2>擬似コード</h2>
+      <div class="code-panel">
+        <pre><code><span class="code-line" data-line="1">fib(n) = fib(n-1) + fib(n-2)</span>
+<span class="code-line" data-line="2">base cases: fib(0), fib(1)</span></code></pre>
+      </div>
+    </section>
+
+    <section id="facts" class="panel section">
+      <p class="eyebrow">要点</p>
+      <h2>要点まとめ</h2>
+      <div class="card-grid"><article class="info-card"><strong>Naive</strong><p>O(2^n)</p></article><article class="info-card"><strong>Memoized</strong><p>O(n)</p></article><article class="info-card"><strong>主題</strong><p>重複部分問題</p></article><article class="info-card"><strong>接続</strong><p>DP</p></article></div>
+    </section>
+
+    <section class="panel section">
+      <p class="eyebrow">補足</p>
+      <h2>向いている場面と注意点</h2>
+      <div class="card-grid"><article class="info-card"><strong>教材価値</strong><p>遅さの理由が再帰木ではっきり見えます。</p></article><article class="info-card"><strong>改善</strong><p>メモ化で一気に変わります。</p></article><article class="info-card"><strong>説明</strong><p>同じ fib(3) が何回出るかを数えるとよいです。</p></article></div>
+    </section>
+
+    <section id="visualizer" class="panel section">
+      <p class="eyebrow">動きで確認</p>
+      <h2>最後に動きで確認する</h2>
+      <p class="section-lead">ここでは「状態が何か」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <div class="visualizer-layout">
+        <div class="panel bars-panel">
+          <div class="toolbar">
+            <button id="prevButton" class="button-secondary" type="button">前へ</button>
+            <button id="nextButton" class="button-secondary" type="button">次へ</button>
+            <button id="playButton" class="button-primary" type="button" data-playing="false">自動再生</button>
+            <button id="resetButton" class="button-secondary" type="button">最初へ</button>
+            <label for="speedInput">速度
+              <input id="speedInput" type="range" min="1" max="100" step="1" value="72">
+            </label>
+          </div>
+          <div id="scene" class="visual-stage"></div>
+          <p id="frameCaption" class="visual-caption"></p>
+        </div>
+
+        <div>
+          <div class="panel stats">
+            <div id="dynamicStats" class="stat-grid"></div>
+          </div>
+          <div class="panel legend" style="margin-top: 18px;"><span class="legend-item"><span class="legend-swatch is-active"></span>注目</span><span class="legend-item"><span class="legend-swatch is-found"></span>決定的</span><span class="legend-item"><span class="legend-swatch is-sorted"></span>確定</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="next" class="panel section">
+      <p class="eyebrow">次に見る</p>
+      <h2>次に見るページ</h2>
+      <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
+      <div class="hero-actions"><a class="button button-secondary" href="../knapsack/index.html">0/1 Knapsackを見る</a></div>
+    </section>
+
+    <footer class="footer">関連: <a href="../knapsack/index.html">0/1 Knapsack</a> / <a href="../lcs/index.html">LCS</a></footer>
+  </div>
+  <script>window.PAGE_DATA = {"frames": [{"kind": "cards", "line": 1, "caption": "fib(5) は fib(4) と fib(3) に分かれます。", "stats": [["root", "fib(5)"]], "payload": {"items": [{"title": "fib(5)", "text": "fib(4) + fib(3)", "state": "active"}, {"title": "fib(4)", "text": "さらに分岐", "state": "swap"}, {"title": "fib(3)", "text": "こちらも分岐", "state": "swap"}]}}, {"kind": "cards", "line": 1, "caption": "fib(3) が複数回現れます。", "stats": [["重複", "fib(3), fib(2)"]], "payload": {"items": [{"title": "fib(3)", "text": "左枝に出現", "state": "swap"}, {"title": "fib(3)", "text": "右枝にも出現", "state": "swap"}, {"title": "問題", "text": "同じ計算の繰り返し", "state": "active"}]}}, {"kind": "cards", "line": 2, "caption": "停止条件は簡単でも、木は急激に広がります。", "stats": [["base", "fib(1), fib(0)"]], "payload": {"items": [{"title": "fib(1)", "text": "1", "state": "sorted"}, {"title": "fib(0)", "text": "0", "state": "sorted"}, {"title": "全体", "text": "指数的に増える", "state": "active"}]}}]};</script>
+  <script src="../app.js"></script>
+</body>
+</html>

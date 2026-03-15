@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>メモ化 | algorithm.hide10.com</title>
+  <meta name="description" content="再帰で同じ計算を繰り返すと急に重くなります。メモ化は、一度求めた結果を保存して再利用する方法です。">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">A</span>
+        <span class="brand-copy">
+          <strong>algorithm.hide10.com</strong>
+          <span>Visual algorithm primer</span>
+        </span>
+      </a>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+    </header>
+
+    <section class="hero hero-single">
+      <div class="panel hero-copy">
+        <p class="eyebrow">概念 / メモ化</p>
+        <h1>同じ部分問題を<br>何度も解かない。</h1>
+        <p>再帰で同じ計算を繰り返すと急に重くなります。メモ化は、一度求めた結果を保存して再利用する方法です。</p>
+        <div class="pill-row"><span class="pill">再帰の高速化</span><span class="pill">同じ入力を再計算しない</span><span class="pill">DP の入口</span></div>
+      </div>
+    </section>
+
+    <section class="panel section toc-section">
+      <p class="eyebrow">目次</p>
+      <h2>このページの目次</h2>
+      <div class="toc-links"><a href="#summary">このページでわかること</a><a href="#article">概要</a><a href="#howto">最小形</a><a href="#facts">要点まとめ</a><a href="#visualizer">動きで確認</a><a href="#next">次に見るページ</a></div>
+    </section>
+
+    <section id="summary" class="panel section">
+      <p class="eyebrow">このページでわかること</p>
+      <h2>先に知っておくポイント</h2>
+      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>重複している部分問題を探す</p></article><article class="info-card"><strong>2. わかること</strong><p>保存して使い回せる値を見つける</p></article><article class="info-card"><strong>3. わかること</strong><p>再帰木がどれだけ減るか見る</p></article></div>
+    </section>
+
+    <section id="article" class="panel section">
+      <p class="eyebrow">本文</p>
+      <h2>しくみと考え方</h2>
+
+      <div class="article-block">
+        <p>再帰で同じ計算を繰り返すと急に重くなります。メモ化は、一度求めた結果を保存して再利用する方法です。</p>
+      </div>
+
+
+    </section>
+
+    <section id="howto" class="panel section">
+      <p class="eyebrow">考え方</p>
+      <h2>最小形</h2>
+      <div class="code-panel">
+        <pre><code><span class="code-line" data-line="1">if メモにあるなら返す</span>
+<span class="code-line" data-line="2">なければ再帰で求める</span>
+<span class="code-line" data-line="3">結果をメモに保存する</span>
+<span class="code-line" data-line="4">保存した結果を返す</span></code></pre>
+      </div>
+    </section>
+
+    <section id="facts" class="panel section">
+      <p class="eyebrow">要点</p>
+      <h2>要点まとめ</h2>
+      <div class="card-grid"><article class="info-card"><strong>テーマ</strong><p>横断概念</p></article><article class="info-card"><strong>典型例</strong><p>Fibonacci</p></article><article class="info-card"><strong>効果</strong><p>重複計算の削減</p></article><article class="info-card"><strong>接続</strong><p>Top-down DP</p></article></div>
+    </section>
+
+    <section class="panel section">
+      <p class="eyebrow">補足</p>
+      <h2>向いている場面と注意点</h2>
+      <div class="card-grid"><article class="info-card"><strong>なぜ効くか</strong><p>同じ引数で同じ結果が出るなら、2回目以降は再計算不要だからです。</p></article><article class="info-card"><strong>授業の見せ方</strong><p>メモなしの再帰木と、メモありの計算済み表を並べると差が出ます。</p></article><article class="info-card"><strong>注意点</strong><p>保存領域を使うので、空間計算量とのトレードオフがあります。</p></article></div>
+    </section>
+
+    <section id="visualizer" class="panel section">
+      <p class="eyebrow">動きで確認</p>
+      <h2>最後に動きで確認する</h2>
+      <p class="section-lead">ここでは「重複している部分問題を探す」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <div class="visualizer-layout">
+        <div class="panel bars-panel">
+          <div class="toolbar">
+            <button id="prevButton" class="button-secondary" type="button">前へ</button>
+            <button id="nextButton" class="button-secondary" type="button">次へ</button>
+            <button id="playButton" class="button-primary" type="button" data-playing="false">自動再生</button>
+            <button id="resetButton" class="button-secondary" type="button">最初へ</button>
+            <label for="speedInput">速度
+              <input id="speedInput" type="range" min="1" max="100" step="1" value="72">
+            </label>
+          </div>
+          <div id="scene" class="visual-stage"></div>
+          <p id="frameCaption" class="visual-caption"></p>
+        </div>
+
+        <div>
+          <div class="panel stats">
+            <div id="dynamicStats" class="stat-grid"></div>
+          </div>
+          <div class="panel legend" style="margin-top: 18px;"><span class="legend-item"><span class="legend-swatch "></span>未計算</span><span class="legend-item"><span class="legend-swatch is-active"></span>計算中</span><span class="legend-item"><span class="legend-swatch is-sorted"></span>メモ済み</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="next" class="panel section">
+      <p class="eyebrow">次に見る</p>
+      <h2>次に見るページ</h2>
+      <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
+      <div class="hero-actions"><a class="button button-secondary" href="../index.html">トップへ戻る</a></div>
+    </section>
+
+    <footer class="footer">関連: <a href="../complexity/index.html">計算量の概念</a> / <a href="../stable-sort/index.html">安定ソートとは</a></footer>
+  </div>
+  <script>window.PAGE_DATA = {"frames": [{"kind": "cards", "line": 1, "caption": "メモがなければ毎回計算します。", "stats": [["fib(5)", "重複多数"]], "payload": {"items": [{"title": "fib(5)", "text": "fib(4) + fib(3)", "state": "active"}, {"title": "fib(4)", "text": "あとでまた必要", "state": "swap"}, {"title": "fib(3)", "text": "こちらも重複", "state": "swap"}]}}, {"kind": "grid", "line": 3, "caption": "一度計算した値を表に保存します。", "stats": [["memo[2]", "1"], ["memo[3]", "2"], ["memo[4]", "3"]], "payload": {"rows": [[{"text": "n", "state": "default"}, {"text": "0", "state": "default"}, {"text": "1", "state": "default"}, {"text": "2", "state": "sorted"}, {"text": "3", "state": "sorted"}, {"text": "4", "state": "sorted"}], [{"text": "fib(n)", "state": "default"}, {"text": "0", "state": "default"}, {"text": "1", "state": "default"}, {"text": "1", "state": "sorted"}, {"text": "2", "state": "sorted"}, {"text": "3", "state": "sorted"}]]}}, {"kind": "cards", "line": 4, "caption": "次に同じ値が要るときは、表から返します。", "stats": [["再利用", "計算不要"]], "payload": {"items": [{"title": "fib(4)", "text": "表から 3 を返す", "state": "found"}, {"title": "fib(3)", "text": "表から 2 を返す", "state": "found"}, {"title": "全体", "text": "再帰木がかなり減る", "state": "active"}]}}]};</script>
+  <script src="../app.js"></script>
+</body>
+</html>

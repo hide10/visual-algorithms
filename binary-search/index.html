@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binary Search | algorithm.hide10.com</title>
+  <meta name="description" content="整列済み配列に対して高速に探索する方法です。毎回半分の候補を捨てられるため O(log n) になります。">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">A</span>
+        <span class="brand-copy">
+          <strong>algorithm.hide10.com</strong>
+          <span>Visual algorithm primer</span>
+        </span>
+      </a>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+    </header>
+
+    <section class="hero hero-single">
+      <div class="panel hero-copy">
+        <p class="eyebrow">探索 / Binary Search</p>
+        <h1>真ん中を見て、<br>探索範囲を半分に絞る。</h1>
+        <p>整列済み配列に対して高速に探索する方法です。毎回半分の候補を捨てられるため O(log n) になります。</p>
+        <div class="pill-row"><span class="pill">探索</span><span class="pill">比較教材</span><span class="pill">動作イメージ付き</span></div>
+      </div>
+    </section>
+
+    <section class="panel section toc-section">
+      <p class="eyebrow">目次</p>
+      <h2>このページの目次</h2>
+      <div class="toc-links"><a href="#summary">このページでわかること</a><a href="#article">概要</a><a href="#howto">擬似コード</a><a href="#facts">要点まとめ</a><a href="#visualizer">動きで確認</a><a href="#next">次に見るページ</a></div>
+    </section>
+
+    <section id="summary" class="panel section">
+      <p class="eyebrow">このページでわかること</p>
+      <h2>先に知っておくポイント</h2>
+      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>何を比較するか</p></article><article class="info-card"><strong>2. わかること</strong><p>候補がどう減るか</p></article><article class="info-card"><strong>3. わかること</strong><p>前提条件があるか</p></article></div>
+    </section>
+
+    <section id="article" class="panel section">
+      <p class="eyebrow">本文</p>
+      <h2>しくみと考え方</h2>
+
+      <div class="article-block">
+        <p>整列済み配列に対して高速に探索する方法です。毎回半分の候補を捨てられるため O(log n) になります。</p>
+      </div>
+
+
+    </section>
+
+    <section id="howto" class="panel section">
+      <p class="eyebrow">考え方</p>
+      <h2>擬似コード</h2>
+      <div class="code-panel">
+        <pre><code><span class="code-line" data-line="1">low = 0, high = n - 1</span>
+<span class="code-line" data-line="2">while low &lt;= high</span>
+<span class="code-line" data-line="3">  mid = floor((low + high) / 2)</span>
+<span class="code-line" data-line="4">  if a[mid] == target return mid</span>
+<span class="code-line" data-line="5">  if a[mid] &lt; target then low = mid + 1 else high = mid - 1</span></code></pre>
+      </div>
+    </section>
+
+    <section id="facts" class="panel section">
+      <p class="eyebrow">要点</p>
+      <h2>要点まとめ</h2>
+      <div class="card-grid"><article class="info-card"><strong>最良時計算量</strong><p>O(1)</p></article><article class="info-card"><strong>平均時計算量</strong><p>O(log n)</p></article><article class="info-card"><strong>最悪時計算量</strong><p>O(log n)</p></article><article class="info-card"><strong>前提</strong><p>整列済み</p></article></div>
+    </section>
+
+    <section class="panel section">
+      <p class="eyebrow">補足</p>
+      <h2>向いている場面と注意点</h2>
+      <div class="card-grid"><article class="info-card"><strong>なぜ速いか</strong><p>1 回比較するごとに候補が半分になるからです。</p></article><article class="info-card"><strong>前提</strong><p>整列されていないと左右どちらを捨てるか判断できません。</p></article><article class="info-card"><strong>比較対象</strong><p>Linear Search と並べると差が際立ちます。</p></article></div>
+    </section>
+
+    <section id="visualizer" class="panel section">
+      <p class="eyebrow">動きで確認</p>
+      <h2>最後に動きで確認する</h2>
+      <p class="section-lead">ここでは「何を比較するか」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <div class="visualizer-layout">
+        <div class="panel bars-panel">
+          <div class="toolbar">
+            <button id="prevButton" class="button-secondary" type="button">前へ</button>
+            <button id="nextButton" class="button-secondary" type="button">次へ</button>
+            <button id="playButton" class="button-primary" type="button" data-playing="false">自動再生</button>
+            <button id="resetButton" class="button-secondary" type="button">最初へ</button>
+            <label for="speedInput">速度
+              <input id="speedInput" type="range" min="1" max="100" step="1" value="72">
+            </label>
+          </div>
+          <div id="scene" class="visual-stage"></div>
+          <p id="frameCaption" class="visual-caption"></p>
+        </div>
+
+        <div>
+          <div class="panel stats">
+            <div id="dynamicStats" class="stat-grid"></div>
+          </div>
+          <div class="panel legend" style="margin-top: 18px;"><span class="legend-item"><span class="legend-swatch is-active"></span>注目</span><span class="legend-item"><span class="legend-swatch is-found"></span>発見</span><span class="legend-item"><span class="legend-swatch is-dim"></span>除外</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="next" class="panel section">
+      <p class="eyebrow">次に見る</p>
+      <h2>次に見るページ</h2>
+      <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
+      <div class="hero-actions"><a class="button button-secondary" href="../hash-table/index.html">Hash Tableを見る</a></div>
+    </section>
+
+    <footer class="footer">関連: <a href="../linear-search/index.html">Linear Search</a> / <a href="../hash-table/index.html">Hash Table</a></footer>
+  </div>
+  <script>window.PAGE_DATA = {"frames": [{"kind": "cells", "line": 3, "caption": "まず中央 31 を見ます。", "stats": [["target", "39"], ["mid", "31"]], "payload": {"items": [{"label": "3", "sub": "", "state": "default"}, {"label": "8", "sub": "", "state": "default"}, {"label": "12", "sub": "", "state": "default"}, {"label": "17", "sub": "", "state": "default"}, {"label": "21", "sub": "", "state": "default"}, {"label": "26", "sub": "", "state": "dim"}, {"label": "31", "sub": "", "state": "active"}, {"label": "39", "sub": "", "state": "default"}, {"label": "44", "sub": "", "state": "default"}, {"label": "50", "sub": "", "state": "default"}, {"label": "58", "sub": "", "state": "default"}]}}, {"kind": "cells", "line": 5, "caption": "31 < 39 なので右半分だけ残します。", "stats": [["low", "7"], ["high", "10"]], "payload": {"items": [{"label": "3", "sub": "", "state": "dim"}, {"label": "8", "sub": "", "state": "dim"}, {"label": "12", "sub": "", "state": "dim"}, {"label": "17", "sub": "", "state": "dim"}, {"label": "21", "sub": "", "state": "dim"}, {"label": "26", "sub": "", "state": "dim"}, {"label": "31", "sub": "", "state": "dim"}, {"label": "39", "sub": "", "state": "default"}, {"label": "44", "sub": "", "state": "active"}, {"label": "50", "sub": "", "state": "default"}, {"label": "58", "sub": "", "state": "default"}]}}, {"kind": "cells", "line": 4, "caption": "次の中央で 39 を見つけます。", "stats": [["index", "7"], ["比較", "2"]], "payload": {"items": [{"label": "3", "sub": "", "state": "dim"}, {"label": "8", "sub": "", "state": "dim"}, {"label": "12", "sub": "", "state": "dim"}, {"label": "17", "sub": "", "state": "dim"}, {"label": "21", "sub": "", "state": "dim"}, {"label": "26", "sub": "", "state": "dim"}, {"label": "31", "sub": "", "state": "dim"}, {"label": "39", "sub": "", "state": "found"}, {"label": "44", "sub": "", "state": "default"}, {"label": "50", "sub": "", "state": "default"}, {"label": "58", "sub": "", "state": "default"}]}}]};</script>
+  <script src="../app.js"></script>
+</body>
+</html>

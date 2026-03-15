@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Queue | algorithm.hide10.com</title>
+  <meta name="description" content="FIFO の基本データ構造です。待ち行列、BFS、ジョブ処理などに出てきます。">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">A</span>
+        <span class="brand-copy">
+          <strong>algorithm.hide10.com</strong>
+          <span>Visual algorithm primer</span>
+        </span>
+      </a>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+    </header>
+
+    <section class="hero hero-single">
+      <div class="panel hero-copy">
+        <p class="eyebrow">データ構造 / Queue</p>
+        <h1>先に入れたものを<br>先に取り出す。</h1>
+        <p>FIFO の基本データ構造です。待ち行列、BFS、ジョブ処理などに出てきます。</p>
+        <div class="pill-row"><span class="pill">データ構造</span><span class="pill">基礎教材</span><span class="pill">可視化</span></div>
+      </div>
+    </section>
+
+    <section class="panel section toc-section">
+      <p class="eyebrow">目次</p>
+      <h2>このページの目次</h2>
+      <div class="toc-links"><a href="#summary">このページでわかること</a><a href="#article">概要</a><a href="#howto">基本操作</a><a href="#facts">要点まとめ</a><a href="#visualizer">動きで確認</a><a href="#next">次に見るページ</a></div>
+    </section>
+
+    <section id="summary" class="panel section">
+      <p class="eyebrow">このページでわかること</p>
+      <h2>先に知っておくポイント</h2>
+      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>何が制約か</p></article><article class="info-card"><strong>2. わかること</strong><p>どこが速いか</p></article><article class="info-card"><strong>3. わかること</strong><p>どこが遅いか</p></article></div>
+    </section>
+
+    <section id="article" class="panel section">
+      <p class="eyebrow">本文</p>
+      <h2>しくみと考え方</h2>
+
+      <div class="article-block">
+        <p>FIFO の基本データ構造です。待ち行列、BFS、ジョブ処理などに出てきます。</p>
+      </div>
+
+
+    </section>
+
+    <section id="howto" class="panel section">
+      <p class="eyebrow">考え方</p>
+      <h2>基本操作</h2>
+      <div class="code-panel">
+        <pre><code><span class="code-line" data-line="1">enqueue(x)</span>
+<span class="code-line" data-line="2">dequeue()</span>
+<span class="code-line" data-line="3">front()</span></code></pre>
+      </div>
+    </section>
+
+    <section id="facts" class="panel section">
+      <p class="eyebrow">要点</p>
+      <h2>要点まとめ</h2>
+      <div class="card-grid"><article class="info-card"><strong>Enqueue</strong><p>O(1)</p></article><article class="info-card"><strong>Dequeue</strong><p>O(1)</p></article><article class="info-card"><strong>特徴</strong><p>FIFO</p></article><article class="info-card"><strong>代表用途</strong><p>BFS</p></article></div>
+    </section>
+
+    <section class="panel section">
+      <p class="eyebrow">補足</p>
+      <h2>向いている場面と注意点</h2>
+      <div class="card-grid"><article class="info-card"><strong>直感</strong><p>列に並ぶ感覚です。</p></article><article class="info-card"><strong>出口</strong><p>先頭だけ取り出せます。</p></article><article class="info-card"><strong>DFS との対比</strong><p>Stack と並べると探索の違いが見えます。</p></article></div>
+    </section>
+
+    <section id="visualizer" class="panel section">
+      <p class="eyebrow">動きで確認</p>
+      <h2>最後に動きで確認する</h2>
+      <p class="section-lead">ここでは「何が制約か」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <div class="visualizer-layout">
+        <div class="panel bars-panel">
+          <div class="toolbar">
+            <button id="prevButton" class="button-secondary" type="button">前へ</button>
+            <button id="nextButton" class="button-secondary" type="button">次へ</button>
+            <button id="playButton" class="button-primary" type="button" data-playing="false">自動再生</button>
+            <button id="resetButton" class="button-secondary" type="button">最初へ</button>
+            <label for="speedInput">速度
+              <input id="speedInput" type="range" min="1" max="100" step="1" value="72">
+            </label>
+          </div>
+          <div id="scene" class="visual-stage"></div>
+          <p id="frameCaption" class="visual-caption"></p>
+        </div>
+
+        <div>
+          <div class="panel stats">
+            <div id="dynamicStats" class="stat-grid"></div>
+          </div>
+          <div class="panel legend" style="margin-top: 18px;"><span class="legend-item"><span class="legend-swatch is-found"></span>front</span><span class="legend-item"><span class="legend-swatch is-active"></span>rear</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="next" class="panel section">
+      <p class="eyebrow">次に見る</p>
+      <h2>次に見るページ</h2>
+      <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
+      <div class="hero-actions"><a class="button button-secondary" href="../linked-list/index.html">Linked Listを見る</a></div>
+    </section>
+
+    <footer class="footer">関連: <a href="../stack/index.html">Stack</a> / <a href="../linked-list/index.html">Linked List</a></footer>
+  </div>
+  <script>window.PAGE_DATA = {"frames": [{"kind": "cells", "line": 1, "caption": "enqueue で後ろへ追加します。", "stats": [["rear", "9"]], "payload": {"items": [{"label": "3", "sub": "front", "state": "default"}, {"label": "6", "sub": "", "state": "default"}, {"label": "9", "sub": "rear", "state": "active"}]}}, {"kind": "cells", "line": 2, "caption": "dequeue では先頭が出ます。", "stats": [["dequeue", "3"]], "payload": {"items": [{"label": "6", "sub": "front", "state": "found"}, {"label": "9", "sub": "rear", "state": "default"}]}}]};</script>
+  <script src="../app.js"></script>
+</body>
+</html>

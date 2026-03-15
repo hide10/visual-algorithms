@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Distance | algorithm.hide10.com</title>
+  <meta name="description" content="1 文字の挿入、削除、置換で文字列を変換する最小コストを求めます。表の各マスで 3 通りを比較します。">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">A</span>
+        <span class="brand-copy">
+          <strong>algorithm.hide10.com</strong>
+          <span>Visual algorithm primer</span>
+        </span>
+      </a>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+    </header>
+
+    <section class="hero hero-single">
+      <div class="panel hero-copy">
+        <p class="eyebrow">動的計画法・再帰 / Edit Distance</p>
+        <h1>変換に必要な最小編集回数を<br>表で求める。</h1>
+        <p>1 文字の挿入、削除、置換で文字列を変換する最小コストを求めます。表の各マスで 3 通りを比較します。</p>
+        <div class="pill-row"><span class="pill">DP / 再帰</span><span class="pill">表や木で理解</span><span class="pill">定番教材</span></div>
+      </div>
+    </section>
+
+    <section class="panel section toc-section">
+      <p class="eyebrow">目次</p>
+      <h2>このページの目次</h2>
+      <div class="toc-links"><a href="#summary">このページでわかること</a><a href="#article">概要</a><a href="#howto">擬似コード</a><a href="#facts">要点まとめ</a><a href="#visualizer">動きで確認</a><a href="#next">次に見るページ</a></div>
+    </section>
+
+    <section id="summary" class="panel section">
+      <p class="eyebrow">このページでわかること</p>
+      <h2>先に知っておくポイント</h2>
+      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>状態が何か</p></article><article class="info-card"><strong>2. わかること</strong><p>前の状態をどう使うか</p></article><article class="info-card"><strong>3. わかること</strong><p>なぜその漸化式になるか</p></article></div>
+    </section>
+
+    <section id="article" class="panel section">
+      <p class="eyebrow">本文</p>
+      <h2>しくみと考え方</h2>
+
+      <div class="article-block">
+        <p>1 文字の挿入、削除、置換で文字列を変換する最小コストを求めます。表の各マスで 3 通りを比較します。</p>
+      </div>
+
+
+    </section>
+
+    <section id="howto" class="panel section">
+      <p class="eyebrow">考え方</p>
+      <h2>擬似コード</h2>
+      <div class="code-panel">
+        <pre><code><span class="code-line" data-line="1">dp[i][j] = min(delete, insert, replace)</span></code></pre>
+      </div>
+    </section>
+
+    <section id="facts" class="panel section">
+      <p class="eyebrow">要点</p>
+      <h2>要点まとめ</h2>
+      <div class="card-grid"><article class="info-card"><strong>時間計算量</strong><p>O(nm)</p></article><article class="info-card"><strong>空間計算量</strong><p>O(nm)</p></article><article class="info-card"><strong>操作</strong><p>insert/delete/replace</p></article><article class="info-card"><strong>用途</strong><p>文字列類似度</p></article></div>
+    </section>
+
+    <section class="panel section">
+      <p class="eyebrow">補足</p>
+      <h2>向いている場面と注意点</h2>
+      <div class="card-grid"><article class="info-card"><strong>考え方</strong><p>各接頭辞同士の最小変換回数を積み上げます。</p></article><article class="info-card"><strong>LCS との違い</strong><p>3 方向を比較する点が大きな違いです。</p></article><article class="info-card"><strong>見せ方</strong><p>上・左・左上の意味を言語化すると迷いません。</p></article></div>
+    </section>
+
+    <section id="visualizer" class="panel section">
+      <p class="eyebrow">動きで確認</p>
+      <h2>最後に動きで確認する</h2>
+      <p class="section-lead">ここでは「状態が何か」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <div class="visualizer-layout">
+        <div class="panel bars-panel">
+          <div class="toolbar">
+            <button id="prevButton" class="button-secondary" type="button">前へ</button>
+            <button id="nextButton" class="button-secondary" type="button">次へ</button>
+            <button id="playButton" class="button-primary" type="button" data-playing="false">自動再生</button>
+            <button id="resetButton" class="button-secondary" type="button">最初へ</button>
+            <label for="speedInput">速度
+              <input id="speedInput" type="range" min="1" max="100" step="1" value="72">
+            </label>
+          </div>
+          <div id="scene" class="visual-stage"></div>
+          <p id="frameCaption" class="visual-caption"></p>
+        </div>
+
+        <div>
+          <div class="panel stats">
+            <div id="dynamicStats" class="stat-grid"></div>
+          </div>
+          <div class="panel legend" style="margin-top: 18px;"><span class="legend-item"><span class="legend-swatch is-active"></span>注目</span><span class="legend-item"><span class="legend-swatch is-found"></span>決定的</span><span class="legend-item"><span class="legend-swatch is-sorted"></span>確定</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="next" class="panel section">
+      <p class="eyebrow">次に見る</p>
+      <h2>次に見るページ</h2>
+      <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
+      <div class="hero-actions"><a class="button button-secondary" href="../hanoi/index.html">Tower of Hanoiを見る</a></div>
+    </section>
+
+    <footer class="footer">関連: <a href="../fibonacci-recursion/index.html">Fibonacci</a> / <a href="../knapsack/index.html">0/1 Knapsack</a></footer>
+  </div>
+  <script>window.PAGE_DATA = {"frames": [{"kind": "grid", "line": 1, "caption": "上は削除、左は挿入、左上は置換を表します。", "stats": [["from", "cat"], ["to", "cut"]], "payload": {"rows": [[{"text": "", "state": "default"}, {"text": "c", "state": "default"}, {"text": "u", "state": "default"}, {"text": "t", "state": "default"}], [{"text": "c", "state": "default"}, {"text": "0", "state": "found"}, {"text": "1", "state": "default"}, {"text": "2", "state": "default"}], [{"text": "a", "state": "default"}, {"text": "1", "state": "default"}, {"text": "1", "state": "active"}, {"text": "2", "state": "default"}], [{"text": "t", "state": "default"}, {"text": "2", "state": "default"}, {"text": "2", "state": "default"}, {"text": "1", "state": "found"}]]}}, {"kind": "cards", "line": 1, "caption": "cat -> cut は置換 1 回で済みます。", "stats": [["distance", "1"]], "payload": {"items": [{"title": "delete", "text": "候補 2", "state": "default"}, {"title": "insert", "text": "候補 2", "state": "default"}, {"title": "replace", "text": "候補 1", "state": "found"}]}}]};</script>
+  <script src="../app.js"></script>
+</body>
+</html>

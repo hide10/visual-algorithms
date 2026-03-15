@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BFS | algorithm.hide10.com</title>
+  <meta name="description" content="幅優先探索は、始点からの距離が近い順に探索を進めます。キューを使うのが本質です。">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">A</span>
+        <span class="brand-copy">
+          <strong>algorithm.hide10.com</strong>
+          <span>Visual algorithm primer</span>
+        </span>
+      </a>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+    </header>
+
+    <section class="hero hero-single">
+      <div class="panel hero-copy">
+        <p class="eyebrow">グラフ / BFS</p>
+        <h1>近い順に広げる探索。</h1>
+        <p>幅優先探索は、始点からの距離が近い順に探索を進めます。キューを使うのが本質です。</p>
+        <div class="pill-row"><span class="pill">グラフ</span><span class="pill">ノードとエッジ</span><span class="pill">可視化向き</span></div>
+      </div>
+    </section>
+
+    <section class="panel section toc-section">
+      <p class="eyebrow">目次</p>
+      <h2>このページの目次</h2>
+      <div class="toc-links"><a href="#summary">このページでわかること</a><a href="#article">概要</a><a href="#howto">擬似コード</a><a href="#facts">要点まとめ</a><a href="#visualizer">動きで確認</a><a href="#next">次に見るページ</a></div>
+    </section>
+
+    <section id="summary" class="panel section">
+      <p class="eyebrow">このページでわかること</p>
+      <h2>先に知っておくポイント</h2>
+      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>どの頂点が注目か</p></article><article class="info-card"><strong>2. わかること</strong><p>候補集合がどう変わるか</p></article><article class="info-card"><strong>3. わかること</strong><p>なぜ次の頂点や辺を選ぶか</p></article></div>
+    </section>
+
+    <section id="article" class="panel section">
+      <p class="eyebrow">本文</p>
+      <h2>しくみと考え方</h2>
+
+      <div class="article-block">
+        <p>幅優先探索は、始点からの距離が近い順に探索を進めます。キューを使うのが本質です。</p>
+      </div>
+
+
+    </section>
+
+    <section id="howto" class="panel section">
+      <p class="eyebrow">考え方</p>
+      <h2>擬似コード</h2>
+      <div class="code-panel">
+        <pre><code><span class="code-line" data-line="1">enqueue start</span>
+<span class="code-line" data-line="2">while queue not empty</span>
+<span class="code-line" data-line="3">  pop front</span>
+<span class="code-line" data-line="4">  enqueue unvisited neighbors</span></code></pre>
+      </div>
+    </section>
+
+    <section id="facts" class="panel section">
+      <p class="eyebrow">要点</p>
+      <h2>要点まとめ</h2>
+      <div class="card-grid"><article class="info-card"><strong>時間計算量</strong><p>O(V + E)</p></article><article class="info-card"><strong>空間計算量</strong><p>O(V)</p></article><article class="info-card"><strong>構造</strong><p>Queue</p></article><article class="info-card"><strong>用途</strong><p>最短距離(重みなし)</p></article></div>
+    </section>
+
+    <section class="panel section">
+      <p class="eyebrow">補足</p>
+      <h2>向いている場面と注意点</h2>
+      <div class="card-grid"><article class="info-card"><strong>特徴</strong><p>1 手先、2 手先という順番で広がります。</p></article><article class="info-card"><strong>見せ方</strong><p>frontier を青、訪問済みを灰で出すとわかりやすいです。</p></article><article class="info-card"><strong>用途</strong><p>重みなしグラフの最短経路と相性がよいです。</p></article></div>
+    </section>
+
+    <section id="visualizer" class="panel section">
+      <p class="eyebrow">動きで確認</p>
+      <h2>最後に動きで確認する</h2>
+      <p class="section-lead">ここでは「どの頂点が注目か」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <div class="visualizer-layout">
+        <div class="panel bars-panel">
+          <div class="toolbar">
+            <button id="prevButton" class="button-secondary" type="button">前へ</button>
+            <button id="nextButton" class="button-secondary" type="button">次へ</button>
+            <button id="playButton" class="button-primary" type="button" data-playing="false">自動再生</button>
+            <button id="resetButton" class="button-secondary" type="button">最初へ</button>
+            <label for="speedInput">速度
+              <input id="speedInput" type="range" min="1" max="100" step="1" value="72">
+            </label>
+          </div>
+          <div id="scene" class="visual-stage"></div>
+          <p id="frameCaption" class="visual-caption"></p>
+        </div>
+
+        <div>
+          <div class="panel stats">
+            <div id="dynamicStats" class="stat-grid"></div>
+          </div>
+          <div class="panel legend" style="margin-top: 18px;"><span class="legend-item"><span class="legend-swatch is-active"></span>注目</span><span class="legend-item"><span class="legend-swatch is-frontier"></span>候補</span><span class="legend-item"><span class="legend-swatch is-chosen"></span>確定</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="next" class="panel section">
+      <p class="eyebrow">次に見る</p>
+      <h2>次に見るページ</h2>
+      <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
+      <div class="hero-actions"><a class="button button-secondary" href="../dfs/index.html">DFSを見る</a></div>
+    </section>
+
+    <footer class="footer">関連: <a href="../dfs/index.html">DFS</a> / <a href="../dijkstra/index.html">Dijkstra</a></footer>
+  </div>
+  <script>window.PAGE_DATA = {"frames": [{"kind": "graph", "line": 1, "caption": "A から開始してキューへ入れます。", "stats": [["queue", "[A]"]], "payload": {"nodes": [{"id": "A", "label": "A", "x": 80, "y": 60, "state": "active"}, {"id": "B", "label": "B", "x": 220, "y": 50, "state": "default"}, {"id": "C", "label": "C", "x": 360, "y": 70, "state": "default"}, {"id": "D", "label": "D", "x": 140, "y": 190, "state": "default"}, {"id": "E", "label": "E", "x": 290, "y": 170, "state": "default"}, {"id": "F", "label": "F", "x": 450, "y": 190, "state": "default"}], "edges": [{"from": "A", "to": "B", "label": "2", "state": "default"}, {"from": "A", "to": "D", "label": "1", "state": "default"}, {"from": "B", "to": "C", "label": "3", "state": "default"}, {"from": "B", "to": "E", "label": "2", "state": "default"}, {"from": "D", "to": "E", "label": "2", "state": "default"}, {"from": "E", "to": "C", "label": "1", "state": "default"}, {"from": "E", "to": "F", "label": "4", "state": "default"}, {"from": "C", "to": "F", "label": "2", "state": "default"}]}}, {"kind": "graph", "line": 4, "caption": "A の隣接 B, D を frontier にします。", "stats": [["queue", "[B, D]"]], "payload": {"nodes": [{"id": "A", "label": "A", "x": 80, "y": 60, "state": "visited"}, {"id": "B", "label": "B", "x": 220, "y": 50, "state": "frontier"}, {"id": "C", "label": "C", "x": 360, "y": 70, "state": "default"}, {"id": "D", "label": "D", "x": 140, "y": 190, "state": "frontier"}, {"id": "E", "label": "E", "x": 290, "y": 170, "state": "default"}, {"id": "F", "label": "F", "x": 450, "y": 190, "state": "default"}], "edges": [{"from": "A", "to": "B", "label": "2", "state": "active"}, {"from": "A", "to": "D", "label": "1", "state": "active"}, {"from": "B", "to": "C", "label": "3", "state": "default"}, {"from": "B", "to": "E", "label": "2", "state": "default"}, {"from": "D", "to": "E", "label": "2", "state": "default"}, {"from": "E", "to": "C", "label": "1", "state": "default"}, {"from": "E", "to": "F", "label": "4", "state": "default"}, {"from": "C", "to": "F", "label": "2", "state": "default"}]}}, {"kind": "graph", "line": 4, "caption": "次に B から広がり、C と E が frontier になります。", "stats": [["queue", "[D, C, E]"]], "payload": {"nodes": [{"id": "A", "label": "A", "x": 80, "y": 60, "state": "visited"}, {"id": "B", "label": "B", "x": 220, "y": 50, "state": "visited"}, {"id": "C", "label": "C", "x": 360, "y": 70, "state": "frontier"}, {"id": "D", "label": "D", "x": 140, "y": 190, "state": "frontier"}, {"id": "E", "label": "E", "x": 290, "y": 170, "state": "frontier"}, {"id": "F", "label": "F", "x": 450, "y": 190, "state": "default"}], "edges": [{"from": "A", "to": "B", "label": "2", "state": "visited"}, {"from": "A", "to": "D", "label": "1", "state": "frontier"}, {"from": "B", "to": "C", "label": "3", "state": "active"}, {"from": "B", "to": "E", "label": "2", "state": "active"}, {"from": "D", "to": "E", "label": "2", "state": "default"}, {"from": "E", "to": "C", "label": "1", "state": "default"}, {"from": "E", "to": "F", "label": "4", "state": "default"}, {"from": "C", "to": "F", "label": "2", "state": "default"}]}}]};</script>
+  <script src="../app.js"></script>
+</body>
+</html>

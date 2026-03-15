@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binary Heap | algorithm.hide10.com</title>
+  <meta name="description" content="ヒープは親子の大小関係だけを保つ構造です。最小値・最大値の取り出しが速く、優先度付きキューの実装に使われます。">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">A</span>
+        <span class="brand-copy">
+          <strong>algorithm.hide10.com</strong>
+          <span>Visual algorithm primer</span>
+        </span>
+      </a>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+    </header>
+
+    <section class="hero hero-single">
+      <div class="panel hero-copy">
+        <p class="eyebrow">データ構造 / Binary Heap</p>
+        <h1>完全二分木で<br>優先度を管理する。</h1>
+        <p>ヒープは親子の大小関係だけを保つ構造です。最小値・最大値の取り出しが速く、優先度付きキューの実装に使われます。</p>
+        <div class="pill-row"><span class="pill">データ構造</span><span class="pill">基礎教材</span><span class="pill">可視化</span></div>
+      </div>
+    </section>
+
+    <section class="panel section toc-section">
+      <p class="eyebrow">目次</p>
+      <h2>このページの目次</h2>
+      <div class="toc-links"><a href="#summary">このページでわかること</a><a href="#article">概要</a><a href="#howto">基本操作</a><a href="#facts">要点まとめ</a><a href="#visualizer">動きで確認</a><a href="#next">次に見るページ</a></div>
+    </section>
+
+    <section id="summary" class="panel section">
+      <p class="eyebrow">このページでわかること</p>
+      <h2>先に知っておくポイント</h2>
+      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>何が制約か</p></article><article class="info-card"><strong>2. わかること</strong><p>どこが速いか</p></article><article class="info-card"><strong>3. わかること</strong><p>どこが遅いか</p></article></div>
+    </section>
+
+    <section id="article" class="panel section">
+      <p class="eyebrow">本文</p>
+      <h2>しくみと考え方</h2>
+
+      <div class="article-block">
+        <p>ヒープは親子の大小関係だけを保つ構造です。最小値・最大値の取り出しが速く、優先度付きキューの実装に使われます。</p>
+      </div>
+
+
+    </section>
+
+    <section id="howto" class="panel section">
+      <p class="eyebrow">考え方</p>
+      <h2>基本操作</h2>
+      <div class="code-panel">
+        <pre><code><span class="code-line" data-line="1">push into last position</span>
+<span class="code-line" data-line="2">bubble up</span>
+<span class="code-line" data-line="3">pop root</span>
+<span class="code-line" data-line="4">move last to root and bubble down</span></code></pre>
+      </div>
+    </section>
+
+    <section id="facts" class="panel section">
+      <p class="eyebrow">要点</p>
+      <h2>要点まとめ</h2>
+      <div class="card-grid"><article class="info-card"><strong>Peek</strong><p>O(1)</p></article><article class="info-card"><strong>Push</strong><p>O(log n)</p></article><article class="info-card"><strong>Pop</strong><p>O(log n)</p></article><article class="info-card"><strong>用途</strong><p>priority queue</p></article></div>
+    </section>
+
+    <section class="panel section">
+      <p class="eyebrow">補足</p>
+      <h2>向いている場面と注意点</h2>
+      <div class="card-grid"><article class="info-card"><strong>BST との違い</strong><p>左右全体の順序までは保証しません。</p></article><article class="info-card"><strong>強み</strong><p>根に最小または最大が来るので取り出しが速いです。</p></article><article class="info-card"><strong>教え方</strong><p>木と配列の対応をセットで見せます。</p></article></div>
+    </section>
+
+    <section id="visualizer" class="panel section">
+      <p class="eyebrow">動きで確認</p>
+      <h2>最後に動きで確認する</h2>
+      <p class="section-lead">ここでは「何が制約か」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <div class="visualizer-layout">
+        <div class="panel bars-panel">
+          <div class="toolbar">
+            <button id="prevButton" class="button-secondary" type="button">前へ</button>
+            <button id="nextButton" class="button-secondary" type="button">次へ</button>
+            <button id="playButton" class="button-primary" type="button" data-playing="false">自動再生</button>
+            <button id="resetButton" class="button-secondary" type="button">最初へ</button>
+            <label for="speedInput">速度
+              <input id="speedInput" type="range" min="1" max="100" step="1" value="72">
+            </label>
+          </div>
+          <div id="scene" class="visual-stage"></div>
+          <p id="frameCaption" class="visual-caption"></p>
+        </div>
+
+        <div>
+          <div class="panel stats">
+            <div id="dynamicStats" class="stat-grid"></div>
+          </div>
+          <div class="panel legend" style="margin-top: 18px;"><span class="legend-item"><span class="legend-swatch is-found"></span>root</span><span class="legend-item"><span class="legend-swatch is-active"></span>挿入中</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="next" class="panel section">
+      <p class="eyebrow">次に見る</p>
+      <h2>次に見るページ</h2>
+      <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
+      <div class="hero-actions"><a class="button button-secondary" href="../union-find/index.html">Union-Findを見る</a></div>
+    </section>
+
+    <footer class="footer">関連: <a href="../stack/index.html">Stack</a> / <a href="../queue/index.html">Queue</a></footer>
+  </div>
+  <script>window.PAGE_DATA = {"frames": [{"kind": "tree", "line": 1, "caption": "最小ヒープでは根が最小です。", "stats": [["root", "1"]], "payload": {"nodes": [{"id": "1", "label": "1", "x": 270, "y": 40, "state": "found"}, {"id": "3", "label": "3", "x": 150, "y": 120, "state": "default"}, {"id": "6", "label": "6", "x": 390, "y": 120, "state": "default"}, {"id": "5", "label": "5", "x": 90, "y": 210, "state": "default"}, {"id": "8", "label": "8", "x": 210, "y": 210, "state": "default"}, {"id": "7", "label": "7", "x": 450, "y": 210, "state": "default"}], "edges": [{"from": "1", "to": "3"}, {"from": "1", "to": "6"}, {"from": "3", "to": "5"}, {"from": "3", "to": "8"}, {"from": "6", "to": "7"}]}}, {"kind": "tree", "line": 2, "caption": "新しい値 2 を挿入し、上へ持ち上げます。", "stats": [["insert", "2"], ["bubble up", "yes"]], "payload": {"nodes": [{"id": "1", "label": "1", "x": 270, "y": 40, "state": "found"}, {"id": "3", "label": "3", "x": 150, "y": 120, "state": "default"}, {"id": "6", "label": "6", "x": 390, "y": 120, "state": "default"}, {"id": "5", "label": "5", "x": 90, "y": 210, "state": "default"}, {"id": "8", "label": "8", "x": 210, "y": 210, "state": "default"}, {"id": "7", "label": "7", "x": 450, "y": 210, "state": "default"}, {"id": "2", "label": "2", "x": 330, "y": 210, "state": "active"}], "edges": [{"from": "1", "to": "3"}, {"from": "1", "to": "6"}, {"from": "3", "to": "5"}, {"from": "3", "to": "8"}, {"from": "6", "to": "2", "state": "active"}, {"from": "6", "to": "7"}]}}]};</script>
+  <script src="../app.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>計算量の概念 | algorithm.hide10.com</title>
+  <meta name="description" content="計算量は、プログラムの大変さを表す目安です。まずは『Big-O は計算量を書くための記号』だと捉えれば十分です。">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">A</span>
+        <span class="brand-copy">
+          <strong>algorithm.hide10.com</strong>
+          <span>Visual algorithm primer</span>
+        </span>
+      </a>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+    </header>
+
+    <section class="hero hero-single">
+      <div class="panel hero-copy">
+        <p class="eyebrow">概念 / 計算量の概念</p>
+        <h1>計算量は、<br>データが増えたときに<br>どれだけ大変になるか。</h1>
+        <p>計算量は、プログラムの大変さを表す目安です。まずは『Big-O は計算量を書くための記号』だと捉えれば十分です。</p>
+        <div class="pill-row"><span class="pill">まずは Big-O</span><span class="pill">増え方を見る</span><span class="pill">初学者向け導入</span></div>
+      </div>
+    </section>
+
+    <section class="panel section toc-section">
+      <p class="eyebrow">目次</p>
+      <h2>このページの目次</h2>
+      <div class="toc-links"><a href="#summary">このページでわかること</a><a href="#intro-1">最初にこれだけ読めばよい</a><a href="#extra-1">計算量は「大変さ」の目安</a><a href="#extra-2">Big-O は計算量を書くための記号</a><a href="#extra-3">なぜ「増え方」を見るのか</a><a href="#extra-4">よく出る3つの形</a><a href="#extra-5">O(n) や O(n²) はどう読む？</a><a href="#extra-6">小さい入力では差が見えにくい</a><a href="#extra-7">初学者が誤解しやすい点</a><a href="#howto">考え方の流れ</a><a href="#facts">要点まとめ</a><a href="#visualizer">動きで確認</a><a href="#next">次に見るページ</a></div>
+    </section>
+
+    <section id="summary" class="panel section">
+      <p class="eyebrow">このページでわかること</p>
+      <h2>先に知っておくポイント</h2>
+      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>計算量は処理回数の増え方を見る</p></article><article class="info-card"><strong>2. わかること</strong><p>Big-O はその書き方のひとつ</p></article><article class="info-card"><strong>3. わかること</strong><p>小さい入力では差が見えにくい</p></article></div>
+    </section>
+
+    <section id="article" class="panel section">
+      <p class="eyebrow">本文</p>
+      <h2>しくみと考え方</h2>
+
+      <div class="article-block" id="intro-1">
+        <p class="eyebrow">First Read</p>
+        <h3>最初にこれだけ読めばよい</h3>
+        <p>計算量は、プログラムの処理回数がどう増えるかを表します。</p><p>Big-O は、その計算量を書くための記号です。</p><p>最初は O(n) や O(n²) を見て、『データが増えたら仕事量がどう増えるか』を読むことができれば十分です。</p><div class="card-grid"><article class="info-card"><strong>計算量</strong><p>処理回数の増え方</p></article><article class="info-card"><strong>Big-O</strong><p>計算量の書き方</p></article><article class="info-card"><strong>見るもの</strong><p>入力が増えたときの変化</p></article></div>
+      </div>
+
+
+      <div class="article-block" id="extra-1">
+        <p class="eyebrow">What Is Complexity</p>
+        <h3>計算量は「大変さ」の目安</h3>
+        <p>計算量とは、そのプログラムがどれくらいたくさん仕事をするかを表す目安です。</p><p>ここでいう仕事とは、たとえば『何回比べるか』『何回探すか』『何回入れ替えるか』のような回数のことです。</p><p>つまり計算量は、プログラムの速さを直接書くというより、『仕事量がどう増えるか』を見るためのものです。</p>
+      </div>
+
+      <div class="article-block" id="extra-2">
+        <p class="eyebrow">Big-O</p>
+        <h3>Big-O は計算量を書くための記号</h3>
+        <p>Big-O は、計算量を書くときによく使う記号です。O(n) や O(n²) のように書きます。</p><p>大切なのは、Big-O 自体がアルゴリズムの名前ではなく、『計算量を表す書き方』だということです。</p><p>最初は『データが増えたとき、仕事量がどんなふうに増えるかを書く記号』と考えれば十分です。</p>
+      </div>
+
+      <div class="article-block" id="extra-3">
+        <p class="eyebrow">Why Growth Matters</p>
+        <h3>なぜ「増え方」を見るのか</h3>
+        <p>10件のデータでは、どの方法もすぐ終わるように見えることがあります。</p><p>でも 1000件、10000件と増えていくと、方法によって仕事量の増え方に大きな差が出ます。</p><p>その差を見るために、計算量では『今どれくらい速いか』より『増えたときにどうなるか』を重視します。</p>
+      </div>
+
+      <div class="article-block" id="extra-4">
+        <p class="eyebrow">Concrete Examples</p>
+        <h3>よく出る3つの形</h3>
+        <div class="card-grid"><article class="info-card"><strong>O(log n)</strong><p>候補を半分ずつ減らす形です。データが増えても、仕事量は少しずつしか増えません。</p></article><article class="info-card"><strong>O(n)</strong><p>1つずつ順に見る形です。データが2倍になると、仕事量もだいたい2倍になります。</p></article><article class="info-card"><strong>O(n²)</strong><p>全体を何度も見比べる形です。データが増えると、仕事量が急に大きくなります。</p></article></div>
+      </div>
+
+      <div class="article-block" id="extra-5">
+        <p class="eyebrow">How To Read</p>
+        <h3>O(n) や O(n²) はどう読む？</h3>
+        <div class="card-grid"><article class="info-card"><strong>O(1)</strong><p>データが増えても、仕事量がほとんど増えない。</p></article><article class="info-card"><strong>O(n)</strong><p>データが2倍なら、仕事量もだいたい2倍。</p></article><article class="info-card"><strong>O(n²)</strong><p>データが2倍になると、仕事量は4倍くらい。</p></article></div>
+      </div>
+
+      <div class="article-block" id="extra-6">
+        <p class="eyebrow">Important Note</p>
+        <h3>小さい入力では差が見えにくい</h3>
+        <p>10件や20件くらいの小さいデータでは、O(n) と O(n²) の差があまり目立たないことがあります。</p><p>しかし、データが増えると O(n²) は急に苦しくなります。だから『今は速かった』だけで判断しないことが大切です。</p>
+      </div>
+
+      <div class="article-block" id="extra-7">
+        <p class="eyebrow">Common Mistakes</p>
+        <h3>初学者が誤解しやすい点</h3>
+        <ul class="list-clean"><li>O(n²) は『n² 秒かかる』という意味ではない</li><li>今の入力で速かったことと、大きい入力でも強いことは別</li><li>Big-O は便利だが、平均ケースや定数倍を完全に無視してよいわけではない</li><li>アルゴリズムによっては最良・平均・最悪を分けて考える必要がある</li></ul>
+      </div>
+
+    </section>
+
+    <section id="howto" class="panel section">
+      <p class="eyebrow">考え方</p>
+      <h2>考え方の流れ</h2>
+      <div class="code-panel">
+        <pre><code><span class="code-line" data-line="1">入力サイズ n を大きくして考える</span>
+<span class="code-line" data-line="2">処理回数がどう増えるかを見る</span>
+<span class="code-line" data-line="3">その増え方を Big-O で表す</span>
+<span class="code-line" data-line="4">O(log n), O(n), O(n²) の違いを比べる</span></code></pre>
+      </div>
+    </section>
+
+    <section id="facts" class="panel section">
+      <p class="eyebrow">要点</p>
+      <h2>要点まとめ</h2>
+      <div class="card-grid"><article class="info-card"><strong>計算量</strong><p>処理回数の増え方</p></article><article class="info-card"><strong>Big-O</strong><p>計算量の表し方</p></article><article class="info-card"><strong>まず比べるもの</strong><p>O(log n), O(n), O(n²)</p></article><article class="info-card"><strong>最初の目標</strong><p>違いを感覚でつかむ</p></article></div>
+    </section>
+
+    <section class="panel section">
+      <p class="eyebrow">補足</p>
+      <h2>向いている場面と注意点</h2>
+      <div class="card-grid"><article class="info-card"><strong>ここだけ覚える</strong><p>計算量は『どれだけ仕事が増えるか』、Big-O は『その増え方の書き方』です。</p></article><article class="info-card"><strong>見方</strong><p>まずは『データが2倍になったら、仕事量は何倍くらいになるか』で考えると理解しやすいです。</p></article><article class="info-card"><strong>注意</strong><p>O(n²) は『n²秒』という意味ではありません。処理回数の増え方を表しています。</p></article></div>
+    </section>
+
+    <section id="visualizer" class="panel section">
+      <p class="eyebrow">動きで確認</p>
+      <h2>最後に動きで確認する</h2>
+      <p class="section-lead">ここでは「計算量は処理回数の増え方を見る」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <div class="visualizer-layout">
+        <div class="panel bars-panel">
+          <div class="toolbar">
+            <button id="prevButton" class="button-secondary" type="button">前へ</button>
+            <button id="nextButton" class="button-secondary" type="button">次へ</button>
+            <button id="playButton" class="button-primary" type="button" data-playing="false">自動再生</button>
+            <button id="resetButton" class="button-secondary" type="button">最初へ</button>
+            <label for="speedInput">速度
+              <input id="speedInput" type="range" min="1" max="100" step="1" value="72">
+            </label>
+          </div>
+          <div id="scene" class="visual-stage"></div>
+          <p id="frameCaption" class="visual-caption"></p>
+        </div>
+
+        <div>
+          <div class="panel stats">
+            <div id="dynamicStats" class="stat-grid"></div>
+          </div>
+          <div class="panel legend" style="margin-top: 18px;"><span class="legend-item"><span class="legend-swatch is-active"></span>ゆるやか</span><span class="legend-item"><span class="legend-swatch is-swap"></span>急増</span><span class="legend-item"><span class="legend-swatch is-sorted"></span>安定</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="next" class="panel section">
+      <p class="eyebrow">次に見る</p>
+      <h2>次に見るページ</h2>
+      <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
+      <div class="hero-actions"><a class="button button-secondary" href="../bubble-sort/index.html">Bubble Sortを見る</a><a class="button button-secondary" href="../selection-sort/index.html">Selection Sortを見る</a></div>
+    </section>
+
+    <footer class="footer">関連: <a href="../stable-sort/index.html">安定ソートとは</a> / <a href="../recursion/index.html">再帰の考え方</a></footer>
+  </div>
+  <script>window.PAGE_DATA = {"frames": [{"kind": "cards", "line": 1, "caption": "まずは何を比べるのかを言葉で掴みます。", "stats": [["例", "名簿探索"], ["見たいもの", "増え方"]], "payload": {"items": [{"title": "O(log n)", "text": "半分ずつ絞るので増え方が緩やか", "state": "active"}, {"title": "O(n)", "text": "先頭から順に見るのでほぼ比例", "state": "default"}, {"title": "O(n²)", "text": "全員を全員と比べるので急増", "state": "swap"}]}}, {"kind": "grid", "line": 2, "caption": "n が大きくなるほど差が開きます。", "stats": [["n", "10 / 100 / 1000"], ["比較の軸", "おおよその回数"]], "payload": {"rows": [[{"text": "式", "state": "default"}, {"text": "10", "state": "default"}, {"text": "100", "state": "default"}, {"text": "1000", "state": "default"}], [{"text": "O(log n)", "state": "active"}, {"text": "約3", "state": "active"}, {"text": "約7", "state": "active"}, {"text": "約10", "state": "active"}], [{"text": "O(n)", "state": "default"}, {"text": "10", "state": "default"}, {"text": "100", "state": "default"}, {"text": "1000", "state": "default"}], [{"text": "O(n²)", "state": "swap"}, {"text": "100", "state": "swap"}, {"text": "10000", "state": "swap"}, {"text": "1000000", "state": "swap"}]]}}, {"kind": "cards", "line": 4, "caption": "Big-O は『最大でこのくらいの増え方』と読めば入門として十分です。", "stats": [["Big-O", "先に覚える"], ["Big-Theta", "後でよい"]], "payload": {"items": [{"title": "O(f(n))", "text": "最大でこのくらいの増え方", "state": "found"}, {"title": "Θ(f(n))", "text": "ちょうどこの増え方", "state": "default"}, {"title": "Ω(f(n))", "text": "少なくともこのくらい必要", "state": "default"}]}}]};</script>
+  <script src="../app.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Union-Find | algorithm.hide10.com</title>
+  <meta name="description" content="Disjoint Set Union とも呼ばれます。連結成分の管理や Kruskal 法で重要な役割を持ちます。">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">A</span>
+        <span class="brand-copy">
+          <strong>algorithm.hide10.com</strong>
+          <span>Visual algorithm primer</span>
+        </span>
+      </a>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+    </header>
+
+    <section class="hero hero-single">
+      <div class="panel hero-copy">
+        <p class="eyebrow">データ構造 / Union-Find</p>
+        <h1>要素が同じ集合かを<br>高速に判定する。</h1>
+        <p>Disjoint Set Union とも呼ばれます。連結成分の管理や Kruskal 法で重要な役割を持ちます。</p>
+        <div class="pill-row"><span class="pill">データ構造</span><span class="pill">基礎教材</span><span class="pill">可視化</span></div>
+      </div>
+    </section>
+
+    <section class="panel section toc-section">
+      <p class="eyebrow">目次</p>
+      <h2>このページの目次</h2>
+      <div class="toc-links"><a href="#summary">このページでわかること</a><a href="#article">概要</a><a href="#howto">基本操作</a><a href="#facts">要点まとめ</a><a href="#visualizer">動きで確認</a><a href="#next">次に見るページ</a></div>
+    </section>
+
+    <section id="summary" class="panel section">
+      <p class="eyebrow">このページでわかること</p>
+      <h2>先に知っておくポイント</h2>
+      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>何が制約か</p></article><article class="info-card"><strong>2. わかること</strong><p>どこが速いか</p></article><article class="info-card"><strong>3. わかること</strong><p>どこが遅いか</p></article></div>
+    </section>
+
+    <section id="article" class="panel section">
+      <p class="eyebrow">本文</p>
+      <h2>しくみと考え方</h2>
+
+      <div class="article-block">
+        <p>Disjoint Set Union とも呼ばれます。連結成分の管理や Kruskal 法で重要な役割を持ちます。</p>
+      </div>
+
+
+    </section>
+
+    <section id="howto" class="panel section">
+      <p class="eyebrow">考え方</p>
+      <h2>基本操作</h2>
+      <div class="code-panel">
+        <pre><code><span class="code-line" data-line="1">find(x)</span>
+<span class="code-line" data-line="2">find(y)</span>
+<span class="code-line" data-line="3">if roots differ then union them</span></code></pre>
+      </div>
+    </section>
+
+    <section id="facts" class="panel section">
+      <p class="eyebrow">要点</p>
+      <h2>要点まとめ</h2>
+      <div class="card-grid"><article class="info-card"><strong>Find</strong><p>ほぼ O(1) amortized</p></article><article class="info-card"><strong>Union</strong><p>ほぼ O(1) amortized</p></article><article class="info-card"><strong>技法</strong><p>path compression</p></article><article class="info-card"><strong>用途</strong><p>連結判定</p></article></div>
+    </section>
+
+    <section class="panel section">
+      <p class="eyebrow">補足</p>
+      <h2>向いている場面と注意点</h2>
+      <div class="card-grid"><article class="info-card"><strong>何ができるか</strong><p>同じグループかどうかを速く判定できます。</p></article><article class="info-card"><strong>なぜ速いか</strong><p>経路圧縮と union by rank によって木が浅く保たれるからです。</p></article><article class="info-card"><strong>関連</strong><p>Kruskal 法の理解に直結します。</p></article></div>
+    </section>
+
+    <section id="visualizer" class="panel section">
+      <p class="eyebrow">動きで確認</p>
+      <h2>最後に動きで確認する</h2>
+      <p class="section-lead">ここでは「何が制約か」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <div class="visualizer-layout">
+        <div class="panel bars-panel">
+          <div class="toolbar">
+            <button id="prevButton" class="button-secondary" type="button">前へ</button>
+            <button id="nextButton" class="button-secondary" type="button">次へ</button>
+            <button id="playButton" class="button-primary" type="button" data-playing="false">自動再生</button>
+            <button id="resetButton" class="button-secondary" type="button">最初へ</button>
+            <label for="speedInput">速度
+              <input id="speedInput" type="range" min="1" max="100" step="1" value="72">
+            </label>
+          </div>
+          <div id="scene" class="visual-stage"></div>
+          <p id="frameCaption" class="visual-caption"></p>
+        </div>
+
+        <div>
+          <div class="panel stats">
+            <div id="dynamicStats" class="stat-grid"></div>
+          </div>
+          <div class="panel legend" style="margin-top: 18px;"><span class="legend-item"><span class="legend-swatch is-active"></span>注目</span><span class="legend-item"><span class="legend-swatch is-found"></span>同集合</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="next" class="panel section">
+      <p class="eyebrow">次に見る</p>
+      <h2>次に見るページ</h2>
+      <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
+      <div class="hero-actions"><a class="button button-secondary" href="../index.html">トップへ戻る</a></div>
+    </section>
+
+    <footer class="footer">関連: <a href="../stack/index.html">Stack</a> / <a href="../queue/index.html">Queue</a></footer>
+  </div>
+  <script>window.PAGE_DATA = {"frames": [{"kind": "cards", "line": 1, "caption": "最初は別々の集合です。", "stats": [["集合", "{A},{B},{C},{D}"]], "payload": {"items": [{"title": "A", "text": "root A", "state": "default"}, {"title": "B", "text": "root B", "state": "default"}, {"title": "C", "text": "root C", "state": "default"}, {"title": "D", "text": "root D", "state": "default"}]}}, {"kind": "cards", "line": 3, "caption": "A と B、C と D を union します。", "stats": [["結果", "{A,B} と {C,D}"]], "payload": {"items": [{"title": "A", "text": "root A", "state": "sorted"}, {"title": "B", "text": "parent -> A", "state": "active"}, {"title": "C", "text": "root C", "state": "sorted"}, {"title": "D", "text": "parent -> C", "state": "active"}]}}, {"kind": "cards", "line": 1, "caption": "find(B) と find(A) は同じ根を返します。", "stats": [["same set?", "yes"]], "payload": {"items": [{"title": "find(A)", "text": "A", "state": "found"}, {"title": "find(B)", "text": "A", "state": "found"}, {"title": "結論", "text": "同じ集合", "state": "active"}]}}]};</script>
+  <script src="../app.js"></script>
+</body>
+</html>
