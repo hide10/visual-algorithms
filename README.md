@@ -64,11 +64,11 @@ algorithm.hide10.com/
 
 ## ローカル確認
 ```bash
-cd /home/hide10/algorithm.hide10.com
+cd algorithm.hide10.com
 python3 -m http.server 8017
 ```
 
-確認URL:
+ローカル確認URL:
 
 - `http://127.0.0.1:8017/`
 - `http://127.0.0.1:8017/complexity/`
