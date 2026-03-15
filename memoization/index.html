@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>メモ化 | algorithm.hide10.com</title>
   <meta name="description" content="再帰で同じ計算を繰り返すと急に重くなります。メモ化は、一度求めた結果を保存して再利用する方法です。">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20260315b">
 </head>
 <body>
   <div class="page-shell">
@@ -17,7 +17,7 @@
           <span>Visual algorithm primer</span>
         </span>
       </a>
-      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../words/index.html">ことば</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
     </header>
 
     <section class="hero hero-single">
@@ -38,12 +38,12 @@
     <section id="summary" class="panel section">
       <p class="eyebrow">このページでわかること</p>
       <h2>先に知っておくポイント</h2>
-      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>重複している部分問題を探す</p></article><article class="info-card"><strong>2. わかること</strong><p>保存して使い回せる値を見つける</p></article><article class="info-card"><strong>3. わかること</strong><p>再帰木がどれだけ減るか見る</p></article></div>
+      <div class="card-grid"><article class="info-card"><strong>1. 重複している部分問題を探す</strong></article><article class="info-card"><strong>2. 保存して使い回せる値を見つける</strong></article><article class="info-card"><strong>3. 再帰木がどれだけ減るか見る</strong></article></div>
     </section>
 
     <section id="article" class="panel section">
-      <p class="eyebrow">本文</p>
-      <h2>しくみと考え方</h2>
+      <p class="eyebrow">概要</p>
+      <h2>概要</h2>
 
       <div class="article-block">
         <p>再帰で同じ計算を繰り返すと急に重くなります。メモ化は、一度求めた結果を保存して再利用する方法です。</p>
@@ -77,8 +77,8 @@
 
     <section id="visualizer" class="panel section">
       <p class="eyebrow">動きで確認</p>
-      <h2>最後に動きで確認する</h2>
-      <p class="section-lead">ここでは「重複している部分問題を探す」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <h2>動きを見てたしかめる</h2>
+      <p class="section-lead">ここでは「重複している部分問題を探す」を見ながら、上で読んだ内容を動きと結びつけます。</p>
       <div class="visualizer-layout">
         <div class="panel bars-panel">
           <div class="toolbar">
@@ -113,6 +113,6 @@
     <footer class="footer">関連: <a href="../complexity/index.html">計算量の概念</a> / <a href="../stable-sort/index.html">安定ソートとは</a></footer>
   </div>
   <script>window.PAGE_DATA = {"frames": [{"kind": "cards", "line": 1, "caption": "メモがなければ毎回計算します。", "stats": [["fib(5)", "重複多数"]], "payload": {"items": [{"title": "fib(5)", "text": "fib(4) + fib(3)", "state": "active"}, {"title": "fib(4)", "text": "あとでまた必要", "state": "swap"}, {"title": "fib(3)", "text": "こちらも重複", "state": "swap"}]}}, {"kind": "grid", "line": 3, "caption": "一度計算した値を表に保存します。", "stats": [["memo[2]", "1"], ["memo[3]", "2"], ["memo[4]", "3"]], "payload": {"rows": [[{"text": "n", "state": "default"}, {"text": "0", "state": "default"}, {"text": "1", "state": "default"}, {"text": "2", "state": "sorted"}, {"text": "3", "state": "sorted"}, {"text": "4", "state": "sorted"}], [{"text": "fib(n)", "state": "default"}, {"text": "0", "state": "default"}, {"text": "1", "state": "default"}, {"text": "1", "state": "sorted"}, {"text": "2", "state": "sorted"}, {"text": "3", "state": "sorted"}]]}}, {"kind": "cards", "line": 4, "caption": "次に同じ値が要るときは、表から返します。", "stats": [["再利用", "計算不要"]], "payload": {"items": [{"title": "fib(4)", "text": "表から 3 を返す", "state": "found"}, {"title": "fib(3)", "text": "表から 2 を返す", "state": "found"}, {"title": "全体", "text": "再帰木がかなり減る", "state": "active"}]}}]};</script>
-  <script src="../app.js"></script>
+  <script src="../app.js?v=20260315b"></script>
 </body>
 </html>

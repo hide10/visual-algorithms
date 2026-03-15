@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>安定ソートとは | algorithm.hide10.com</title>
-  <meta name="description" content="値が同じ要素に元の順序があるとき、その順序を保つソートを安定ソートと呼びます。複数キーの並べ替えで重要になります。">
-  <link rel="stylesheet" href="../styles.css">
+  <meta name="description" content="同じ点の A さんと B さんがいたとき、並べ替えたあとも A さんが前のまま残るなら安定ソートです。元の順番を保つかどうかを見る言葉です。">
+  <link rel="stylesheet" href="../styles.css?v=20260315b">
 </head>
 <body>
   <div class="page-shell">
@@ -17,15 +17,15 @@
           <span>Visual algorithm primer</span>
         </span>
       </a>
-      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../words/index.html">ことば</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
     </header>
 
     <section class="hero hero-single">
       <div class="panel hero-copy">
         <p class="eyebrow">概念 / 安定ソートとは</p>
-        <h1>同じ値の順序を<br>保つかどうか。</h1>
-        <p>値が同じ要素に元の順序があるとき、その順序を保つソートを安定ソートと呼びます。複数キーの並べ替えで重要になります。</p>
-        <div class="pill-row"><span class="pill">複数キーで重要</span><span class="pill">Bubble は安定</span><span class="pill">Selection は基本不安定</span></div>
+        <h1>同じ点の人の順番が<br>そのまま残るか。</h1>
+        <p>同じ点の A さんと B さんがいたとき、並べ替えたあとも A さんが前のまま残るなら安定ソートです。元の順番を保つかどうかを見る言葉です。</p>
+        <div class="pill-row"><span class="pill">同点の順番が残る</span><span class="pill">Bubble は安定</span><span class="pill">Selection は基本不安定</span></div>
       </div>
     </section>
 
@@ -38,15 +38,17 @@
     <section id="summary" class="panel section">
       <p class="eyebrow">このページでわかること</p>
       <h2>先に知っておくポイント</h2>
-      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>同じ点数でも出席番号の順が残るかを見る</p></article><article class="info-card"><strong>2. わかること</strong><p>値だけでなく元の並びも追う</p></article><article class="info-card"><strong>3. わかること</strong><p>教材ではラベル付き要素で示す</p></article></div>
+      <div class="card-grid"><article class="info-card"><strong>1. 同じ点数でも前後が変わらないかを見る</strong></article><article class="info-card"><strong>2. 値だけでなく元の並びも追う</strong></article><article class="info-card"><strong>3. ラベル付き要素で違いを見る</strong></article></div>
     </section>
 
     <section id="article" class="panel section">
-      <p class="eyebrow">本文</p>
-      <h2>しくみと考え方</h2>
+      <p class="eyebrow">概要</p>
+      <h2>概要</h2>
 
-      <div class="article-block">
-        <p>値が同じ要素に元の順序があるとき、その順序を保つソートを安定ソートと呼びます。複数キーの並べ替えで重要になります。</p>
+      <div class="article-block" id="intro-1">
+        <p class="eyebrow">まず例で見る</p>
+        <h3>安定ソートってなに</h3>
+        <p>80 点の A さんと、80 点の B さんがいるとします。</p><p>点数順に並べ替えたあとも A さんが B さんより前のままなら、それは安定ソートです。</p><p>逆に、同じ 80 点なのに B さんが前へ出てしまうなら、不安定です。</p><p>つまり安定ソートは、『同じ値どうしの元の順番を残せるか』を見る言葉です。</p><div class="card-grid"><article class="info-card"><strong>安定</strong><p>同じ値の順番が残る</p></article><article class="info-card"><strong>不安定</strong><p>同じ値の順番が入れ替わることがある</p></article><article class="info-card"><strong>見る場面</strong><p>同点や同じ値に意味がある並べ替え</p></article></div>
       </div>
 
 
@@ -56,28 +58,28 @@
       <p class="eyebrow">考え方</p>
       <h2>見てほしい視点</h2>
       <div class="code-panel">
-        <pre><code><span class="code-line" data-line="1">同じ値をラベル付きで用意する</span>
-<span class="code-line" data-line="2">ソート後もラベル順が保たれるか見る</span>
-<span class="code-line" data-line="3">複数条件ソートで使いどころを考える</span></code></pre>
+        <pre><code><span class="code-line" data-line="1">同じ値を A, B のように区別して並べる</span>
+<span class="code-line" data-line="2">ソート後も A と B の順が残るか見る</span>
+<span class="code-line" data-line="3">同点や同じ値に意味がある場面を考える</span></code></pre>
       </div>
     </section>
 
     <section id="facts" class="panel section">
       <p class="eyebrow">要点</p>
       <h2>要点まとめ</h2>
-      <div class="card-grid"><article class="info-card"><strong>テーマ</strong><p>横断概念</p></article><article class="info-card"><strong>重要場面</strong><p>複数キーの整列</p></article><article class="info-card"><strong>安定例</strong><p>Bubble / Insertion / Merge</p></article><article class="info-card"><strong>不安定例</strong><p>Selection / Heap / Quick の一般実装</p></article></div>
+      <div class="card-grid"><article class="info-card"><strong>テーマ</strong><p>用語の意味</p></article><article class="info-card"><strong>重要場面</strong><p>同点や同じ値がある並べ替え</p></article><article class="info-card"><strong>安定例</strong><p>Bubble / Insertion / Merge</p></article><article class="info-card"><strong>不安定例</strong><p>Selection / Heap / Quick の一般実装</p></article></div>
     </section>
 
     <section class="panel section">
       <p class="eyebrow">補足</p>
       <h2>向いている場面と注意点</h2>
-      <div class="card-grid"><article class="info-card"><strong>何が嬉しいか</strong><p>たとえば学年順に並べたあと点数順に並べても、同点内では学年順が残せます。</p></article><article class="info-card"><strong>どう教えるか</strong><p>同じ値を色やラベルで区別してから並べ替えると伝わりやすいです。</p></article><article class="info-card"><strong>注意</strong><p>不安定ソートでも実装次第で工夫はできますが、基本性質としては区別して教えるのがよいです。</p></article></div>
+      <div class="card-grid"><article class="info-card"><strong>何がうれしいか</strong><p>たとえば学年順に並べたあと点数順に並べても、同点の中では学年順を残せます。</p></article><article class="info-card"><strong>見分け方</strong><p>同じ値に A と B のようなラベルを付けると違いが見えます。</p></article><article class="info-card"><strong>まずの理解</strong><p>安定かどうかは、速さではなく『同じ値の順番が残るか』を見る言葉です。</p></article></div>
     </section>
 
     <section id="visualizer" class="panel section">
       <p class="eyebrow">動きで確認</p>
-      <h2>最後に動きで確認する</h2>
-      <p class="section-lead">ここでは「同じ点数でも出席番号の順が残るかを見る」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <h2>動きを見てたしかめる</h2>
+      <p class="section-lead">ここでは「同じ点数でも前後が変わらないかを見る」を見ながら、上で読んだ内容を動きと結びつけます。</p>
       <div class="visualizer-layout">
         <div class="panel bars-panel">
           <div class="toolbar">
@@ -112,6 +114,6 @@
     <footer class="footer">関連: <a href="../complexity/index.html">計算量の概念</a> / <a href="../recursion/index.html">再帰の考え方</a></footer>
   </div>
   <script>window.PAGE_DATA = {"frames": [{"kind": "cells", "line": 1, "caption": "同じ 80 点でも A と B には元の順序があります。", "stats": [["並び", "80A, 60C, 80B, 90D"]], "payload": {"items": [{"label": "80", "sub": "A", "state": "active"}, {"label": "60", "sub": "C", "state": "default"}, {"label": "80", "sub": "B", "state": "active"}, {"label": "90", "sub": "D", "state": "default"}]}}, {"kind": "cells", "line": 2, "caption": "安定ソートでは 80A が 80B より前のままです。", "stats": [["安定", "順序保持"]], "payload": {"items": [{"label": "60", "sub": "C", "state": "default"}, {"label": "80", "sub": "A", "state": "sorted"}, {"label": "80", "sub": "B", "state": "sorted"}, {"label": "90", "sub": "D", "state": "default"}]}}, {"kind": "cells", "line": 3, "caption": "不安定ソートでは同じ値の順序が崩れることがあります。", "stats": [["不安定", "順序逆転"]], "payload": {"items": [{"label": "60", "sub": "C", "state": "default"}, {"label": "80", "sub": "B", "state": "swap"}, {"label": "80", "sub": "A", "state": "swap"}, {"label": "90", "sub": "D", "state": "default"}]}}]};</script>
-  <script src="../app.js"></script>
+  <script src="../app.js?v=20260315b"></script>
 </body>
 </html>

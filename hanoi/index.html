@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tower of Hanoi | algorithm.hide10.com</title>
+  <title>Tower of Hanoi（ハノイの塔） | algorithm.hide10.com</title>
   <meta name="description" content="ハノイの塔は再帰の教材として定番です。大きい円盤を動かす前後に、小さい円盤の塔を丸ごと移す発想が見えます。">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20260315b">
 </head>
 <body>
   <div class="page-shell">
@@ -17,12 +17,12 @@
           <span>Visual algorithm primer</span>
         </span>
       </a>
-      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../words/index.html">ことば</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
     </header>
 
     <section class="hero hero-single">
       <div class="panel hero-copy">
-        <p class="eyebrow">動的計画法・再帰 / Tower of Hanoi</p>
+        <p class="eyebrow">動的計画法・再帰 / Tower of Hanoi（ハノイの塔）</p>
         <h1>再帰で円盤を移し、<br>手順の構造を学ぶ。</h1>
         <p>ハノイの塔は再帰の教材として定番です。大きい円盤を動かす前後に、小さい円盤の塔を丸ごと移す発想が見えます。</p>
         <div class="pill-row"><span class="pill">DP / 再帰</span><span class="pill">表や木で理解</span><span class="pill">定番教材</span></div>
@@ -38,12 +38,12 @@
     <section id="summary" class="panel section">
       <p class="eyebrow">このページでわかること</p>
       <h2>先に知っておくポイント</h2>
-      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>状態が何か</p></article><article class="info-card"><strong>2. わかること</strong><p>前の状態をどう使うか</p></article><article class="info-card"><strong>3. わかること</strong><p>なぜその漸化式になるか</p></article></div>
+      <div class="card-grid"><article class="info-card"><strong>1. 状態が何か</strong></article><article class="info-card"><strong>2. 前の状態をどう使うか</strong></article><article class="info-card"><strong>3. なぜその漸化式になるか</strong></article></div>
     </section>
 
     <section id="article" class="panel section">
-      <p class="eyebrow">本文</p>
-      <h2>しくみと考え方</h2>
+      <p class="eyebrow">概要</p>
+      <h2>概要</h2>
 
       <div class="article-block">
         <p>ハノイの塔は再帰の教材として定番です。大きい円盤を動かす前後に、小さい円盤の塔を丸ごと移す発想が見えます。</p>
@@ -76,8 +76,8 @@
 
     <section id="visualizer" class="panel section">
       <p class="eyebrow">動きで確認</p>
-      <h2>最後に動きで確認する</h2>
-      <p class="section-lead">ここでは「状態が何か」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <h2>動きを見てたしかめる</h2>
+      <p class="section-lead">ここでは「状態が何か」を見ながら、上で読んだ内容を動きと結びつけます。</p>
       <div class="visualizer-layout">
         <div class="panel bars-panel">
           <div class="toolbar">
@@ -109,9 +109,9 @@
       <div class="hero-actions"><a class="button button-secondary" href="../index.html">トップへ戻る</a></div>
     </section>
 
-    <footer class="footer">関連: <a href="../fibonacci-recursion/index.html">Fibonacci</a> / <a href="../knapsack/index.html">0/1 Knapsack</a></footer>
+    <footer class="footer">関連: <a href="../fibonacci-recursion/index.html">Fibonacci（フィボナッチ数列）</a> / <a href="../knapsack/index.html">0/1 Knapsack（ナップサック問題）</a></footer>
   </div>
   <script>window.PAGE_DATA = {"frames": [{"kind": "towers", "line": 1, "caption": "最初は 3 枚とも左の塔にあります。", "stats": [["n", "3"], ["目標", "右へ移動"]], "payload": {"rods": [[3, 2, 1], [], []]}}, {"kind": "towers", "line": 2, "caption": "最大円盤を動かす前に、小さい 2 枚を退避します。", "stats": [["途中", "A -> B"]], "payload": {"rods": [[3], [2, 1], []]}}, {"kind": "towers", "line": 3, "caption": "最大円盤を右へ移し、最後に小さい 2 枚を重ねます。", "stats": [["完了", "7 手"]], "payload": {"rods": [[], [], [3, 2, 1]]}}]};</script>
-  <script src="../app.js"></script>
+  <script src="../app.js?v=20260315b"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>再帰の考え方 | algorithm.hide10.com</title>
   <meta name="description" content="再帰は、問題を小さくして同じ形で解く考え方です。停止条件と再帰呼び出しが揃ってはじめて正しく動きます。">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20260315b">
 </head>
 <body>
   <div class="page-shell">
@@ -17,7 +17,7 @@
           <span>Visual algorithm primer</span>
         </span>
       </a>
-      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../words/index.html">ことば</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
     </header>
 
     <section class="hero hero-single">
@@ -38,12 +38,12 @@
     <section id="summary" class="panel section">
       <p class="eyebrow">このページでわかること</p>
       <h2>先に知っておくポイント</h2>
-      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>どこで止まるか</p></article><article class="info-card"><strong>2. わかること</strong><p>1回呼ぶごとに何が小さくなるか</p></article><article class="info-card"><strong>3. わかること</strong><p>戻りながら値が組み立つ様子</p></article></div>
+      <div class="card-grid"><article class="info-card"><strong>1. どこで止まるか</strong></article><article class="info-card"><strong>2. 1回呼ぶごとに何が小さくなるか</strong></article><article class="info-card"><strong>3. 戻りながら値が組み立つ様子</strong></article></div>
     </section>
 
     <section id="article" class="panel section">
-      <p class="eyebrow">本文</p>
-      <h2>しくみと考え方</h2>
+      <p class="eyebrow">概要</p>
+      <h2>概要</h2>
 
       <div class="article-block">
         <p>再帰は、問題を小さくして同じ形で解く考え方です。停止条件と再帰呼び出しが揃ってはじめて正しく動きます。</p>
@@ -76,8 +76,8 @@
 
     <section id="visualizer" class="panel section">
       <p class="eyebrow">動きで確認</p>
-      <h2>最後に動きで確認する</h2>
-      <p class="section-lead">ここでは「どこで止まるか」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <h2>動きを見てたしかめる</h2>
+      <p class="section-lead">ここでは「どこで止まるか」を見ながら、上で読んだ内容を動きと結びつけます。</p>
       <div class="visualizer-layout">
         <div class="panel bars-panel">
           <div class="toolbar">
@@ -112,6 +112,6 @@
     <footer class="footer">関連: <a href="../complexity/index.html">計算量の概念</a> / <a href="../stable-sort/index.html">安定ソートとは</a></footer>
   </div>
   <script>window.PAGE_DATA = {"frames": [{"kind": "cards", "line": 1, "caption": "まずは停止条件が必要です。", "stats": [["例", "factorial(1)"], ["役割", "これ以上分けない"]], "payload": {"items": [{"title": "停止条件", "text": "n = 1 なら 1 を返す", "state": "found"}, {"title": "再帰呼び出し", "text": "n * factorial(n - 1)", "state": "active"}, {"title": "組み立て", "text": "小さい答えから戻る", "state": "default"}]}}, {"kind": "tree", "line": 2, "caption": "呼び出しは木として考えると見やすいです。", "stats": [["現在", "factorial(3)"], ["次", "factorial(2)"]], "payload": {"nodes": [{"id": "8", "label": "8", "x": 270, "y": 40, "state": "default"}, {"id": "3", "label": "3", "x": 150, "y": 120, "state": "active"}, {"id": "10", "label": "10", "x": 390, "y": 120, "state": "default"}, {"id": "1", "label": "1", "x": 90, "y": 210, "state": "sorted"}, {"id": "6", "label": "6", "x": 210, "y": 210, "state": "default"}, {"id": "14", "label": "14", "x": 450, "y": 210, "state": "default"}], "edges": [{"from": "8", "to": "3", "state": "active"}, {"from": "8", "to": "10", "state": "default"}, {"from": "3", "to": "1", "state": "sorted"}, {"from": "3", "to": "6", "state": "default"}, {"from": "10", "to": "14", "state": "default"}]}}, {"kind": "cards", "line": 3, "caption": "戻りながら答えを組み立てます。", "stats": [["戻り", "1 -> 2 -> 6"]], "payload": {"items": [{"title": "factorial(1)", "text": "1 を返す", "state": "sorted"}, {"title": "factorial(2)", "text": "2 * 1 = 2", "state": "sorted"}, {"title": "factorial(3)", "text": "3 * 2 = 6", "state": "active"}]}}]};</script>
-  <script src="../app.js"></script>
+  <script src="../app.js?v=20260315b"></script>
 </body>
 </html>

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LCS | algorithm.hide10.com</title>
+  <title>LCS（最長共通部分列） | algorithm.hide10.com</title>
   <meta name="description" content="最長共通部分列は、2 つの列に共通して現れる順序付き要素列の最長長を求めます。DP テーブルが典型です。">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20260315b">
 </head>
 <body>
   <div class="page-shell">
@@ -17,12 +17,12 @@
           <span>Visual algorithm primer</span>
         </span>
       </a>
-      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../words/index.html">ことば</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
     </header>
 
     <section class="hero hero-single">
       <div class="panel hero-copy">
-        <p class="eyebrow">動的計画法・再帰 / LCS</p>
+        <p class="eyebrow">動的計画法・再帰 / LCS（最長共通部分列）</p>
         <h1>2 つの文字列で<br>共通部分列の長さを測る。</h1>
         <p>最長共通部分列は、2 つの列に共通して現れる順序付き要素列の最長長を求めます。DP テーブルが典型です。</p>
         <div class="pill-row"><span class="pill">DP / 再帰</span><span class="pill">表や木で理解</span><span class="pill">定番教材</span></div>
@@ -38,12 +38,12 @@
     <section id="summary" class="panel section">
       <p class="eyebrow">このページでわかること</p>
       <h2>先に知っておくポイント</h2>
-      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>状態が何か</p></article><article class="info-card"><strong>2. わかること</strong><p>前の状態をどう使うか</p></article><article class="info-card"><strong>3. わかること</strong><p>なぜその漸化式になるか</p></article></div>
+      <div class="card-grid"><article class="info-card"><strong>1. 状態が何か</strong></article><article class="info-card"><strong>2. 前の状態をどう使うか</strong></article><article class="info-card"><strong>3. なぜその漸化式になるか</strong></article></div>
     </section>
 
     <section id="article" class="panel section">
-      <p class="eyebrow">本文</p>
-      <h2>しくみと考え方</h2>
+      <p class="eyebrow">概要</p>
+      <h2>概要</h2>
 
       <div class="article-block">
         <p>最長共通部分列は、2 つの列に共通して現れる順序付き要素列の最長長を求めます。DP テーブルが典型です。</p>
@@ -75,8 +75,8 @@
 
     <section id="visualizer" class="panel section">
       <p class="eyebrow">動きで確認</p>
-      <h2>最後に動きで確認する</h2>
-      <p class="section-lead">ここでは「状態が何か」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <h2>動きを見てたしかめる</h2>
+      <p class="section-lead">ここでは「状態が何か」を見ながら、上で読んだ内容を動きと結びつけます。</p>
       <div class="visualizer-layout">
         <div class="panel bars-panel">
           <div class="toolbar">
@@ -105,12 +105,12 @@
       <p class="eyebrow">次に見る</p>
       <h2>次に見るページ</h2>
       <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
-      <div class="hero-actions"><a class="button button-secondary" href="../edit-distance/index.html">Edit Distanceを見る</a></div>
+      <div class="hero-actions"><a class="button button-secondary" href="../edit-distance/index.html">Edit Distance（編集距離）を見る</a></div>
     </section>
 
-    <footer class="footer">関連: <a href="../fibonacci-recursion/index.html">Fibonacci</a> / <a href="../knapsack/index.html">0/1 Knapsack</a></footer>
+    <footer class="footer">関連: <a href="../fibonacci-recursion/index.html">Fibonacci（フィボナッチ数列）</a> / <a href="../knapsack/index.html">0/1 Knapsack（ナップサック問題）</a></footer>
   </div>
   <script>window.PAGE_DATA = {"frames": [{"kind": "grid", "line": 1, "caption": "文字が一致すると左上に 1 を足します。", "stats": [["s", "ABC"], ["t", "ADC"]], "payload": {"rows": [[{"text": "", "state": "default"}, {"text": "A", "state": "default"}, {"text": "D", "state": "default"}, {"text": "C", "state": "default"}], [{"text": "A", "state": "default"}, {"text": "1", "state": "found"}, {"text": "1", "state": "default"}, {"text": "1", "state": "default"}], [{"text": "B", "state": "default"}, {"text": "1", "state": "default"}, {"text": "1", "state": "active"}, {"text": "1", "state": "default"}], [{"text": "C", "state": "default"}, {"text": "1", "state": "default"}, {"text": "1", "state": "default"}, {"text": "2", "state": "found"}]]}}, {"kind": "cards", "line": 2, "caption": "最後のセルが LCS の長さです。", "stats": [["LCS length", "2"], ["例", "AC"]], "payload": {"items": [{"title": "一致", "text": "A と C が共通", "state": "found"}, {"title": "不一致", "text": "B と D では上か左を採用", "state": "active"}, {"title": "結論", "text": "長さ 2", "state": "sorted"}]}}]};</script>
-  <script src="../app.js"></script>
+  <script src="../app.js?v=20260315b"></script>
 </body>
 </html>

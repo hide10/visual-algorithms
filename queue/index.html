@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Queue | algorithm.hide10.com</title>
+  <title>Queue（キュー） | algorithm.hide10.com</title>
   <meta name="description" content="FIFO の基本データ構造です。待ち行列、BFS、ジョブ処理などに出てきます。">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20260315b">
 </head>
 <body>
   <div class="page-shell">
@@ -17,12 +17,12 @@
           <span>Visual algorithm primer</span>
         </span>
       </a>
-      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../words/index.html">ことば</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
     </header>
 
     <section class="hero hero-single">
       <div class="panel hero-copy">
-        <p class="eyebrow">データ構造 / Queue</p>
+        <p class="eyebrow">データ構造 / Queue（キュー）</p>
         <h1>先に入れたものを<br>先に取り出す。</h1>
         <p>FIFO の基本データ構造です。待ち行列、BFS、ジョブ処理などに出てきます。</p>
         <div class="pill-row"><span class="pill">データ構造</span><span class="pill">基礎教材</span><span class="pill">可視化</span></div>
@@ -38,12 +38,12 @@
     <section id="summary" class="panel section">
       <p class="eyebrow">このページでわかること</p>
       <h2>先に知っておくポイント</h2>
-      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>何が制約か</p></article><article class="info-card"><strong>2. わかること</strong><p>どこが速いか</p></article><article class="info-card"><strong>3. わかること</strong><p>どこが遅いか</p></article></div>
+      <div class="card-grid"><article class="info-card"><strong>1. 何が制約か</strong></article><article class="info-card"><strong>2. どこが速いか</strong></article><article class="info-card"><strong>3. どこが遅いか</strong></article></div>
     </section>
 
     <section id="article" class="panel section">
-      <p class="eyebrow">本文</p>
-      <h2>しくみと考え方</h2>
+      <p class="eyebrow">概要</p>
+      <h2>概要</h2>
 
       <div class="article-block">
         <p>FIFO の基本データ構造です。待ち行列、BFS、ジョブ処理などに出てきます。</p>
@@ -76,8 +76,8 @@
 
     <section id="visualizer" class="panel section">
       <p class="eyebrow">動きで確認</p>
-      <h2>最後に動きで確認する</h2>
-      <p class="section-lead">ここでは「何が制約か」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <h2>動きを見てたしかめる</h2>
+      <p class="section-lead">ここでは「何が制約か」を見ながら、上で読んだ内容を動きと結びつけます。</p>
       <div class="visualizer-layout">
         <div class="panel bars-panel">
           <div class="toolbar">
@@ -106,12 +106,12 @@
       <p class="eyebrow">次に見る</p>
       <h2>次に見るページ</h2>
       <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
-      <div class="hero-actions"><a class="button button-secondary" href="../linked-list/index.html">Linked Listを見る</a></div>
+      <div class="hero-actions"><a class="button button-secondary" href="../linked-list/index.html">Linked List（連結リスト）を見る</a></div>
     </section>
 
-    <footer class="footer">関連: <a href="../stack/index.html">Stack</a> / <a href="../linked-list/index.html">Linked List</a></footer>
+    <footer class="footer">関連: <a href="../stack/index.html">Stack（スタック）</a> / <a href="../linked-list/index.html">Linked List（連結リスト）</a></footer>
   </div>
   <script>window.PAGE_DATA = {"frames": [{"kind": "cells", "line": 1, "caption": "enqueue で後ろへ追加します。", "stats": [["rear", "9"]], "payload": {"items": [{"label": "3", "sub": "front", "state": "default"}, {"label": "6", "sub": "", "state": "default"}, {"label": "9", "sub": "rear", "state": "active"}]}}, {"kind": "cells", "line": 2, "caption": "dequeue では先頭が出ます。", "stats": [["dequeue", "3"]], "payload": {"items": [{"label": "6", "sub": "front", "state": "found"}, {"label": "9", "sub": "rear", "state": "default"}]}}]};</script>
-  <script src="../app.js"></script>
+  <script src="../app.js?v=20260315b"></script>
 </body>
 </html>

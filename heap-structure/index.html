@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Binary Heap | algorithm.hide10.com</title>
+  <title>Binary Heap（二分ヒープ） | algorithm.hide10.com</title>
   <meta name="description" content="ヒープは親子の大小関係だけを保つ構造です。最小値・最大値の取り出しが速く、優先度付きキューの実装に使われます。">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20260315b">
 </head>
 <body>
   <div class="page-shell">
@@ -17,12 +17,12 @@
           <span>Visual algorithm primer</span>
         </span>
       </a>
-      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../words/index.html">ことば</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
     </header>
 
     <section class="hero hero-single">
       <div class="panel hero-copy">
-        <p class="eyebrow">データ構造 / Binary Heap</p>
+        <p class="eyebrow">データ構造 / Binary Heap（二分ヒープ）</p>
         <h1>完全二分木で<br>優先度を管理する。</h1>
         <p>ヒープは親子の大小関係だけを保つ構造です。最小値・最大値の取り出しが速く、優先度付きキューの実装に使われます。</p>
         <div class="pill-row"><span class="pill">データ構造</span><span class="pill">基礎教材</span><span class="pill">可視化</span></div>
@@ -38,12 +38,12 @@
     <section id="summary" class="panel section">
       <p class="eyebrow">このページでわかること</p>
       <h2>先に知っておくポイント</h2>
-      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>何が制約か</p></article><article class="info-card"><strong>2. わかること</strong><p>どこが速いか</p></article><article class="info-card"><strong>3. わかること</strong><p>どこが遅いか</p></article></div>
+      <div class="card-grid"><article class="info-card"><strong>1. 何が制約か</strong></article><article class="info-card"><strong>2. どこが速いか</strong></article><article class="info-card"><strong>3. どこが遅いか</strong></article></div>
     </section>
 
     <section id="article" class="panel section">
-      <p class="eyebrow">本文</p>
-      <h2>しくみと考え方</h2>
+      <p class="eyebrow">概要</p>
+      <h2>概要</h2>
 
       <div class="article-block">
         <p>ヒープは親子の大小関係だけを保つ構造です。最小値・最大値の取り出しが速く、優先度付きキューの実装に使われます。</p>
@@ -77,8 +77,8 @@
 
     <section id="visualizer" class="panel section">
       <p class="eyebrow">動きで確認</p>
-      <h2>最後に動きで確認する</h2>
-      <p class="section-lead">ここでは「何が制約か」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <h2>動きを見てたしかめる</h2>
+      <p class="section-lead">ここでは「何が制約か」を見ながら、上で読んだ内容を動きと結びつけます。</p>
       <div class="visualizer-layout">
         <div class="panel bars-panel">
           <div class="toolbar">
@@ -107,12 +107,12 @@
       <p class="eyebrow">次に見る</p>
       <h2>次に見るページ</h2>
       <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
-      <div class="hero-actions"><a class="button button-secondary" href="../union-find/index.html">Union-Findを見る</a></div>
+      <div class="hero-actions"><a class="button button-secondary" href="../union-find/index.html">Union-Find（ユニオンファインド）を見る</a></div>
     </section>
 
-    <footer class="footer">関連: <a href="../stack/index.html">Stack</a> / <a href="../queue/index.html">Queue</a></footer>
+    <footer class="footer">関連: <a href="../stack/index.html">Stack（スタック）</a> / <a href="../queue/index.html">Queue（キュー）</a></footer>
   </div>
   <script>window.PAGE_DATA = {"frames": [{"kind": "tree", "line": 1, "caption": "最小ヒープでは根が最小です。", "stats": [["root", "1"]], "payload": {"nodes": [{"id": "1", "label": "1", "x": 270, "y": 40, "state": "found"}, {"id": "3", "label": "3", "x": 150, "y": 120, "state": "default"}, {"id": "6", "label": "6", "x": 390, "y": 120, "state": "default"}, {"id": "5", "label": "5", "x": 90, "y": 210, "state": "default"}, {"id": "8", "label": "8", "x": 210, "y": 210, "state": "default"}, {"id": "7", "label": "7", "x": 450, "y": 210, "state": "default"}], "edges": [{"from": "1", "to": "3"}, {"from": "1", "to": "6"}, {"from": "3", "to": "5"}, {"from": "3", "to": "8"}, {"from": "6", "to": "7"}]}}, {"kind": "tree", "line": 2, "caption": "新しい値 2 を挿入し、上へ持ち上げます。", "stats": [["insert", "2"], ["bubble up", "yes"]], "payload": {"nodes": [{"id": "1", "label": "1", "x": 270, "y": 40, "state": "found"}, {"id": "3", "label": "3", "x": 150, "y": 120, "state": "default"}, {"id": "6", "label": "6", "x": 390, "y": 120, "state": "default"}, {"id": "5", "label": "5", "x": 90, "y": 210, "state": "default"}, {"id": "8", "label": "8", "x": 210, "y": 210, "state": "default"}, {"id": "7", "label": "7", "x": 450, "y": 210, "state": "default"}, {"id": "2", "label": "2", "x": 330, "y": 210, "state": "active"}], "edges": [{"from": "1", "to": "3"}, {"from": "1", "to": "6"}, {"from": "3", "to": "5"}, {"from": "3", "to": "8"}, {"from": "6", "to": "2", "state": "active"}, {"from": "6", "to": "7"}]}}]};</script>
-  <script src="../app.js"></script>
+  <script src="../app.js?v=20260315b"></script>
 </body>
 </html>

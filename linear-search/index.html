@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Linear Search | algorithm.hide10.com</title>
+  <title>Linear Search（線形探索） | algorithm.hide10.com</title>
   <meta name="description" content="最も単純な探索です。整列済みでなくても使えますが、最悪では全要素を見る必要があります。">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20260315b">
 </head>
 <body>
   <div class="page-shell">
@@ -17,12 +17,12 @@
           <span>Visual algorithm primer</span>
         </span>
       </a>
-      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../words/index.html">ことば</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
     </header>
 
     <section class="hero hero-single">
       <div class="panel hero-copy">
-        <p class="eyebrow">探索 / Linear Search</p>
+        <p class="eyebrow">探索 / Linear Search（線形探索）</p>
         <h1>先頭から順に見て、<br>見つかるまで進む。</h1>
         <p>最も単純な探索です。整列済みでなくても使えますが、最悪では全要素を見る必要があります。</p>
         <div class="pill-row"><span class="pill">探索</span><span class="pill">比較教材</span><span class="pill">動作イメージ付き</span></div>
@@ -38,12 +38,12 @@
     <section id="summary" class="panel section">
       <p class="eyebrow">このページでわかること</p>
       <h2>先に知っておくポイント</h2>
-      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>何を比較するか</p></article><article class="info-card"><strong>2. わかること</strong><p>候補がどう減るか</p></article><article class="info-card"><strong>3. わかること</strong><p>前提条件があるか</p></article></div>
+      <div class="card-grid"><article class="info-card"><strong>1. 何を比較するか</strong></article><article class="info-card"><strong>2. 候補がどう減るか</strong></article><article class="info-card"><strong>3. 前提条件があるか</strong></article></div>
     </section>
 
     <section id="article" class="panel section">
-      <p class="eyebrow">本文</p>
-      <h2>しくみと考え方</h2>
+      <p class="eyebrow">概要</p>
+      <h2>概要</h2>
 
       <div class="article-block">
         <p>最も単純な探索です。整列済みでなくても使えますが、最悪では全要素を見る必要があります。</p>
@@ -76,8 +76,8 @@
 
     <section id="visualizer" class="panel section">
       <p class="eyebrow">動きで確認</p>
-      <h2>最後に動きで確認する</h2>
-      <p class="section-lead">ここでは「何を比較するか」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <h2>動きを見てたしかめる</h2>
+      <p class="section-lead">ここでは「何を比較するか」を見ながら、上で読んだ内容を動きと結びつけます。</p>
       <div class="visualizer-layout">
         <div class="panel bars-panel">
           <div class="toolbar">
@@ -106,12 +106,12 @@
       <p class="eyebrow">次に見る</p>
       <h2>次に見るページ</h2>
       <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
-      <div class="hero-actions"><a class="button button-secondary" href="../binary-search/index.html">Binary Searchを見る</a></div>
+      <div class="hero-actions"><a class="button button-secondary" href="../binary-search/index.html">Binary Search（二分探索）を見る</a></div>
     </section>
 
-    <footer class="footer">関連: <a href="../binary-search/index.html">Binary Search</a> / <a href="../hash-table/index.html">Hash Table</a></footer>
+    <footer class="footer">関連: <a href="../binary-search/index.html">Binary Search（二分探索）</a> / <a href="../hash-table/index.html">Hash Table（ハッシュテーブル）</a></footer>
   </div>
   <script>window.PAGE_DATA = {"frames": [{"kind": "cells", "line": 1, "caption": "先頭から順に比較します。", "stats": [["target", "19"], ["比較", "1"]], "payload": {"items": [{"label": "44", "sub": "", "state": "active"}, {"label": "12", "sub": "", "state": "default"}, {"label": "31", "sub": "", "state": "default"}, {"label": "8", "sub": "", "state": "default"}, {"label": "27", "sub": "", "state": "default"}, {"label": "52", "sub": "", "state": "default"}, {"label": "19", "sub": "", "state": "default"}, {"label": "3", "sub": "", "state": "default"}]}}, {"kind": "cells", "line": 1, "caption": "見つかるまで 1 つずつ進みます。", "stats": [["target", "19"], ["比較", "7"]], "payload": {"items": [{"label": "44", "sub": "", "state": "dim"}, {"label": "12", "sub": "", "state": "dim"}, {"label": "31", "sub": "", "state": "dim"}, {"label": "8", "sub": "", "state": "dim"}, {"label": "27", "sub": "", "state": "dim"}, {"label": "52", "sub": "", "state": "dim"}, {"label": "19", "sub": "", "state": "active"}, {"label": "3", "sub": "", "state": "default"}]}}, {"kind": "cells", "line": 2, "caption": "19 を見つけました。", "stats": [["index", "6"], ["比較", "7"]], "payload": {"items": [{"label": "44", "sub": "", "state": "default"}, {"label": "12", "sub": "", "state": "default"}, {"label": "31", "sub": "", "state": "default"}, {"label": "8", "sub": "", "state": "default"}, {"label": "27", "sub": "", "state": "default"}, {"label": "52", "sub": "", "state": "default"}, {"label": "19", "sub": "", "state": "found"}, {"label": "3", "sub": "", "state": "default"}]}}]};</script>
-  <script src="../app.js"></script>
+  <script src="../app.js?v=20260315b"></script>
 </body>
 </html>

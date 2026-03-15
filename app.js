@@ -404,7 +404,7 @@
         return;
       }
       const pivot = arr[high];
-      push(1, "pivot に " + pivot + " を選びます。", { [high]: "swap" });
+      push(1, "基準値に " + pivot + " を選びます。", { [high]: "swap" });
       let i = low;
       for (let j = low; j < high; j += 1) {
         comparisons += 1;
@@ -412,7 +412,7 @@
         if (i < arr.length) {
           states[i] = "frontier";
         }
-        push(2, arr[j] + " を pivot " + pivot + " と比べます。", states);
+        push(2, arr[j] + " を基準値 " + pivot + " と比べます。", states);
         if (arr[j] < pivot) {
           const tmp = arr[i];
           arr[i] = arr[j];
@@ -426,7 +426,7 @@
       arr[i] = arr[high];
       arr[high] = tmp;
       swaps += 1;
-      push(2, "pivot " + arr[i] + " を位置 " + i + " に置きます。", { [i]: "sorted" });
+      push(2, "基準値 " + arr[i] + " を位置 " + i + " に置きます。", { [i]: "sorted" });
       sortRange(low, i - 1);
       sortRange(i + 1, high);
     }

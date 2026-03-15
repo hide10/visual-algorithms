@@ -48,6 +48,12 @@ algorithm.hide10.com/
 - 基本は同一コンテンツを配信
 - 将来的に `hide10.com` 側へ展開する場合は、広告を載せるのは外側レイアウトのみで、教材本体は分離して保つ
 
+## GitHub Pages 公開メモ
+- `main` の静的ファイルをそのまま公開する前提
+- 独自ドメインは `CNAME` に `algorithm.hide10.com` を置いて管理
+- `.nojekyll` を置いて、GitHub Pages の Jekyll 変換を止める
+- Pages の設定では、公開元を `Deploy from a branch` / `main` / `/ (root)` にする
+
 ## 生成方式
 - ページ本体は `scripts/generate_site.py` から一括生成
 - 可視化の共通ランタイムは `app.js`
@@ -56,17 +62,17 @@ algorithm.hide10.com/
 ## ローカル確認
 ```bash
 cd /home/hide10/algorithm.hide10.com
-python3 -m http.server 8000
+python3 -m http.server 8017
 ```
 
 確認URL:
 
-- `http://localhost:8000/`
-- `http://localhost:8000/complexity/`
-- `http://localhost:8000/bubble-sort/`
-- `http://localhost:8000/selection-sort/`
-- `http://localhost:8000/binary-search/`
+- `http://127.0.0.1:8017/`
+- `http://127.0.0.1:8017/complexity/`
+- `http://127.0.0.1:8017/bubble-sort/`
+- `http://127.0.0.1:8017/selection-sort/`
+- `http://127.0.0.1:8017/binary-search/`
 
 ## 次に作る予定
 - 1ページずつ内容チェック
-- GitHub Pages / 独自ドメインの公開手順整備
+- 用語と言い回しの重複整理

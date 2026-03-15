@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>algorithm.hide10.com</title>
-  <meta name="description" content="アルゴリズムを視覚で学ぶ静的教材サイト。1 アルゴリズム 1 ページで、動き・擬似コード・計算量を対応づけて理解します。">
-  <link rel="stylesheet" href="./styles.css">
+  <meta name="description" content="アルゴリズムを視覚で学ぶ静的教材サイト。動き、直感、計算量を1ページずつ結びつけて理解できます。">
+  <link rel="stylesheet" href="./styles.css?v=20260315b">
 </head>
 <body>
   <div class="page-shell">
@@ -18,74 +18,111 @@
         </span>
       </a>
       <nav class="nav-links">
-        <a href="#guide">学習ガイド</a>
-        <a href="./complexity/index.html">計算量</a>
+        <a href="#guide">はじめに読む</a>
+        <a href="./words/index.html">ことば</a>
+        <a href="#paths">学習ルート</a>
         <a href="#sorting">ソート</a>
         <a href="#searching">探索</a>
       </nav>
     </header>
 
-    <section class="hero hero-single">
-      <div class="panel hero-copy">
-        <p class="eyebrow">学習サイト</p>
-        <h1>アルゴリズムを<br>動きで理解する。</h1>
-        <p>説明を読んでから Visualizer で確認する流れに統一した、静的なアルゴリズム教材サイトです。まずは入口の4ページから始めて、その後にカテゴリ別で広げていけます。</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="./complexity/index.html">計算量から始める</a>
-          <a class="button button-secondary" href="./bubble-sort/index.html">最初の動く教材へ</a>
-        </div>
-        <div class="pill-row" style="margin-top: 18px;">
-          <span class="pill">現在 31 ページ</span>
-          <span class="pill">1アルゴリズム=1HTML</span>
-          <span class="pill">GitHub Pages / 独自ドメイン対応</span>
-        </div>
+    <section class="panel top-hero">
+      <div class="top-hero-head">
+        <p class="eyebrow">Visual Algorithm Primer</p>
+        <p class="top-hero-subtitle">初学者向けの静的アルゴリズム教材</p>
       </div>
+      <h1 class="top-title"><span class="title-line">アルゴリズムは、</span><span class="title-line title-line-nowrap">式の前に動きで覚える。</span></h1>
+      <p class="top-lead">このサイトは、名前だけ知っている状態から抜けるための教材です。まず動きを見て、そのあとで計算量や擬似コードを対応づけます。</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#guide">はじめに読む4ページへ</a>
+        <a class="button button-secondary" href="#catalog">カテゴリ一覧へ</a>
+      </div>
+      <div class="top-hero-meta">
+        <span>31 pages</span>
+        <span>1 algorithm = 1 page</span>
+        <span>static HTML</span>
+      </div>
+    </section>
+    <section class="panel section top-guide-section" id="guide">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Guide</p>
+          <h2>はじめに読む4ページ</h2>
+        </div>
+        <p class="section-lead">最初はこの4ページで十分です。増え方、比較、交換、探索の基礎がここで揃います。</p>
+      </div>
+      
+      <div class="study-map">
+        <a class="study-step" href="./complexity/index.html"><span>01</span><strong>計算量</strong><p>増え方の感覚を先に作る</p></a>
+        <a class="study-step" href="./bubble-sort/index.html"><span>02</span><strong>Bubble Sort（バブルソート）</strong><p>比較と交換の基本を見る</p></a>
+        <a class="study-step" href="./selection-sort/index.html"><span>03</span><strong>Selection Sort（選択ソート）</strong><p>選ぶ処理に変わる違いを見る</p></a>
+        <a class="study-step" href="./binary-search/index.html"><span>04</span><strong>Binary Search（二分探索）</strong><p>半分に絞る感覚を掴む</p></a>
+      </div>
+    
     </section>
     <section class="panel section toc-section">
-      <p class="eyebrow">入口</p>
-      <h2>まずどこを見るか</h2>
+      <p class="eyebrow">目次</p>
+      <h2>トップページの目次</h2>
       
       <div class="toc-links">
-        <a href="#guide">はじめての4ページ</a>
-        <a href="#catalog">カテゴリから探す</a>
-        <a href="#concepts">概念</a>
+        <a href="#guide">はじめに読む4ページ</a>
+        <a href="#paths">学習ルート</a>
+        <a href="#catalog">カテゴリ一覧</a>
         <a href="#sorting">ソート</a>
         <a href="#searching">探索</a>
       </div>
     
     </section>
-    <section id="guide" class="panel section">
-      <p class="eyebrow">はじめての人へ</p>
-      <h2>最初に見る4ページ</h2>
-      <p class="section-lead">この4ページで、計算量、比較ソート、探索の基本まで追えます。</p>
+    <section id="paths" class="panel section section-accent">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Paths</p>
+          <h2>学習ルート</h2>
+        </div>
+        <p class="section-lead">アルゴリズム名から入らなくても学べるように、目的別の入口を用意します。</p>
+      </div>
       
-      <div class="card-grid">
-        <article class="info-card"><strong>1. 計算量の概念</strong><p>まず Big-O と計算量の意味を理解します。</p></article>
-        <article class="info-card"><strong>2. Bubble Sort</strong><p>比較と交換の基本を動きで確認します。</p></article>
-        <article class="info-card"><strong>3. Selection Sort</strong><p>Bubble Sort と何が違うかを見ます。</p></article>
-        <article class="info-card"><strong>4. Binary Search</strong><p>O(log n) の感覚をつかみます。</p></article>
+      <div class="path-grid">
+        <article class="path-card path-card-primary">
+          <p class="path-label">はじめの順番</p>
+          <h3>まず読む4ページ</h3>
+          <p>計算量、Bubble Sort（バブルソート）、Selection Sort（選択ソート）、Binary Search（二分探索）の順で進むと、増え方と処理の違いをまとめて掴めます。</p>
+          <div class="path-links">
+            <a href="./complexity/index.html">計算量</a>
+            <a href="./bubble-sort/index.html">Bubble Sort（バブルソート）</a>
+            <a href="./selection-sort/index.html">Selection Sort（選択ソート）</a>
+            <a href="./binary-search/index.html">Binary Search（二分探索）</a>
+          </div>
+        </article>
+        <article class="path-card">
+          <p class="path-label">比較して学ぶ</p>
+          <h3>ソートをまとめて見る</h3>
+          <p>隣接交換、選択、挿入、半分ずつ分けて進める方法、ヒープまで、何を基準に並べ替えるかで比較します。</p>
+          <div class="path-tags">
+            <span class="pill">比較ソート</span>
+            <span class="pill">半分ずつ解く</span>
+            <span class="pill">線形時間ソート</span>
+          </div>
+        </article>
+        <article class="path-card">
+          <p class="path-label">前提を固める</p>
+          <h3>概念ページから入る</h3>
+          <p>再帰、メモ化、安定ソート、データ構造へ進み、個別アルゴリズムの前提知識を固めます。</p>
+          <div class="path-tags">
+            <span class="pill">再帰</span>
+            <span class="pill">メモ化</span>
+            <span class="pill">データ構造</span>
+          </div>
+        </article>
       </div>
     
-      <div class="hero-actions" style="margin-top:16px;">
-        <a class="button button-primary" href="./complexity/index.html">1. 計算量へ</a>
-        <a class="button button-secondary" href="./bubble-sort/index.html">2. Bubble Sortへ</a>
-      </div>
     </section>
     <section id="catalog" class="panel section toc-section">
-      <p class="eyebrow">カテゴリから探す</p>
-      <h2>学びたいテーマから入る</h2>
-      <p class="section-lead">学習順ではなく、興味のある分野から直接たどるための入口です。</p>
-      
-      <div class="toc-links">
-        <a href="#guide">はじめての4ページ</a>
-        <a href="#catalog">カテゴリから探す</a>
-        <a href="#concepts">概念</a>
-        <a href="#sorting">ソート</a>
-        <a href="#searching">探索</a>
-      </div>
-    
+      <p class="eyebrow">Catalog</p>
+      <h2>カテゴリ一覧</h2>
+      <p class="section-lead">学習順ではなく、テーマから直接ページを探すための一覧です。</p>
     </section>
-    <section id="concepts" class="panel section"><p class="eyebrow">カテゴリ別</p><h2>概念</h2><div class="card-grid"><article class="info-card"><strong><a href="./complexity/index.html">計算量の概念</a></strong><p>計算量は、プログラムの大変さを表す目安です。まずは『Big-O は計算量を書くための記号』だと捉えれば十分です。</p></article><article class="info-card"><strong><a href="./stable-sort/index.html">安定ソートとは</a></strong><p>値が同じ要素に元の順序があるとき、その順序を保つソートを安定ソートと呼びます。複数キーの並べ替えで重要になります。</p></article><article class="info-card"><strong><a href="./recursion/index.html">再帰の考え方</a></strong><p>再帰は、問題を小さくして同じ形で解く考え方です。停止条件と再帰呼び出しが揃ってはじめて正しく動きます。</p></article><article class="info-card"><strong><a href="./memoization/index.html">メモ化</a></strong><p>再帰で同じ計算を繰り返すと急に重くなります。メモ化は、一度求めた結果を保存して再利用する方法です。</p></article></div></section><section id="sorting" class="panel section"><p class="eyebrow">カテゴリ別</p><h2>ソート</h2><div class="card-grid"><article class="info-card"><strong><a href="./bubble-sort/index.html">Bubble Sort</a></strong><p>左から隣接要素を比べ、逆順なら交換します。1 パス終わるごとに未確定部分の最大値が右端へ確定します。</p></article><article class="info-card"><strong><a href="./selection-sort/index.html">Selection Sort</a></strong><p>未整列領域を最後まで見て最小値を選び、先頭と交換します。交換回数は少なめですが、比較回数は基本的に O(n²) です。</p></article><article class="info-card"><strong><a href="./insertion-sort/index.html">Insertion Sort</a></strong><p>新しい要素を 1 つ取り出し、左側の整列済み領域の適切な位置へ挿入します。ほぼ整列済みの入力では強いアルゴリズムです。</p></article><article class="info-card"><strong><a href="./merge-sort/index.html">Merge Sort</a></strong><p>分割統治の代表例です。半分ずつ再帰的に整列し、最後に 2 つの整列済み配列をマージします。</p></article><article class="info-card"><strong><a href="./quick-sort/index.html">Quick Sort</a></strong><p>pivot より小さい群と大きい群に分けていく分割統治です。平均では速いですが、pivot の選び方に偏りが出ると遅くなります。</p></article><article class="info-card"><strong><a href="./heap-sort/index.html">Heap Sort</a></strong><p>二分ヒープを使って最大値を何度も末尾へ送ります。比較的安定した O(n log n) ですが、安定ソートではありません。</p></article><article class="info-card"><strong><a href="./counting-sort/index.html">Counting Sort</a></strong><p>要素の取りうる値の範囲が狭いときに強いソートです。各値が何回出たかを数え、そこから整列済み列を組み立てます。</p></article><article class="info-card"><strong><a href="./radix-sort/index.html">Radix Sort</a></strong><p>各桁を下位から順に安定ソートしていく方法です。桁数が短い整数列などで有効です。</p></article></div></section><section id="searching" class="panel section"><p class="eyebrow">カテゴリ別</p><h2>探索</h2><div class="card-grid"><article class="info-card"><strong><a href="./linear-search/index.html">Linear Search</a></strong><p>最も単純な探索です。整列済みでなくても使えますが、最悪では全要素を見る必要があります。</p></article><article class="info-card"><strong><a href="./binary-search/index.html">Binary Search</a></strong><p>整列済み配列に対して高速に探索する方法です。毎回半分の候補を捨てられるため O(log n) になります。</p></article><article class="info-card"><strong><a href="./hash-table/index.html">Hash Table</a></strong><p>平均的には高速に探索できますが、衝突が起きると工夫が必要です。教材では衝突解決の考え方まで見せます。</p></article></div></section><section id="data-structures" class="panel section"><p class="eyebrow">カテゴリ別</p><h2>データ構造</h2><div class="card-grid"><article class="info-card"><strong><a href="./stack/index.html">Stack</a></strong><p>LIFO の基本データ構造です。関数呼び出し、undo、式の評価など幅広く出てきます。</p></article><article class="info-card"><strong><a href="./queue/index.html">Queue</a></strong><p>FIFO の基本データ構造です。待ち行列、BFS、ジョブ処理などに出てきます。</p></article><article class="info-card"><strong><a href="./linked-list/index.html">Linked List</a></strong><p>配列と違い、要素がメモリ上で連続していなくてもつながれます。挿入・削除の考え方を学ぶ入口になります。</p></article><article class="info-card"><strong><a href="./binary-search-tree/index.html">Binary Search Tree</a></strong><p>二分探索木は、各ノードで左部分木の値が小さく、右部分木の値が大きい構造です。探索・挿入の考え方を木として学べます。</p></article><article class="info-card"><strong><a href="./heap-structure/index.html">Binary Heap</a></strong><p>ヒープは親子の大小関係だけを保つ構造です。最小値・最大値の取り出しが速く、優先度付きキューの実装に使われます。</p></article><article class="info-card"><strong><a href="./union-find/index.html">Union-Find</a></strong><p>Disjoint Set Union とも呼ばれます。連結成分の管理や Kruskal 法で重要な役割を持ちます。</p></article></div></section><section id="graphs" class="panel section"><p class="eyebrow">カテゴリ別</p><h2>グラフ</h2><div class="card-grid"><article class="info-card"><strong><a href="./bfs/index.html">BFS</a></strong><p>幅優先探索は、始点からの距離が近い順に探索を進めます。キューを使うのが本質です。</p></article><article class="info-card"><strong><a href="./dfs/index.html">DFS</a></strong><p>深さ優先探索は、1 本の道を深く追ってから戻る探索です。再帰またはスタックで実装できます。</p></article><article class="info-card"><strong><a href="./dijkstra/index.html">Dijkstra</a></strong><p>重みが非負のグラフで単一始点最短経路を求めます。いま最も距離が短い候補を優先度付きキューで選びます。</p></article><article class="info-card"><strong><a href="./topological-sort/index.html">Topological Sort</a></strong><p>有向非巡回グラフの頂点を、辺の向きを保ったまま並べる方法です。タスク依存の可視化に向いています。</p></article><article class="info-card"><strong><a href="./prim/index.html">Prim</a></strong><p>最小全域木を作るアルゴリズムです。現在の木から外へ伸びる最小の辺を選び続けます。</p></article></div></section><section id="dp-recursion" class="panel section"><p class="eyebrow">カテゴリ別</p><h2>動的計画法・再帰</h2><div class="card-grid"><article class="info-card"><strong><a href="./fibonacci-recursion/index.html">Fibonacci</a></strong><p>再帰で Fibonacci 数をそのまま求めると、同じ計算を何度も繰り返します。メモ化や DP の必要性を示す代表例です。</p></article><article class="info-card"><strong><a href="./knapsack/index.html">0/1 Knapsack</a></strong><p>容量制約の下で価値の合計を最大化する問題です。DP テーブルを使うと、部分問題の積み重ねで考えられます。</p></article><article class="info-card"><strong><a href="./lcs/index.html">LCS</a></strong><p>最長共通部分列は、2 つの列に共通して現れる順序付き要素列の最長長を求めます。DP テーブルが典型です。</p></article><article class="info-card"><strong><a href="./edit-distance/index.html">Edit Distance</a></strong><p>1 文字の挿入、削除、置換で文字列を変換する最小コストを求めます。表の各マスで 3 通りを比較します。</p></article><article class="info-card"><strong><a href="./hanoi/index.html">Tower of Hanoi</a></strong><p>ハノイの塔は再帰の教材として定番です。大きい円盤を動かす前後に、小さい円盤の塔を丸ごと移す発想が見えます。</p></article></div></section>
+    <section id="concepts" class="panel section top-catalog-section"><div class="section-heading"><div><p class="eyebrow">Category</p><h2>概念</h2></div><p class="section-lead">先に読んでおくと、個別ページの理解が早くなる概念ページです。</p></div><div class="catalog-list"><a class="catalog-item" href="./complexity/index.html"><strong>計算量の概念</strong><p>計算量は、プログラムの大変さを表す目安です。まずは『Big-O は計算量を書くための記号』だと捉えれば十分です。</p></a><a class="catalog-item" href="./stable-sort/index.html"><strong>安定ソートとは</strong><p>同じ点の A さんと B さんがいたとき、並べ替えたあとも A さんが前のまま残るなら安定ソートです。元の順番を保つかどうかを見る言葉です。</p></a><a class="catalog-item" href="./recursion/index.html"><strong>再帰の考え方</strong><p>再帰は、問題を小さくして同じ形で解く考え方です。停止条件と再帰呼び出しが揃ってはじめて正しく動きます。</p></a><a class="catalog-item" href="./memoization/index.html"><strong>メモ化</strong><p>再帰で同じ計算を繰り返すと急に重くなります。メモ化は、一度求めた結果を保存して再利用する方法です。</p></a></div></section><section id="sorting" class="panel section top-catalog-section"><div class="section-heading"><div><p class="eyebrow">Category</p><h2>ソート</h2></div><p class="section-lead">並べ替えの発想ごとの差を見比べるためのページ群です。</p></div><div class="catalog-list"><a class="catalog-item" href="./bubble-sort/index.html"><strong>Bubble Sort（バブルソート）</strong><p>左から隣接要素を比べ、逆順なら交換します。1 パス終わるごとに未確定部分の最大値が右端へ確定します。</p></a><a class="catalog-item" href="./selection-sort/index.html"><strong>Selection Sort（選択ソート）</strong><p>未整列領域を最後まで見て最小値を選び、先頭と交換します。交換回数は少なめですが、比較回数は基本的に O(n²) です。</p></a><a class="catalog-item" href="./insertion-sort/index.html"><strong>Insertion Sort（挿入ソート）</strong><p>新しい要素を 1 つ取り出し、左側の整列済み領域の適切な位置へ挿入します。ほぼ整列済みの入力では強いアルゴリズムです。</p></a><a class="catalog-item" href="./merge-sort/index.html"><strong>Merge Sort（マージソート）</strong><p>大きい問題を半分ずつの小さい問題に分けて進める方法です。半分ずつ整列して、最後に 2 つの整列済み配列をまとめます。</p></a><a class="catalog-item" href="./quick-sort/index.html"><strong>Quick Sort（クイックソート）</strong><p>1 つ基準値を決めて、それより小さいグループと大きいグループに分けながら進める方法です。基準値の選び方に偏りが出ると遅くなります。</p></a><a class="catalog-item" href="./heap-sort/index.html"><strong>Heap Sort（ヒープソート）</strong><p>二分ヒープを使って最大値を何度も末尾へ送ります。比較的安定した O(n log n) ですが、安定ソートではありません。</p></a><a class="catalog-item" href="./counting-sort/index.html"><strong>Counting Sort（計数ソート）</strong><p>要素の取りうる値の範囲が狭いときに強いソートです。各値が何回出たかを数え、そこから整列済み列を組み立てます。</p></a><a class="catalog-item" href="./radix-sort/index.html"><strong>Radix Sort（基数ソート）</strong><p>各桁を下位から順に安定ソートしていく方法です。桁数が短い整数列などで有効です。</p></a></div></section><section id="searching" class="panel section top-catalog-section"><div class="section-heading"><div><p class="eyebrow">Category</p><h2>探索</h2></div><p class="section-lead">どこまで見るか、どう絞るか、探索の基本を学ぶページ群です。</p></div><div class="catalog-list"><a class="catalog-item" href="./linear-search/index.html"><strong>Linear Search（線形探索）</strong><p>最も単純な探索です。整列済みでなくても使えますが、最悪では全要素を見る必要があります。</p></a><a class="catalog-item" href="./binary-search/index.html"><strong>Binary Search（二分探索）</strong><p>整列済み配列に対して高速に探索する方法です。毎回半分の候補を捨てられるため O(log n) になります。</p></a><a class="catalog-item" href="./hash-table/index.html"><strong>Hash Table（ハッシュテーブル）</strong><p>平均的には高速に探索できますが、衝突が起きると工夫が必要です。教材では衝突解決の考え方まで見せます。</p></a></div></section><section id="data-structures" class="panel section top-catalog-section"><div class="section-heading"><div><p class="eyebrow">Category</p><h2>データ構造</h2></div><p class="section-lead">アルゴリズムを支える基本構造を先に把握するためのページ群です。</p></div><div class="catalog-list"><a class="catalog-item" href="./stack/index.html"><strong>Stack（スタック）</strong><p>LIFO の基本データ構造です。関数呼び出し、undo、式の評価など幅広く出てきます。</p></a><a class="catalog-item" href="./queue/index.html"><strong>Queue（キュー）</strong><p>FIFO の基本データ構造です。待ち行列、BFS、ジョブ処理などに出てきます。</p></a><a class="catalog-item" href="./linked-list/index.html"><strong>Linked List（連結リスト）</strong><p>配列と違い、要素がメモリ上で連続していなくてもつながれます。挿入・削除の考え方を学ぶ入口になります。</p></a><a class="catalog-item" href="./binary-search-tree/index.html"><strong>Binary Search Tree（二分探索木）</strong><p>二分探索木は、各ノードで左部分木の値が小さく、右部分木の値が大きい構造です。探索・挿入の考え方を木として学べます。</p></a><a class="catalog-item" href="./heap-structure/index.html"><strong>Binary Heap（二分ヒープ）</strong><p>ヒープは親子の大小関係だけを保つ構造です。最小値・最大値の取り出しが速く、優先度付きキューの実装に使われます。</p></a><a class="catalog-item" href="./union-find/index.html"><strong>Union-Find（ユニオンファインド）</strong><p>Disjoint Set Union とも呼ばれます。連結成分の管理や Kruskal 法で重要な役割を持ちます。</p></a></div></section><section id="graphs" class="panel section top-catalog-section"><div class="section-heading"><div><p class="eyebrow">Category</p><h2>グラフ</h2></div><p class="section-lead">頂点、辺、距離、到達順序を扱うページ群です。</p></div><div class="catalog-list"><a class="catalog-item" href="./bfs/index.html"><strong>BFS（幅優先探索）</strong><p>幅優先探索は、始点からの距離が近い順に探索を進めます。キューを使うのが本質です。</p></a><a class="catalog-item" href="./dfs/index.html"><strong>DFS（深さ優先探索）</strong><p>深さ優先探索は、1 本の道を深く追ってから戻る探索です。再帰またはスタックで実装できます。</p></a><a class="catalog-item" href="./dijkstra/index.html"><strong>Dijkstra（ダイクストラ法）</strong><p>重みが非負のグラフで単一始点最短経路を求めます。いま最も距離が短い候補を優先度付きキューで選びます。</p></a><a class="catalog-item" href="./topological-sort/index.html"><strong>Topological Sort（トポロジカルソート）</strong><p>有向非巡回グラフの頂点を、辺の向きを保ったまま並べる方法です。タスク依存の可視化に向いています。</p></a><a class="catalog-item" href="./prim/index.html"><strong>Prim（プリム法）</strong><p>最小全域木を作るアルゴリズムです。現在の木から外へ伸びる最小の辺を選び続けます。</p></a></div></section><section id="dp-recursion" class="panel section top-catalog-section"><div class="section-heading"><div><p class="eyebrow">Category</p><h2>動的計画法・再帰</h2></div><p class="section-lead">部分問題、再帰、表の使い方を学ぶページ群です。</p></div><div class="catalog-list"><a class="catalog-item" href="./fibonacci-recursion/index.html"><strong>Fibonacci（フィボナッチ数列）</strong><p>再帰で Fibonacci 数をそのまま求めると、同じ計算を何度も繰り返します。メモ化や DP の必要性を示す代表例です。</p></a><a class="catalog-item" href="./knapsack/index.html"><strong>0/1 Knapsack（ナップサック問題）</strong><p>容量制約の下で価値の合計を最大化する問題です。DP テーブルを使うと、部分問題の積み重ねで考えられます。</p></a><a class="catalog-item" href="./lcs/index.html"><strong>LCS（最長共通部分列）</strong><p>最長共通部分列は、2 つの列に共通して現れる順序付き要素列の最長長を求めます。DP テーブルが典型です。</p></a><a class="catalog-item" href="./edit-distance/index.html"><strong>Edit Distance（編集距離）</strong><p>1 文字の挿入、削除、置換で文字列を変換する最小コストを求めます。表の各マスで 3 通りを比較します。</p></a><a class="catalog-item" href="./hanoi/index.html"><strong>Tower of Hanoi（ハノイの塔）</strong><p>ハノイの塔は再帰の教材として定番です。大きい円盤を動かす前後に、小さい円盤の塔を丸ごと移す発想が見えます。</p></a></div></section>
     <footer class="footer">GitHub Pages と <code>algorithm.hide10.com</code> の両方で運用しやすい静的構成です。<code>hide10.com</code> 側へ展開する場合は外側レイアウトに広告を載せ、教材本体はそのまま流用する方針です。</footer>
   </div>
 </body>

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hash Table | algorithm.hide10.com</title>
+  <title>Hash Table（ハッシュテーブル） | algorithm.hide10.com</title>
   <meta name="description" content="平均的には高速に探索できますが、衝突が起きると工夫が必要です。教材では衝突解決の考え方まで見せます。">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20260315b">
 </head>
 <body>
   <div class="page-shell">
@@ -17,12 +17,12 @@
           <span>Visual algorithm primer</span>
         </span>
       </a>
-      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../words/index.html">ことば</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
     </header>
 
     <section class="hero hero-single">
       <div class="panel hero-copy">
-        <p class="eyebrow">探索 / Hash Table</p>
+        <p class="eyebrow">探索 / Hash Table（ハッシュテーブル）</p>
         <h1>キーをハッシュして<br>バケットへ置く。</h1>
         <p>平均的には高速に探索できますが、衝突が起きると工夫が必要です。教材では衝突解決の考え方まで見せます。</p>
         <div class="pill-row"><span class="pill">探索</span><span class="pill">比較教材</span><span class="pill">動作イメージ付き</span></div>
@@ -38,12 +38,12 @@
     <section id="summary" class="panel section">
       <p class="eyebrow">このページでわかること</p>
       <h2>先に知っておくポイント</h2>
-      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>何を比較するか</p></article><article class="info-card"><strong>2. わかること</strong><p>候補がどう減るか</p></article><article class="info-card"><strong>3. わかること</strong><p>前提条件があるか</p></article></div>
+      <div class="card-grid"><article class="info-card"><strong>1. 何を比較するか</strong></article><article class="info-card"><strong>2. 候補がどう減るか</strong></article><article class="info-card"><strong>3. 前提条件があるか</strong></article></div>
     </section>
 
     <section id="article" class="panel section">
-      <p class="eyebrow">本文</p>
-      <h2>しくみと考え方</h2>
+      <p class="eyebrow">概要</p>
+      <h2>概要</h2>
 
       <div class="article-block">
         <p>平均的には高速に探索できますが、衝突が起きると工夫が必要です。教材では衝突解決の考え方まで見せます。</p>
@@ -76,8 +76,8 @@
 
     <section id="visualizer" class="panel section">
       <p class="eyebrow">動きで確認</p>
-      <h2>最後に動きで確認する</h2>
-      <p class="section-lead">ここでは「何を比較するか」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <h2>動きを見てたしかめる</h2>
+      <p class="section-lead">ここでは「何を比較するか」を見ながら、上で読んだ内容を動きと結びつけます。</p>
       <div class="visualizer-layout">
         <div class="panel bars-panel">
           <div class="toolbar">
@@ -109,9 +109,9 @@
       <div class="hero-actions"><a class="button button-secondary" href="../index.html">トップへ戻る</a></div>
     </section>
 
-    <footer class="footer">関連: <a href="../linear-search/index.html">Linear Search</a> / <a href="../binary-search/index.html">Binary Search</a></footer>
+    <footer class="footer">関連: <a href="../linear-search/index.html">Linear Search（線形探索）</a> / <a href="../binary-search/index.html">Binary Search（二分探索）</a></footer>
   </div>
   <script>window.PAGE_DATA = {"frames": [{"kind": "cells", "line": 1, "caption": "キーをハッシュして位置を決めます。", "stats": [["key", "21"], ["hash % 7", "0"]], "payload": {"items": [{"label": "0", "sub": "", "state": "active"}, {"label": "1", "sub": "", "state": "default"}, {"label": "2", "sub": "", "state": "default"}, {"label": "3", "sub": "", "state": "default"}, {"label": "4", "sub": "", "state": "default"}, {"label": "5", "sub": "", "state": "default"}, {"label": "6", "sub": "", "state": "default"}]}}, {"kind": "cells", "line": 2, "caption": "14 と 21 が同じバケットに来て衝突します。", "stats": [["collision", "yes"], ["bucket 0", "14 -> 21"]], "payload": {"items": [{"label": "14,21", "sub": "", "state": "swap"}, {"label": "-", "sub": "", "state": "default"}, {"label": "-", "sub": "", "state": "default"}, {"label": "10", "sub": "", "state": "sorted"}, {"label": "-", "sub": "", "state": "default"}, {"label": "5", "sub": "", "state": "sorted"}, {"label": "-", "sub": "", "state": "default"}]}}, {"kind": "cells", "line": 3, "caption": "連鎖法なら同じバケット内で探索します。", "stats": [["search 21", "bucket 0 only"]], "payload": {"items": [{"label": "14 -> 21", "sub": "", "state": "found"}, {"label": "-", "sub": "", "state": "default"}, {"label": "-", "sub": "", "state": "default"}, {"label": "10", "sub": "", "state": "default"}, {"label": "-", "sub": "", "state": "default"}, {"label": "5", "sub": "", "state": "default"}, {"label": "-", "sub": "", "state": "default"}]}}]};</script>
-  <script src="../app.js"></script>
+  <script src="../app.js?v=20260315b"></script>
 </body>
 </html>

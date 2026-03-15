@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ことば集 | algorithm.hide10.com</title>
+  <meta name="description" content="中学生以上向けに、アルゴリズム学習で出てくる用語をやさしい言葉で説明するページです。">
+  <link rel="stylesheet" href="../styles.css?v=20260315b">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">A</span>
+        <span class="brand-copy">
+          <strong>algorithm.hide10.com</strong>
+          <span>Visual algorithm primer</span>
+        </span>
+      </a>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../words/index.html">ことば</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+    </header>
+
+    <section class="hero hero-single">
+      <div class="panel hero-copy">
+        <p class="eyebrow">Glossary</p>
+        <h1>ことば集</h1>
+        <p>ページの中で出てくる言葉を、短く整理した一覧です。意味があやふやになったときに引けるようにしてあります。</p>
+      </div>
+    </section>
+
+    <section class="panel section toc-section">
+      <p class="eyebrow">目次</p>
+      <h2>ことばの一覧</h2>
+      <div class="toc-links"><a href="#分割統治">分割統治</a><a href="#再帰">再帰</a><a href="#メモ化">メモ化</a><a href="#安定ソート">安定ソート</a><a href="#基準値">基準値</a><a href="#計算量">計算量</a><a href="#ヒープ">ヒープ</a></div>
+    </section>
+
+    <section id="分割統治" class="panel section">
+      <p class="eyebrow">ことば</p>
+      <h2>分割統治</h2>
+      <p class="section-lead">大きい問題を小さい問題に分けて解くやり方です。</p>
+      <p>たとえば 100 人を一気に処理するのではなく、50 人と 50 人に分けて考えるイメージです。</p><p>分けたあと、それぞれを解いて、最後に結果をまとめます。</p><p>最初は『半分ずつに分けて進める方法』と考えるとつかみやすいです。</p>
+      <div class="card-grid"><article class="info-card"><strong>出てくるページ</strong><p>Merge Sort や Quick Sort で出てきます。</p></article></div>
+    </section><section id="再帰" class="panel section">
+      <p class="eyebrow">ことば</p>
+      <h2>再帰</h2>
+      <p class="section-lead">同じ形の小さい問題を、自分でもう一度呼び出して解く書き方です。</p>
+      <p>たとえば 5 段の問題を、4 段の問題にして考える、というように小さくします。</p><p>必ず『ここまで来たら終わり』という止まる条件が必要です。</p><p>止まる条件がないと、ずっと呼び出し続けて止まりません。</p>
+      <div class="card-grid"><article class="info-card"><strong>出てくるページ</strong><p>再帰の考え方、ハノイの塔、Merge Sort などで使います。</p></article></div>
+    </section><section id="メモ化" class="panel section">
+      <p class="eyebrow">ことば</p>
+      <h2>メモ化</h2>
+      <p class="section-lead">一度出した答えを覚えておいて、同じ計算をもう一度しない方法です。</p>
+      <p>前に解いた宿題の答えをノートに書いておいて、次は見返すイメージです。</p><p>同じ計算が多いときに、とても効きます。</p><p>Fibonacci のページで差が見えやすいです。</p>
+      <div class="card-grid"><article class="info-card"><strong>出てくるページ</strong><p>再帰が遅いときの改善方法として出てきます。</p></article></div>
+    </section><section id="安定ソート" class="panel section">
+      <p class="eyebrow">ことば</p>
+      <h2>安定ソート</h2>
+      <p class="section-lead">同じ値どうしの元の順番を、そのまま残して並べ替えることです。</p>
+      <p>80 点の A さんと 80 点の B さんがいたとき、並べ替えたあとも A さんが前のままなら安定です。</p><p>同じ点でも元の並びに意味があるときに大事です。</p><p>A や B のラベルを付けると違いが見えやすくなります。</p>
+      <div class="card-grid"><article class="info-card"><strong>出てくるページ</strong><p>Bubble Sort、Insertion Sort、Merge Sort などと関係します。</p></article></div>
+    </section><section id="基準値" class="panel section">
+      <p class="eyebrow">ことば</p>
+      <h2>基準値</h2>
+      <p class="section-lead">比べるための目印になる値です。</p>
+      <p>Quick Sort では、まず 1 つ値を選んで、それより小さいものと大きいものに分けます。</p><p>英語では pivot と書かれることがあります。</p><p>基準値の選び方が偏ると、処理が遅くなることがあります。</p>
+      <div class="card-grid"><article class="info-card"><strong>出てくるページ</strong><p>Quick Sort の中心になる考え方です。</p></article></div>
+    </section><section id="計算量" class="panel section">
+      <p class="eyebrow">ことば</p>
+      <h2>計算量</h2>
+      <p class="section-lead">データが増えたときに、仕事の回数がどれくらい増えるかを表す目安です。</p>
+      <p>『今何秒かかったか』より『データが増えたらどれくらい大変になるか』を見ます。</p><p>O(n) や O(n²) は、その増え方を書く記号です。</p><p>最初は『増え方の違いを見るもの』と考えれば十分です。</p>
+      <div class="card-grid"><article class="info-card"><strong>出てくるページ</strong><p>計算量のページで最初に確認してください。</p></article></div>
+    </section><section id="ヒープ" class="panel section">
+      <p class="eyebrow">ことば</p>
+      <h2>ヒープ</h2>
+      <p class="section-lead">親と子の大小関係だけを守る、木の形のデータの持ち方です。</p>
+      <p>全部きれいに並んでいるわけではありません。</p><p>ただし、いちばん大きい値や小さい値を先頭から取り出しやすいのが強みです。</p><p>優先順位の高いものを先に取り出したいときに向いています。</p>
+      <div class="card-grid"><article class="info-card"><strong>出てくるページ</strong><p>Heap Sort や優先度付きキューで使います。</p></article></div>
+    </section>
+
+    <footer class="footer">わからない言葉が出たら、ここに戻って意味を確認できます。</footer>
+  </div>
+</body>
+</html>

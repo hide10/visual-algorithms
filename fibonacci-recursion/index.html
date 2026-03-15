@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fibonacci | algorithm.hide10.com</title>
+  <title>Fibonacci（フィボナッチ数列） | algorithm.hide10.com</title>
   <meta name="description" content="再帰で Fibonacci 数をそのまま求めると、同じ計算を何度も繰り返します。メモ化や DP の必要性を示す代表例です。">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20260315b">
 </head>
 <body>
   <div class="page-shell">
@@ -17,12 +17,12 @@
           <span>Visual algorithm primer</span>
         </span>
       </a>
-      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../words/index.html">ことば</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
     </header>
 
     <section class="hero hero-single">
       <div class="panel hero-copy">
-        <p class="eyebrow">動的計画法・再帰 / Fibonacci</p>
+        <p class="eyebrow">動的計画法・再帰 / Fibonacci（フィボナッチ数列）</p>
         <h1>同じ部分問題が<br>何度も現れる。</h1>
         <p>再帰で Fibonacci 数をそのまま求めると、同じ計算を何度も繰り返します。メモ化や DP の必要性を示す代表例です。</p>
         <div class="pill-row"><span class="pill">DP / 再帰</span><span class="pill">表や木で理解</span><span class="pill">定番教材</span></div>
@@ -38,12 +38,12 @@
     <section id="summary" class="panel section">
       <p class="eyebrow">このページでわかること</p>
       <h2>先に知っておくポイント</h2>
-      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>状態が何か</p></article><article class="info-card"><strong>2. わかること</strong><p>前の状態をどう使うか</p></article><article class="info-card"><strong>3. わかること</strong><p>なぜその漸化式になるか</p></article></div>
+      <div class="card-grid"><article class="info-card"><strong>1. 状態が何か</strong></article><article class="info-card"><strong>2. 前の状態をどう使うか</strong></article><article class="info-card"><strong>3. なぜその漸化式になるか</strong></article></div>
     </section>
 
     <section id="article" class="panel section">
-      <p class="eyebrow">本文</p>
-      <h2>しくみと考え方</h2>
+      <p class="eyebrow">概要</p>
+      <h2>概要</h2>
 
       <div class="article-block">
         <p>再帰で Fibonacci 数をそのまま求めると、同じ計算を何度も繰り返します。メモ化や DP の必要性を示す代表例です。</p>
@@ -75,8 +75,8 @@
 
     <section id="visualizer" class="panel section">
       <p class="eyebrow">動きで確認</p>
-      <h2>最後に動きで確認する</h2>
-      <p class="section-lead">ここでは「状態が何か」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <h2>動きを見てたしかめる</h2>
+      <p class="section-lead">ここでは「状態が何か」を見ながら、上で読んだ内容を動きと結びつけます。</p>
       <div class="visualizer-layout">
         <div class="panel bars-panel">
           <div class="toolbar">
@@ -105,12 +105,12 @@
       <p class="eyebrow">次に見る</p>
       <h2>次に見るページ</h2>
       <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
-      <div class="hero-actions"><a class="button button-secondary" href="../knapsack/index.html">0/1 Knapsackを見る</a></div>
+      <div class="hero-actions"><a class="button button-secondary" href="../knapsack/index.html">0/1 Knapsack（ナップサック問題）を見る</a></div>
     </section>
 
-    <footer class="footer">関連: <a href="../knapsack/index.html">0/1 Knapsack</a> / <a href="../lcs/index.html">LCS</a></footer>
+    <footer class="footer">関連: <a href="../knapsack/index.html">0/1 Knapsack（ナップサック問題）</a> / <a href="../lcs/index.html">LCS（最長共通部分列）</a></footer>
   </div>
   <script>window.PAGE_DATA = {"frames": [{"kind": "cards", "line": 1, "caption": "fib(5) は fib(4) と fib(3) に分かれます。", "stats": [["root", "fib(5)"]], "payload": {"items": [{"title": "fib(5)", "text": "fib(4) + fib(3)", "state": "active"}, {"title": "fib(4)", "text": "さらに分岐", "state": "swap"}, {"title": "fib(3)", "text": "こちらも分岐", "state": "swap"}]}}, {"kind": "cards", "line": 1, "caption": "fib(3) が複数回現れます。", "stats": [["重複", "fib(3), fib(2)"]], "payload": {"items": [{"title": "fib(3)", "text": "左枝に出現", "state": "swap"}, {"title": "fib(3)", "text": "右枝にも出現", "state": "swap"}, {"title": "問題", "text": "同じ計算の繰り返し", "state": "active"}]}}, {"kind": "cards", "line": 2, "caption": "停止条件は簡単でも、木は急激に広がります。", "stats": [["base", "fib(1), fib(0)"]], "payload": {"items": [{"title": "fib(1)", "text": "1", "state": "sorted"}, {"title": "fib(0)", "text": "0", "state": "sorted"}, {"title": "全体", "text": "指数的に増える", "state": "active"}]}}]};</script>
-  <script src="../app.js"></script>
+  <script src="../app.js?v=20260315b"></script>
 </body>
 </html>

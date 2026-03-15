@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Linked List | algorithm.hide10.com</title>
+  <title>Linked List（連結リスト） | algorithm.hide10.com</title>
   <meta name="description" content="配列と違い、要素がメモリ上で連続していなくてもつながれます。挿入・削除の考え方を学ぶ入口になります。">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20260315b">
 </head>
 <body>
   <div class="page-shell">
@@ -17,12 +17,12 @@
           <span>Visual algorithm primer</span>
         </span>
       </a>
-      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../words/index.html">ことば</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
     </header>
 
     <section class="hero hero-single">
       <div class="panel hero-copy">
-        <p class="eyebrow">データ構造 / Linked List</p>
+        <p class="eyebrow">データ構造 / Linked List（連結リスト）</p>
         <h1>ノードが次のノードを<br>指してつながる。</h1>
         <p>配列と違い、要素がメモリ上で連続していなくてもつながれます。挿入・削除の考え方を学ぶ入口になります。</p>
         <div class="pill-row"><span class="pill">データ構造</span><span class="pill">基礎教材</span><span class="pill">可視化</span></div>
@@ -38,12 +38,12 @@
     <section id="summary" class="panel section">
       <p class="eyebrow">このページでわかること</p>
       <h2>先に知っておくポイント</h2>
-      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>何が制約か</p></article><article class="info-card"><strong>2. わかること</strong><p>どこが速いか</p></article><article class="info-card"><strong>3. わかること</strong><p>どこが遅いか</p></article></div>
+      <div class="card-grid"><article class="info-card"><strong>1. 何が制約か</strong></article><article class="info-card"><strong>2. どこが速いか</strong></article><article class="info-card"><strong>3. どこが遅いか</strong></article></div>
     </section>
 
     <section id="article" class="panel section">
-      <p class="eyebrow">本文</p>
-      <h2>しくみと考え方</h2>
+      <p class="eyebrow">概要</p>
+      <h2>概要</h2>
 
       <div class="article-block">
         <p>配列と違い、要素がメモリ上で連続していなくてもつながれます。挿入・削除の考え方を学ぶ入口になります。</p>
@@ -76,8 +76,8 @@
 
     <section id="visualizer" class="panel section">
       <p class="eyebrow">動きで確認</p>
-      <h2>最後に動きで確認する</h2>
-      <p class="section-lead">ここでは「何が制約か」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <h2>動きを見てたしかめる</h2>
+      <p class="section-lead">ここでは「何が制約か」を見ながら、上で読んだ内容を動きと結びつけます。</p>
       <div class="visualizer-layout">
         <div class="panel bars-panel">
           <div class="toolbar">
@@ -106,12 +106,12 @@
       <p class="eyebrow">次に見る</p>
       <h2>次に見るページ</h2>
       <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
-      <div class="hero-actions"><a class="button button-secondary" href="../binary-search-tree/index.html">Binary Search Treeを見る</a></div>
+      <div class="hero-actions"><a class="button button-secondary" href="../binary-search-tree/index.html">Binary Search Tree（二分探索木）を見る</a></div>
     </section>
 
-    <footer class="footer">関連: <a href="../stack/index.html">Stack</a> / <a href="../queue/index.html">Queue</a></footer>
+    <footer class="footer">関連: <a href="../stack/index.html">Stack（スタック）</a> / <a href="../queue/index.html">Queue（キュー）</a></footer>
   </div>
   <script>window.PAGE_DATA = {"frames": [{"kind": "cards", "line": 1, "caption": "各ノードが次を指します。", "stats": [["head", "A"]], "payload": {"items": [{"title": "A", "text": "next -> B", "state": "active"}, {"title": "B", "text": "next -> C", "state": "default"}, {"title": "C", "text": "next -> null", "state": "default"}]}}, {"kind": "cards", "line": 3, "caption": "B の後ろへ X を挿入します。", "stats": [["操作", "B -> X -> C"]], "payload": {"items": [{"title": "A", "text": "next -> B", "state": "default"}, {"title": "B", "text": "next -> X", "state": "active"}, {"title": "X", "text": "next -> C", "state": "swap"}, {"title": "C", "text": "next -> null", "state": "default"}]}}]};</script>
-  <script src="../app.js"></script>
+  <script src="../app.js?v=20260315b"></script>
 </body>
 </html>

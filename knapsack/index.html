@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>0/1 Knapsack | algorithm.hide10.com</title>
+  <title>0/1 Knapsack（ナップサック問題） | algorithm.hide10.com</title>
   <meta name="description" content="容量制約の下で価値の合計を最大化する問題です。DP テーブルを使うと、部分問題の積み重ねで考えられます。">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20260315b">
 </head>
 <body>
   <div class="page-shell">
@@ -17,12 +17,12 @@
           <span>Visual algorithm primer</span>
         </span>
       </a>
-      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
+      <nav class="nav-links"><a href="../index.html#guide">学習ガイド</a><a href="../words/index.html">ことば</a><a href="../complexity/index.html">計算量</a><a href="../index.html#sorting">ソート</a><a href="../index.html#searching">探索</a></nav>
     </header>
 
     <section class="hero hero-single">
       <div class="panel hero-copy">
-        <p class="eyebrow">動的計画法・再帰 / 0/1 Knapsack</p>
+        <p class="eyebrow">動的計画法・再帰 / 0/1 Knapsack（ナップサック問題）</p>
         <h1>入れる / 入れないを<br>表で積み上げる。</h1>
         <p>容量制約の下で価値の合計を最大化する問題です。DP テーブルを使うと、部分問題の積み重ねで考えられます。</p>
         <div class="pill-row"><span class="pill">DP / 再帰</span><span class="pill">表や木で理解</span><span class="pill">定番教材</span></div>
@@ -38,12 +38,12 @@
     <section id="summary" class="panel section">
       <p class="eyebrow">このページでわかること</p>
       <h2>先に知っておくポイント</h2>
-      <div class="card-grid"><article class="info-card"><strong>1. わかること</strong><p>状態が何か</p></article><article class="info-card"><strong>2. わかること</strong><p>前の状態をどう使うか</p></article><article class="info-card"><strong>3. わかること</strong><p>なぜその漸化式になるか</p></article></div>
+      <div class="card-grid"><article class="info-card"><strong>1. 状態が何か</strong></article><article class="info-card"><strong>2. 前の状態をどう使うか</strong></article><article class="info-card"><strong>3. なぜその漸化式になるか</strong></article></div>
     </section>
 
     <section id="article" class="panel section">
-      <p class="eyebrow">本文</p>
-      <h2>しくみと考え方</h2>
+      <p class="eyebrow">概要</p>
+      <h2>概要</h2>
 
       <div class="article-block">
         <p>容量制約の下で価値の合計を最大化する問題です。DP テーブルを使うと、部分問題の積み重ねで考えられます。</p>
@@ -74,8 +74,8 @@
 
     <section id="visualizer" class="panel section">
       <p class="eyebrow">動きで確認</p>
-      <h2>最後に動きで確認する</h2>
-      <p class="section-lead">ここでは「状態が何か」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <h2>動きを見てたしかめる</h2>
+      <p class="section-lead">ここでは「状態が何か」を見ながら、上で読んだ内容を動きと結びつけます。</p>
       <div class="visualizer-layout">
         <div class="panel bars-panel">
           <div class="toolbar">
@@ -104,12 +104,12 @@
       <p class="eyebrow">次に見る</p>
       <h2>次に見るページ</h2>
       <p class="section-lead">比較すると違いがわかりやすいページを先に置いています。</p>
-      <div class="hero-actions"><a class="button button-secondary" href="../lcs/index.html">LCSを見る</a></div>
+      <div class="hero-actions"><a class="button button-secondary" href="../lcs/index.html">LCS（最長共通部分列）を見る</a></div>
     </section>
 
-    <footer class="footer">関連: <a href="../fibonacci-recursion/index.html">Fibonacci</a> / <a href="../lcs/index.html">LCS</a></footer>
+    <footer class="footer">関連: <a href="../fibonacci-recursion/index.html">Fibonacci（フィボナッチ数列）</a> / <a href="../lcs/index.html">LCS（最長共通部分列）</a></footer>
   </div>
   <script>window.PAGE_DATA = {"frames": [{"kind": "grid", "line": 1, "caption": "行は品物、列は容量です。", "stats": [["items", "3"], ["capacity", "5"]], "payload": {"rows": [[{"text": "-", "state": "default"}, {"text": "0", "state": "default"}, {"text": "1", "state": "default"}, {"text": "2", "state": "default"}, {"text": "3", "state": "default"}, {"text": "4", "state": "default"}, {"text": "5", "state": "default"}], [{"text": "item1", "state": "default"}, {"text": "0", "state": "default"}, {"text": "0", "state": "default"}, {"text": "3", "state": "active"}, {"text": "3", "state": "active"}, {"text": "3", "state": "active"}, {"text": "3", "state": "active"}]]}}, {"kind": "grid", "line": 1, "caption": "新しい品物を入れるか入れないかを比べます。", "stats": [["item2", "weight 2 value 4"]], "payload": {"rows": [[{"text": "容量", "state": "default"}, {"text": "0", "state": "default"}, {"text": "1", "state": "default"}, {"text": "2", "state": "default"}, {"text": "3", "state": "default"}, {"text": "4", "state": "default"}, {"text": "5", "state": "default"}], [{"text": "前行", "state": "default"}, {"text": "0", "state": "default"}, {"text": "0", "state": "default"}, {"text": "3", "state": "default"}, {"text": "3", "state": "default"}, {"text": "3", "state": "default"}, {"text": "3", "state": "default"}], [{"text": "今回", "state": "default"}, {"text": "0", "state": "default"}, {"text": "0", "state": "default"}, {"text": "4", "state": "active"}, {"text": "4", "state": "active"}, {"text": "7", "state": "found"}, {"text": "7", "state": "found"}]]}}]};</script>
-  <script src="../app.js"></script>
+  <script src="../app.js?v=20260315b"></script>
 </body>
 </html>

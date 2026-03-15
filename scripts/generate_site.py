@@ -6,6 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path("/home/hide10/algorithm.hide10.com")
+ASSET_VERSION = "20260315b"
 
 CATEGORY_LABELS = {
     "Concepts": "概念",
@@ -18,6 +19,7 @@ CATEGORY_LABELS = {
 
 TOP_NAV = [
     ("学習ガイド", "index.html#guide"),
+    ("ことば", "words/index.html"),
     ("計算量", "complexity/index.html"),
     ("ソート", "index.html#sorting"),
     ("探索", "index.html#searching"),
@@ -323,14 +325,14 @@ def quick_sort_frames(values):
                 add_frame(4, f"{arr[low]} がこの範囲で確定しました。", {low: "sorted"})
             return
         pivot = arr[high]
-        add_frame(1, f"pivot に {pivot} を選びます。", {high: "swap"})
+        add_frame(1, f"基準値に {pivot} を選びます。", {high: "swap"})
         i = low
         for j in range(low, high):
             comparisons += 1
             state = {high: "swap", j: "active"}
             if i < len(arr):
                 state[i] = "frontier"
-            add_frame(2, f"{arr[j]} を pivot {pivot} と比べます。", state)
+            add_frame(2, f"{arr[j]} を基準値 {pivot} と比べます。", state)
             if arr[j] < pivot:
                 arr[i], arr[j] = arr[j], arr[i]
                 swaps += 1
@@ -338,7 +340,7 @@ def quick_sort_frames(values):
                 i += 1
         arr[i], arr[high] = arr[high], arr[i]
         swaps += 1
-        add_frame(2, f"pivot {arr[i]} を位置 {i} に置きます。", {i: "sorted"})
+        add_frame(2, f"基準値 {arr[i]} を位置 {i} に置きます。", {i: "sorted"})
         quick_sort(low, i - 1)
         quick_sort(i + 1, high)
 
@@ -643,7 +645,7 @@ PAGES = [
         "facts": [
             ("計算量", "処理回数の増え方"),
             ("Big-O", "計算量の表し方"),
-            ("まず比べるもの", "O(log n), O(n), O(n²)"),
+            ("まず見る差", "増え方がゆるやかか、急か"),
             ("最初の目標", "違いを感覚でつかむ"),
         ],
         "explain": [
@@ -690,7 +692,7 @@ PAGES = [
             },
             {
                 "eyebrow": "How To Read",
-                "title": "O(n) や O(n²) はどう読む？",
+                "title": "O(n) や O(n²) はどういう意味？",
                 "cards": [
                     ("O(1)", "データが増えても、仕事量がほとんど増えない。"),
                     ("O(n)", "データが2倍なら、仕事量もだいたい2倍。"),
@@ -699,10 +701,11 @@ PAGES = [
             },
             {
                 "eyebrow": "Important Note",
-                "title": "小さい入力では差が見えにくい",
+                "title": "今速く見えても油断しない",
                 "paragraphs": [
                     "10件や20件くらいの小さいデータでは、O(n) と O(n²) の差があまり目立たないことがあります。",
-                    "しかし、データが増えると O(n²) は急に苦しくなります。だから『今は速かった』だけで判断しないことが大切です。"
+                    "だから、小さいデータでたまたま速く見えたとしても、それだけで良い方法だと決めないことが大切です。",
+                    "データが増えたときにどうなるかまで見て、はじめて方法の違いがわかります。"
                 ],
             },
             {
@@ -716,22 +719,6 @@ PAGES = [
                 ],
             },
         ],
-        "pre_visual_sections": [
-            {
-                "eyebrow": "First Read",
-                "title": "最初にこれだけ読めばよい",
-                "paragraphs": [
-                    "計算量は、プログラムの処理回数がどう増えるかを表します。",
-                    "Big-O は、その計算量を書くための記号です。",
-                    "最初は O(n) や O(n²) を見て、『データが増えたら仕事量がどう増えるか』を読むことができれば十分です。"
-                ],
-                "cards": [
-                    ("計算量", "処理回数の増え方"),
-                    ("Big-O", "計算量の書き方"),
-                    ("見るもの", "入力が増えたときの変化")
-                ],
-            }
-        ],
         "frames": [
             {"kind": "cards", "line": 1, "caption": "まずは何を比べるのかを言葉で掴みます。", "stats": [["例", "名簿探索"], ["見たいもの", "増え方"]], "payload": {"items": cards_items([("O(log n)", "半分ずつ絞るので増え方が緩やか", "active"), ("O(n)", "先頭から順に見るのでほぼ比例", "default"), ("O(n²)", "全員を全員と比べるので急増", "swap")])}},
             {"kind": "grid", "line": 2, "caption": "n が大きくなるほど差が開きます。", "stats": [["n", "10 / 100 / 1000"], ["比較の軸", "おおよその回数"]], "payload": {"rows": [[{"text": "式", "state": "default"}, {"text": "10", "state": "default"}, {"text": "100", "state": "default"}, {"text": "1000", "state": "default"}], [{"text": "O(log n)", "state": "active"}, {"text": "約3", "state": "active"}, {"text": "約7", "state": "active"}, {"text": "約10", "state": "active"}], [{"text": "O(n)", "state": "default"}, {"text": "10", "state": "default"}, {"text": "100", "state": "default"}, {"text": "1000", "state": "default"}], [{"text": "O(n²)", "state": "swap"}, {"text": "100", "state": "swap"}, {"text": "10000", "state": "swap"}, {"text": "1000000", "state": "swap"}]]}},
@@ -744,15 +731,32 @@ PAGES = [
         "nav_title": "安定ソート",
         "category": "Concepts",
         "eyebrow": "Concept / Stable Sort",
-        "hero_title": "同じ値の順序を\n保つかどうか。",
-        "description": "値が同じ要素に元の順序があるとき、その順序を保つソートを安定ソートと呼びます。複数キーの並べ替えで重要になります。",
-        "pills": ["複数キーで重要", "Bubble は安定", "Selection は基本不安定"],
-        "observe": ["同じ点数でも出席番号の順が残るかを見る", "値だけでなく元の並びも追う", "教材ではラベル付き要素で示す"],
+        "hero_title": "同じ点の人の順番が\nそのまま残るか。",
+        "description": "同じ点の A さんと B さんがいたとき、並べ替えたあとも A さんが前のまま残るなら安定ソートです。元の順番を保つかどうかを見る言葉です。",
+        "pills": ["同点の順番が残る", "Bubble は安定", "Selection は基本不安定"],
+        "observe": ["同じ点数でも前後が変わらないかを見る", "値だけでなく元の並びも追う", "ラベル付き要素で違いを見る"],
         "legend": [("元の順序保持", "sorted"), ("順序が崩れる", "swap")],
         "pseudocode_title": "見てほしい視点",
-        "pseudocode": ["同じ値をラベル付きで用意する", "ソート後もラベル順が保たれるか見る", "複数条件ソートで使いどころを考える"],
-        "facts": [("テーマ", "横断概念"), ("重要場面", "複数キーの整列"), ("安定例", "Bubble / Insertion / Merge"), ("不安定例", "Selection / Heap / Quick の一般実装")],
-        "explain": [("何が嬉しいか", "たとえば学年順に並べたあと点数順に並べても、同点内では学年順が残せます。"), ("どう教えるか", "同じ値を色やラベルで区別してから並べ替えると伝わりやすいです。"), ("注意", "不安定ソートでも実装次第で工夫はできますが、基本性質としては区別して教えるのがよいです。")],
+        "pseudocode": ["同じ値を A, B のように区別して並べる", "ソート後も A と B の順が残るか見る", "同点や同じ値に意味がある場面を考える"],
+        "facts": [("テーマ", "用語の意味"), ("重要場面", "同点や同じ値がある並べ替え"), ("安定例", "Bubble / Insertion / Merge"), ("不安定例", "Selection / Heap / Quick の一般実装")],
+        "explain": [("何がうれしいか", "たとえば学年順に並べたあと点数順に並べても、同点の中では学年順を残せます。"), ("見分け方", "同じ値に A と B のようなラベルを付けると違いが見えます。"), ("まずの理解", "安定かどうかは、速さではなく『同じ値の順番が残るか』を見る言葉です。")],
+        "pre_visual_sections": [
+            {
+                "eyebrow": "まず例で見る",
+                "title": "安定ソートってなに",
+                "paragraphs": [
+                    "80 点の A さんと、80 点の B さんがいるとします。",
+                    "点数順に並べ替えたあとも A さんが B さんより前のままなら、それは安定ソートです。",
+                    "逆に、同じ 80 点なのに B さんが前へ出てしまうなら、不安定です。",
+                    "つまり安定ソートは、『同じ値どうしの元の順番を残せるか』を見る言葉です。",
+                ],
+                "cards": [
+                    ("安定", "同じ値の順番が残る"),
+                    ("不安定", "同じ値の順番が入れ替わることがある"),
+                    ("見る場面", "同点や同じ値に意味がある並べ替え"),
+                ],
+            }
+        ],
         "frames": [
             {"kind": "cells", "line": 1, "caption": "同じ 80 点でも A と B には元の順序があります。", "stats": [["並び", "80A, 60C, 80B, 90D"]], "payload": {"items": cell_items(["80", "60", "80", "90"], {0: "active", 2: "active"}, {0: "A", 1: "C", 2: "B", 3: "D"})}},
             {"kind": "cells", "line": 2, "caption": "安定ソートでは 80A が 80B より前のままです。", "stats": [["安定", "順序保持"]], "payload": {"items": cell_items(["60", "80", "80", "90"], {1: "sorted", 2: "sorted"}, {0: "C", 1: "A", 2: "B", 3: "D"})}},
@@ -879,13 +883,13 @@ add_page({
 })
 
 for slug, title, hero, desc, pills, observe, facts, explain, code, frames in [
-    ("merge-sort", "Merge Sort", "半分に分けて解き、\n整列済みの列を\nマージする。", "分割統治の代表例です。半分ずつ再帰的に整列し、最後に 2 つの整列済み配列をマージします。", ["安定ソート", "分割統治", "O(n log n)"], ["分割される様子", "マージ時に何を比較するか", "補助配列が必要な点"], [("Best", "O(n log n)"), ("Average", "O(n log n)"), ("Worst", "O(n log n)"), ("Stable", "Yes")], [("なぜ速いか", "各段で全体を一度なめ、段数は log n 個だからです。"), ("注意点", "配列版では補助領域が必要です。"), ("教え方", "分割の木とマージの流れを分けて見せると整理しやすいです。")], ["split array into halves", "sort left half", "sort right half", "merge two sorted halves"], [
+    ("merge-sort", "Merge Sort", "半分に分けて解き、\n整列済みの列を\nまとめる。", "大きい問題を半分ずつの小さい問題に分けて進める方法です。半分ずつ整列して、最後に 2 つの整列済み配列をまとめます。", ["安定ソート", "半分ずつ解く", "O(n log n)"], ["半分に分かれる様子", "まとめるときに何を比べるか", "作業用の配列が必要な点"], [("Best", "O(n log n)"), ("Average", "O(n log n)"), ("Worst", "O(n log n)"), ("Stable", "Yes")], [("なぜ速いか", "各段で全体を一度見て、半分に分ける段がそれほど多くないからです。"), ("注意点", "配列版では作業用のメモが必要です。"), ("教え方", "分ける流れと、最後にまとめる流れを分けて見せると整理しやすいです。")], ["配列を半分ずつに分ける", "左半分を整列する", "右半分を整列する", "2つの整列済み配列をまとめる"], [
         {"kind": "bars", "line": 1, "caption": "まず配列を半分に分けます。", "stats": [["サイズ", "8 -> 4 + 4"]], "payload": {"items": bars_items([38, 27, 43, 3, 9, 82, 10, 15], {0: "active", 1: "active", 2: "active", 3: "active", 4: "swap", 5: "swap", 6: "swap", 7: "swap"})}},
         {"kind": "cards", "line": 2, "caption": "左右をそれぞれ整列済みにします。", "stats": [["左", "[3, 27, 38, 43]"], ["右", "[9, 10, 15, 82]"]], "payload": {"items": cards_items([("left", "3, 27, 38, 43", "sorted"), ("right", "9, 10, 15, 82", "sorted"), ("phase", "ここから merge", "active")])}},
         {"kind": "bars", "line": 4, "caption": "先頭同士を比べながらマージします。", "stats": [["比較", "3"], ["出力", "3, 9, 10"]], "payload": {"items": bars_items([3, 9, 10, 27, 38, 43, 15, 82], {0: "sorted", 1: "sorted", 2: "sorted", 3: "active", 6: "swap"})}},
     ]),
-    ("quick-sort", "Quick Sort", "基準値 pivot で分け、\n左右を再帰的に整列する。", "pivot より小さい群と大きい群に分けていく分割統治です。平均では速いですが、pivot の選び方に偏りが出ると遅くなります。", ["平均 O(n log n)", "in-place 実装可", "pivot が重要"], ["pivot がどれか", "左右にどう分かれるか", "最悪ケースがどんなときか"], [("Best", "O(n log n)"), ("Average", "O(n log n)"), ("Worst", "O(n²)"), ("Stable", "No")], [("平均で速い理由", "分割がある程度均等なら、段数が log n 程度に収まるからです。"), ("最悪", "毎回かなり偏る分割だと二次時間になります。"), ("授業の焦点", "partition の動きが理解の中心です。")], ["choose pivot", "partition into left and right", "sort left part", "sort right part"], [
-        {"kind": "bars", "line": 1, "caption": "31 を pivot に選びます。", "stats": [["pivot", "31"]], "payload": {"items": bars_items([44, 12, 31, 8, 27, 52, 19, 3], {2: "swap"})}},
+    ("quick-sort", "Quick Sort", "基準値を決めて、\n左右に分けて整列する。", "1 つ基準値を決めて、それより小さいグループと大きいグループに分けながら進める方法です。基準値の選び方に偏りが出ると遅くなります。", ["平均 O(n log n)", "その場で並べ替えやすい", "基準値の選び方が重要"], ["基準値がどれか", "左右にどう分かれるか", "最悪ケースがどんなときか"], [("Best", "O(n log n)"), ("Average", "O(n log n)"), ("Worst", "O(n²)"), ("Stable", "No")], [("平均で速い理由", "左右がある程度バランスよく分かれると、段数が log n 程度に収まるからです。"), ("最悪", "毎回かなり偏って分かれると二次時間になります。"), ("授業の焦点", "基準値を決めて左右へ分ける動きが理解の中心です。")], ["基準値を 1 つ決める", "基準値より小さいものを左へ集める", "基準値より大きいものを右へ集める", "左右を同じように整列する"], [
+        {"kind": "bars", "line": 1, "caption": "31 を基準値に選びます。", "stats": [["基準値", "31"]], "payload": {"items": bars_items([44, 12, 31, 8, 27, 52, 19, 3], {2: "swap"})}},
         {"kind": "bars", "line": 2, "caption": "31 より小さい要素を左側へ集めます。", "stats": [["left", "12, 8, 27, 19, 3"], ["right", "44, 52"]], "payload": {"items": bars_items([12, 8, 27, 19, 3, 31, 44, 52], {5: "swap"})}},
         {"kind": "bars", "line": 4, "caption": "左右を同じように再帰的に整列します。", "stats": [["段数", "log n 程度"], ["形", "分割統治"]], "payload": {"items": bars_items([3, 8, 12, 19, 27, 31, 44, 52], {0: "sorted", 1: "sorted", 2: "sorted", 3: "sorted", 4: "sorted", 5: "sorted", 6: "sorted", 7: "sorted"})}},
     ]),
@@ -932,7 +936,24 @@ for page in PAGES:
     elif page["slug"] == "quick-sort":
         page["generator"] = "quick-sort"
         page["default_n"] = 12
-        page["hero_title"] = "pivot で分けて、\n左右を整列する。"
+        page["hero_title"] = "基準値で分けて、\n左右を整列する。"
+        page["pre_visual_sections"] = [
+            {
+                "eyebrow": "基準値の決め方",
+                "title": "基準値はどう決めるのか",
+                "paragraphs": [
+                    "基準値は、配列の中から『これを目印に左右へ分けよう』と決める値です。",
+                    "正しい基準値が 1 つだけあるわけではありません。左端、右端、真ん中あたりなど、どれを選んでも動きます。",
+                    "ここでは、動きを追いやすいように『右端の値を基準値にする』形で見せます。",
+                    "ただし、いつも端の値ばかり選ぶと、分かれ方が偏って遅くなることがあります。",
+                ],
+                "cards": [
+                    ("よくある決め方", "左端、右端、真ん中あたりから選ぶ"),
+                    ("このページの見せ方", "右端を基準値にして動きを確認する"),
+                    ("大事な点", "選び方が偏ると遅くなりやすい"),
+                ],
+            }
+        ]
         page["frames"] = quick_sort_frames([44, 12, 31, 8, 27, 52, 19, 3, 41, 6, 24, 15])
     elif page["slug"] == "heap-sort":
         page["generator"] = "heap-sort"
@@ -1182,7 +1203,7 @@ def page_template(page):
         for i, line in enumerate(page["pseudocode"])
     )
     learn_cards = "".join(
-        f'<article class="info-card"><strong>{index}. わかること</strong><p>{html.escape(line)}</p></article>'
+        f'<article class="info-card"><strong>{index}. {html.escape(line)}</strong></article>'
         for index, line in enumerate(page["observe"][:3], start=1)
     )
     pills = "".join(f'<span class="pill">{html.escape(pill)}</span>' for pill in page["pills"])
@@ -1194,29 +1215,26 @@ def page_template(page):
         payload["variants"] = page["variants"]
     data = json.dumps(payload, ensure_ascii=False)
     hero_title = "<br>".join(html.escape(part) for part in page["hero_title"].split("\n"))
-    toc_items = [("summary", "このページでわかること")]
-    if page.get("pre_visual_sections"):
-        toc_items.extend((f"intro-{i}", section["title"]) for i, section in enumerate(page["pre_visual_sections"], start=1))
-    else:
-        toc_items.append(("article", "概要"))
-    toc_items.extend((f"extra-{i}", section["title"]) for i, section in enumerate(page.get("extra_sections", []), start=1))
-    toc_items.extend([
+    toc_items = [
+        ("summary", "このページでわかること"),
+        ("article", "概要"),
         ("howto", page["pseudocode_title"]),
         ("facts", "要点まとめ"),
         ("visualizer", "動きで確認"),
         ("next", "次に見るページ"),
-    ])
+    ]
     toc = "".join(f'<a href="#{anchor}">{html.escape(label)}</a>' for anchor, label in toc_items)
     next_cta = next_links(page)
     visual_hint = html.escape(page["observe"][0]) if page.get("observe") else "アルゴリズムの流れ"
+    page_title = display_title(page)
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{html.escape(page["title"])} | algorithm.hide10.com</title>
+  <title>{html.escape(page_title)} | algorithm.hide10.com</title>
   <meta name="description" content="{html.escape(page["description"])}">
-  <link rel="stylesheet" href="{root}/styles.css">
+  <link rel="stylesheet" href="{root}/styles.css?v={ASSET_VERSION}">
 </head>
 <body>
   <div class="page-shell">
@@ -1233,7 +1251,7 @@ def page_template(page):
 
     <section class="hero hero-single">
       <div class="panel hero-copy">
-        <p class="eyebrow">{html.escape(category_label)} / {html.escape(page["title"])}</p>
+        <p class="eyebrow">{html.escape(category_label)} / {html.escape(page_title)}</p>
         <h1>{hero_title}</h1>
         <p>{html.escape(page["description"])}</p>
         <div class="pill-row">{pills}</div>
@@ -1253,8 +1271,8 @@ def page_template(page):
     </section>
 
     <section id="article" class="panel section">
-      <p class="eyebrow">本文</p>
-      <h2>しくみと考え方</h2>
+      <p class="eyebrow">概要</p>
+      <h2>概要</h2>
 {intro_section}
 {article_blocks}
     </section>
@@ -1281,8 +1299,8 @@ def page_template(page):
 
     <section id="visualizer" class="panel section">
       <p class="eyebrow">動きで確認</p>
-      <h2>最後に動きで確認する</h2>
-      <p class="section-lead">ここでは「{visual_hint}」を見ながら、本文で読んだ内容と対応づけます。</p>
+      <h2>動きを見てたしかめる</h2>
+      <p class="section-lead">ここでは「{visual_hint}」を見ながら、上で読んだ内容を動きと結びつけます。</p>
       <div class="visualizer-layout">
         <div class="panel bars-panel">
           <div class="toolbar">
@@ -1317,7 +1335,7 @@ def page_template(page):
     <footer class="footer">{related}</footer>
   </div>
   <script>window.PAGE_DATA = {data};</script>
-  <script src="{root}/app.js"></script>
+  <script src="{root}/app.js?v={ASSET_VERSION}"></script>
 </body>
 </html>
 """
@@ -1359,9 +1377,61 @@ def format_fact_value(value: str) -> str:
     return mapping.get(value, value)
 
 
+def japanese_title(title: str) -> str | None:
+    mapping = {
+        "Bubble Sort": "バブルソート",
+        "Selection Sort": "選択ソート",
+        "Insertion Sort": "挿入ソート",
+        "Merge Sort": "マージソート",
+        "Quick Sort": "クイックソート",
+        "Heap Sort": "ヒープソート",
+        "Counting Sort": "計数ソート",
+        "Radix Sort": "基数ソート",
+        "Linear Search": "線形探索",
+        "Binary Search": "二分探索",
+        "Hash Table": "ハッシュテーブル",
+        "Stack": "スタック",
+        "Queue": "キュー",
+        "Linked List": "連結リスト",
+        "Binary Search Tree": "二分探索木",
+        "Binary Heap": "二分ヒープ",
+        "Union-Find": "ユニオンファインド",
+        "BFS": "幅優先探索",
+        "DFS": "深さ優先探索",
+        "Dijkstra": "ダイクストラ法",
+        "Topological Sort": "トポロジカルソート",
+        "Prim": "プリム法",
+        "Fibonacci": "フィボナッチ数列",
+        "0/1 Knapsack": "ナップサック問題",
+        "LCS": "最長共通部分列",
+        "Edit Distance": "編集距離",
+        "Tower of Hanoi": "ハノイの塔",
+    }
+    return mapping.get(title)
+
+
+def display_title(page) -> str:
+    ja = japanese_title(page["title"])
+    if not ja:
+        return page["title"]
+    return f'{page["title"]}（{ja}）'
+
+
+def category_lead(category: str) -> str:
+    mapping = {
+        "Concepts": "先に読んでおくと、個別ページの理解が早くなる概念ページです。",
+        "Sorting": "並べ替えの発想ごとの差を見比べるためのページ群です。",
+        "Searching": "どこまで見るか、どう絞るか、探索の基本を学ぶページ群です。",
+        "Data Structures": "アルゴリズムを支える基本構造を先に把握するためのページ群です。",
+        "Graphs": "頂点、辺、距離、到達順序を扱うページ群です。",
+        "Dynamic Programming & Recursion": "部分問題、再帰、表の使い方を学ぶページ群です。",
+    }
+    return mapping.get(category, "")
+
+
 def related_links(page):
     category_pages = [p for p in PAGES if p["category"] == page["category"] and p["slug"] != page["slug"]][:2]
-    links = " / ".join(f'<a href="../{p["slug"]}/index.html">{html.escape(p["title"])}</a>' for p in category_pages)
+    links = " / ".join(f'<a href="../{p["slug"]}/index.html">{html.escape(display_title(p))}</a>' for p in category_pages)
     if links:
         return f'関連: {links}'
     return '関連: <a href="../index.html">トップページ</a>'
@@ -1384,7 +1454,7 @@ def next_links(page):
         return '<a class="button button-secondary" href="../index.html">トップへ戻る</a>'
 
     return "".join(
-        f'<a class="button button-secondary" href="../{item["slug"]}/index.html">{html.escape(item["title"])}を見る</a>'
+        f'<a class="button button-secondary" href="../{item["slug"]}/index.html">{html.escape(display_title(item))}を見る</a>'
         for item in candidates[:2]
     )
 
@@ -1392,7 +1462,7 @@ def next_links(page):
 def index_template():
     grouped = {}
     for page in PAGES:
-      grouped.setdefault(page["category"], []).append(page)
+        grouped.setdefault(page["category"], []).append(page)
     category_ids = {
         "Concepts": "concepts",
         "Sorting": "sorting",
@@ -1404,28 +1474,63 @@ def index_template():
     sections = []
     for category, pages in grouped.items():
         cards = "".join(
-            f'<article class="info-card"><strong><a href="./{p["slug"]}/index.html">{html.escape(p["title"])}</a></strong><p>{html.escape(p["description"])}</p></article>'
+            f'<a class="catalog-item" href="./{p["slug"]}/index.html"><strong>{html.escape(display_title(p))}</strong><p>{html.escape(p["description"])}</p></a>'
             for p in pages
         )
         sections.append(
-            f'<section id="{category_ids.get(category, "")}" class="panel section"><p class="eyebrow">カテゴリ別</p><h2>{html.escape(CATEGORY_LABELS.get(category, category))}</h2><div class="card-grid">{cards}</div></section>'
+            f'<section id="{category_ids.get(category, "")}" class="panel section top-catalog-section"><div class="section-heading"><div><p class="eyebrow">Category</p><h2>{html.escape(CATEGORY_LABELS.get(category, category))}</h2></div><p class="section-lead">{html.escape(category_lead(category))}</p></div><div class="catalog-list">{cards}</div></section>'
         )
     total = len(PAGES)
     top_toc = """
       <div class="toc-links">
-        <a href="#guide">はじめての4ページ</a>
-        <a href="#catalog">カテゴリから探す</a>
-        <a href="#concepts">概念</a>
+        <a href="#guide">はじめに読む4ページ</a>
+        <a href="#paths">学習ルート</a>
+        <a href="#catalog">カテゴリ一覧</a>
         <a href="#sorting">ソート</a>
         <a href="#searching">探索</a>
       </div>
     """
     guide_cards = """
-      <div class="card-grid">
-        <article class="info-card"><strong>1. 計算量の概念</strong><p>まず Big-O と計算量の意味を理解します。</p></article>
-        <article class="info-card"><strong>2. Bubble Sort</strong><p>比較と交換の基本を動きで確認します。</p></article>
-        <article class="info-card"><strong>3. Selection Sort</strong><p>Bubble Sort と何が違うかを見ます。</p></article>
-        <article class="info-card"><strong>4. Binary Search</strong><p>O(log n) の感覚をつかみます。</p></article>
+      <div class="study-map">
+        <a class="study-step" href="./complexity/index.html"><span>01</span><strong>計算量</strong><p>増え方の感覚を先に作る</p></a>
+        <a class="study-step" href="./bubble-sort/index.html"><span>02</span><strong>Bubble Sort（バブルソート）</strong><p>比較と交換の基本を見る</p></a>
+        <a class="study-step" href="./selection-sort/index.html"><span>03</span><strong>Selection Sort（選択ソート）</strong><p>選ぶ処理に変わる違いを見る</p></a>
+        <a class="study-step" href="./binary-search/index.html"><span>04</span><strong>Binary Search（二分探索）</strong><p>半分に絞る感覚を掴む</p></a>
+      </div>
+    """
+    path_cards = """
+      <div class="path-grid">
+        <article class="path-card path-card-primary">
+          <p class="path-label">はじめの順番</p>
+          <h3>まず読む4ページ</h3>
+          <p>計算量、Bubble Sort（バブルソート）、Selection Sort（選択ソート）、Binary Search（二分探索）の順で進むと、増え方と処理の違いをまとめて掴めます。</p>
+          <div class="path-links">
+            <a href="./complexity/index.html">計算量</a>
+            <a href="./bubble-sort/index.html">Bubble Sort（バブルソート）</a>
+            <a href="./selection-sort/index.html">Selection Sort（選択ソート）</a>
+            <a href="./binary-search/index.html">Binary Search（二分探索）</a>
+          </div>
+        </article>
+        <article class="path-card">
+          <p class="path-label">比較して学ぶ</p>
+          <h3>ソートをまとめて見る</h3>
+          <p>隣接交換、選択、挿入、半分ずつ分けて進める方法、ヒープまで、何を基準に並べ替えるかで比較します。</p>
+          <div class="path-tags">
+            <span class="pill">比較ソート</span>
+            <span class="pill">半分ずつ解く</span>
+            <span class="pill">線形時間ソート</span>
+          </div>
+        </article>
+        <article class="path-card">
+          <p class="path-label">前提を固める</p>
+          <h3>概念ページから入る</h3>
+          <p>再帰、メモ化、安定ソート、データ構造へ進み、個別アルゴリズムの前提知識を固めます。</p>
+          <div class="path-tags">
+            <span class="pill">再帰</span>
+            <span class="pill">メモ化</span>
+            <span class="pill">データ構造</span>
+          </div>
+        </article>
       </div>
     """
     return f"""<!DOCTYPE html>
@@ -1434,8 +1539,8 @@ def index_template():
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>algorithm.hide10.com</title>
-  <meta name="description" content="アルゴリズムを視覚で学ぶ静的教材サイト。1 アルゴリズム 1 ページで、動き・擬似コード・計算量を対応づけて理解します。">
-  <link rel="stylesheet" href="./styles.css">
+  <meta name="description" content="アルゴリズムを視覚で学ぶ静的教材サイト。動き、直感、計算量を1ページずつ結びつけて理解できます。">
+  <link rel="stylesheet" href="./styles.css?v={ASSET_VERSION}">
 </head>
 <body>
   <div class="page-shell">
@@ -1448,52 +1553,200 @@ def index_template():
         </span>
       </a>
       <nav class="nav-links">
-        <a href="#guide">学習ガイド</a>
-        <a href="./complexity/index.html">計算量</a>
+        <a href="#guide">はじめに読む</a>
+        <a href="./words/index.html">ことば</a>
+        <a href="#paths">学習ルート</a>
         <a href="#sorting">ソート</a>
         <a href="#searching">探索</a>
       </nav>
     </header>
 
-    <section class="hero hero-single">
-      <div class="panel hero-copy">
-        <p class="eyebrow">学習サイト</p>
-        <h1>アルゴリズムを<br>動きで理解する。</h1>
-        <p>説明を読んでから Visualizer で確認する流れに統一した、静的なアルゴリズム教材サイトです。まずは入口の4ページから始めて、その後にカテゴリ別で広げていけます。</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="./complexity/index.html">計算量から始める</a>
-          <a class="button button-secondary" href="./bubble-sort/index.html">最初の動く教材へ</a>
-        </div>
-        <div class="pill-row" style="margin-top: 18px;">
-          <span class="pill">現在 {total} ページ</span>
-          <span class="pill">1アルゴリズム=1HTML</span>
-          <span class="pill">GitHub Pages / 独自ドメイン対応</span>
-        </div>
+    <section class="panel top-hero">
+      <div class="top-hero-head">
+        <p class="eyebrow">Visual Algorithm Primer</p>
+        <p class="top-hero-subtitle">初学者向けの静的アルゴリズム教材</p>
       </div>
+      <h1 class="top-title"><span class="title-line">アルゴリズムは、</span><span class="title-line title-line-nowrap">式の前に動きで覚える。</span></h1>
+      <p class="top-lead">このサイトは、名前だけ知っている状態から抜けるための教材です。まず動きを見て、そのあとで計算量や擬似コードを対応づけます。</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#guide">はじめに読む4ページへ</a>
+        <a class="button button-secondary" href="#catalog">カテゴリ一覧へ</a>
+      </div>
+      <div class="top-hero-meta">
+        <span>{total} pages</span>
+        <span>1 algorithm = 1 page</span>
+        <span>static HTML</span>
+      </div>
+    </section>
+    <section class="panel section top-guide-section" id="guide">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Guide</p>
+          <h2>はじめに読む4ページ</h2>
+        </div>
+        <p class="section-lead">最初はこの4ページで十分です。増え方、比較、交換、探索の基礎がここで揃います。</p>
+      </div>
+      {guide_cards}
     </section>
     <section class="panel section toc-section">
-      <p class="eyebrow">入口</p>
-      <h2>まずどこを見るか</h2>
+      <p class="eyebrow">目次</p>
+      <h2>トップページの目次</h2>
       {top_toc}
     </section>
-    <section id="guide" class="panel section">
-      <p class="eyebrow">はじめての人へ</p>
-      <h2>最初に見る4ページ</h2>
-      <p class="section-lead">この4ページで、計算量、比較ソート、探索の基本まで追えます。</p>
-      {guide_cards}
-      <div class="hero-actions" style="margin-top:16px;">
-        <a class="button button-primary" href="./complexity/index.html">1. 計算量へ</a>
-        <a class="button button-secondary" href="./bubble-sort/index.html">2. Bubble Sortへ</a>
+    <section id="paths" class="panel section section-accent">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Paths</p>
+          <h2>学習ルート</h2>
+        </div>
+        <p class="section-lead">アルゴリズム名から入らなくても学べるように、目的別の入口を用意します。</p>
       </div>
+      {path_cards}
     </section>
     <section id="catalog" class="panel section toc-section">
-      <p class="eyebrow">カテゴリから探す</p>
-      <h2>学びたいテーマから入る</h2>
-      <p class="section-lead">学習順ではなく、興味のある分野から直接たどるための入口です。</p>
-      {top_toc}
+      <p class="eyebrow">Catalog</p>
+      <h2>カテゴリ一覧</h2>
+      <p class="section-lead">学習順ではなく、テーマから直接ページを探すための一覧です。</p>
     </section>
     {''.join(sections)}
     <footer class="footer">GitHub Pages と <code>algorithm.hide10.com</code> の両方で運用しやすい静的構成です。<code>hide10.com</code> 側へ展開する場合は外側レイアウトに広告を載せ、教材本体はそのまま流用する方針です。</footer>
+  </div>
+</body>
+</html>
+"""
+
+
+def words_template():
+    entries = [
+        (
+            "分割統治",
+            "大きい問題を小さい問題に分けて解くやり方です。",
+            [
+                "たとえば 100 人を一気に処理するのではなく、50 人と 50 人に分けて考えるイメージです。",
+                "分けたあと、それぞれを解いて、最後に結果をまとめます。",
+                "最初は『半分ずつに分けて進める方法』と考えるとつかみやすいです。",
+            ],
+            "Merge Sort や Quick Sort で出てきます。",
+        ),
+        (
+            "再帰",
+            "同じ形の小さい問題を、自分でもう一度呼び出して解く書き方です。",
+            [
+                "たとえば 5 段の問題を、4 段の問題にして考える、というように小さくします。",
+                "必ず『ここまで来たら終わり』という止まる条件が必要です。",
+                "止まる条件がないと、ずっと呼び出し続けて止まりません。",
+            ],
+            "再帰の考え方、ハノイの塔、Merge Sort などで使います。",
+        ),
+        (
+            "メモ化",
+            "一度出した答えを覚えておいて、同じ計算をもう一度しない方法です。",
+            [
+                "前に解いた宿題の答えをノートに書いておいて、次は見返すイメージです。",
+                "同じ計算が多いときに、とても効きます。",
+                "Fibonacci のページで差が見えやすいです。",
+            ],
+            "再帰が遅いときの改善方法として出てきます。",
+        ),
+        (
+            "安定ソート",
+            "同じ値どうしの元の順番を、そのまま残して並べ替えることです。",
+            [
+                "80 点の A さんと 80 点の B さんがいたとき、並べ替えたあとも A さんが前のままなら安定です。",
+                "同じ点でも元の並びに意味があるときに大事です。",
+                "A や B のラベルを付けると違いが見えやすくなります。",
+            ],
+            "Bubble Sort、Insertion Sort、Merge Sort などと関係します。",
+        ),
+        (
+            "基準値",
+            "比べるための目印になる値です。",
+            [
+                "Quick Sort では、まず 1 つ値を選んで、それより小さいものと大きいものに分けます。",
+                "英語では pivot と書かれることがあります。",
+                "基準値の選び方が偏ると、処理が遅くなることがあります。",
+            ],
+            "Quick Sort の中心になる考え方です。",
+        ),
+        (
+            "計算量",
+            "データが増えたときに、仕事の回数がどれくらい増えるかを表す目安です。",
+            [
+                "『今何秒かかったか』より『データが増えたらどれくらい大変になるか』を見ます。",
+                "O(n) や O(n²) は、その増え方を書く記号です。",
+                "最初は『増え方の違いを見るもの』と考えれば十分です。",
+            ],
+            "計算量のページで最初に確認してください。",
+        ),
+        (
+            "ヒープ",
+            "親と子の大小関係だけを守る、木の形のデータの持ち方です。",
+            [
+                "全部きれいに並んでいるわけではありません。",
+                "ただし、いちばん大きい値や小さい値を先頭から取り出しやすいのが強みです。",
+                "優先順位の高いものを先に取り出したいときに向いています。",
+            ],
+            "Heap Sort や優先度付きキューで使います。",
+        ),
+    ]
+
+    sections = []
+    toc_links = []
+    for term, lead, paragraphs, related in entries:
+        anchor = term
+        toc_links.append(f'<a href="#{html.escape(anchor)}">{html.escape(term)}</a>')
+        body = "".join(f"<p>{html.escape(text)}</p>" for text in paragraphs)
+        sections.append(
+            f"""<section id="{html.escape(anchor)}" class="panel section">
+      <p class="eyebrow">ことば</p>
+      <h2>{html.escape(term)}</h2>
+      <p class="section-lead">{html.escape(lead)}</p>
+      {body}
+      <div class="card-grid"><article class="info-card"><strong>出てくるページ</strong><p>{html.escape(related)}</p></article></div>
+    </section>"""
+        )
+
+    toc = "".join(toc_links)
+
+    return f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ことば集 | algorithm.hide10.com</title>
+  <meta name="description" content="中学生以上向けに、アルゴリズム学習で出てくる用語をやさしい言葉で説明するページです。">
+  <link rel="stylesheet" href="../styles.css?v={ASSET_VERSION}">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">A</span>
+        <span class="brand-copy">
+          <strong>algorithm.hide10.com</strong>
+          <span>Visual algorithm primer</span>
+        </span>
+      </a>
+      <nav class="nav-links">{''.join(f'<a href="../{href}">{label}</a>' for label, href in TOP_NAV)}</nav>
+    </header>
+
+    <section class="hero hero-single">
+      <div class="panel hero-copy">
+        <p class="eyebrow">Glossary</p>
+        <h1>ことば集</h1>
+        <p>ページの中で出てくる言葉を、短く整理した一覧です。意味があやふやになったときに引けるようにしてあります。</p>
+      </div>
+    </section>
+
+    <section class="panel section toc-section">
+      <p class="eyebrow">目次</p>
+      <h2>ことばの一覧</h2>
+      <div class="toc-links">{toc}</div>
+    </section>
+
+    {''.join(sections)}
+
+    <footer class="footer">わからない言葉が出たら、ここに戻って意味を確認できます。</footer>
   </div>
 </body>
 </html>
@@ -1506,6 +1759,9 @@ def write_pages():
         target_dir.mkdir(parents=True, exist_ok=True)
         (target_dir / "index.html").write_text(page_template(page), encoding="utf-8")
     (ROOT / "index.html").write_text(index_template(), encoding="utf-8")
+    words_dir = ROOT / "words"
+    words_dir.mkdir(parents=True, exist_ok=True)
+    (words_dir / "index.html").write_text(words_template(), encoding="utf-8")
 
 
 if __name__ == "__main__":
